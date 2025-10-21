@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - master
   workflow_dispatch:
 
 permissions:
@@ -17,22 +18,20 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
       
-      - name: Install ucspi-tcp (for tcpserver)
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ucspi-tcp curl
-      
-      - name: Install Tailwind CSS
-        run: npm install -g tailwindcss
+          sudo apt-get install -y ucspi-tcp curl jq
+          bash --version
       
       - name: Make scripts executable
         run: |
@@ -41,12 +40,13 @@ jobs:
           chmod +x build.sh
           chmod +x components/*.sh
           chmod +x pages/*.sh
+          find pages -type f -name "*.sh" -exec chmod +x {} \;
       
       - name: Build static site
-        run: ./build.sh
-        env:
-          DEV: false
-          PORT: 3001
+        run: |
+          export DEV=false
+          export PORT=3001
+          ./build.sh
       
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
@@ -55,4 +55,3 @@ jobs:
           publish_dir: ./dist
           publish_branch: gh-pages
           cname: ${{ secrets.CUSTOM_DOMAIN }}
-
