@@ -1,4 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Ensure we're using Bash 4+ (required for associative arrays)
+if [[ "${BASH_VERSINFO[0]}" -lt 4 ]]; then
+  # Try to re-exec with Bash 5 if available
+  if [[ -x /opt/homebrew/bin/bash ]]; then
+    exec /opt/homebrew/bin/bash "$0" "$@"
+  elif [[ -x /usr/local/bin/bash ]]; then
+    exec /usr/local/bin/bash "$0" "$@"
+  else
+    echo "ERROR: Bash 4.0+ required. Current version: $BASH_VERSION"
+    echo "Install with: brew install bash"
+    exit 1
+  fi
+fi
 
 cd "${0%/*}"
 

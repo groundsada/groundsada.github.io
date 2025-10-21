@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -29,7 +29,14 @@ fi
 SERVER_PID=$!
 
 # Wait for server to be ready
-sleep 3
+echo "Waiting for server to be ready..."
+for i in {1..10}; do
+  if curl -s http://localhost:$PORT/ > /dev/null 2>&1; then
+    echo "Server is ready!"
+    break
+  fi
+  sleep 1
+done
 
 # Function to fetch and save a page
 fetch_page() {
@@ -38,8 +45,15 @@ fetch_page() {
   
   # Fetch the page and save to dist
   curl -s "http://localhost:$PORT$path" > "dist/$output" 2>/dev/null || {
+    echo "  ERROR: Failed to fetch $path (is server running?)"
     return 1
   }
+  
+  # Check if file was created and has content
+  if [[ ! -s "dist/$output" ]]; then
+    echo "  ERROR: Fetched file is empty"
+    return 1
+  fi
   
   # Post-process HTML: remove HTMX, HMR, and bash-stack specific features
   # This makes it a pure static site
