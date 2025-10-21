@@ -1,0 +1,58 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install ucspi-tcp (for tcpserver)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ucspi-tcp curl
+      
+      - name: Install Tailwind CSS
+        run: npm install -g tailwindcss
+      
+      - name: Make scripts executable
+        run: |
+          chmod +x start.sh
+          chmod +x core.sh
+          chmod +x build.sh
+          chmod +x components/*.sh
+          chmod +x pages/*.sh
+      
+      - name: Build static site
+        run: ./build.sh
+        env:
+          DEV: false
+          PORT: 3001
+      
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          cname: ${{ secrets.CUSTOM_DOMAIN }}
+

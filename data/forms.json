@@ -1,0 +1,13 @@
+{
+  "resume": {
+    "action": "https://formspree.io/f/xbjvnyog",
+    "title": "Request Resume",
+    "description": "Please fill out this form if you'd like to receive a copy of my resume!"
+  },
+  "contact": {
+    "action": "https://formspree.io/f/mrgwnkqe",
+    "title": "Contact",
+    "description": "Please fill out this form to connect!"
+  }
+}
+

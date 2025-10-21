@@ -1,0 +1,26 @@
+{
+  "projects": [
+    {
+      "title": "Project 1",
+      "description": "Coming soon...",
+      "image": "./assets/jpeg/project-mockup-example.jpeg",
+      "link": "./project-1.html",
+      "enabled": false
+    },
+    {
+      "title": "Project 2",
+      "description": "Coming soon...",
+      "image": "./assets/jpeg/project-mockup-example.jpeg",
+      "link": "./project-2.html",
+      "enabled": false
+    },
+    {
+      "title": "Project 3",
+      "description": "Coming soon...",
+      "image": "./assets/jpeg/project-mockup-example.jpeg",
+      "link": "./project-3.html",
+      "enabled": false
+    }
+  ]
+}
+

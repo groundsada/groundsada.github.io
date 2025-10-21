@@ -1,0 +1,40 @@
+{
+  "languages": [
+    "C/C++",
+    "C#",
+    "Python",
+    "Java",
+    "R",
+    "MySQL",
+    "Haskell",
+    "MIPS",
+    "SystemVerilog",
+    "Swift",
+    "Kotlin",
+    "PHP",
+    "Dart"
+  ],
+  "frameworks": [
+    "PyTorch",
+    "TensorFlow",
+    "OpenCV",
+    "Flutter",
+    "MariaDB",
+    "Django",
+    "Flask"
+  ],
+  "cloud": [
+    "Kubernetes",
+    "Hadoop",
+    "Docker",
+    "AWS",
+    "GCP",
+    "Azure"
+  ],
+  "spoken": [
+    "English (Fluent)",
+    "Arabic (Fluent)",
+    "French (Beginner)"
+  ]
+}
+
