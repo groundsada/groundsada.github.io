@@ -13,7 +13,9 @@ export DEV=false
 export PORT=3002
 export TCP_PROVIDER=tcpserver
 
-[[ ! command -v tcpserver &> /dev/null ]] && export TCP_PROVIDER=nc
+if ! command -v tcpserver &> /dev/null; then
+  export TCP_PROVIDER=nc
+fi
 
 # Start server
 ./start.sh > /dev/null 2>&1 &
