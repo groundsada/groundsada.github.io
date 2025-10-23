@@ -1,0 +1,20 @@
+{
+  "name": "Mohammad Firas Sada",
+  "title": "Researcher at San Diego Supercomputer Center - HPC - AI/ML - Networking - FPGAs - DevOps",
+  "shortTitle": "Researcher at San Diego Supercomputer Center | HPC | AI/ML | Networking | FPGAs | DevOps",
+  "greeting": "Hi, My name is Mohammad Firas Sada",
+  "about": {
+    "description": "Researcher at San Diego Supercomputer Center specializing in HPC, AI/ML, networking, and FPGA acceleration for high-performance systems.",
+    "details": [
+      "I work on accelerating network infrastructure and AI workloads using FPGAs and specialized hardware. My research spans P4-programmable switches, distributed computing, and containerized HPC environments.",
+      "Previously developed ML predictive models at SAP. Passionate about building efficient, scalable systems at the intersection of hardware and software."
+    ]
+  },
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/msada",
+    "github": "https://github.com/groundsada",
+    "instagram": "https://www.instagram.com/firas_sada/"
+  },
+  "photo": "/static/assets/jpeg/firas-sada.jpg"
+}
+

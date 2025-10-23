@@ -1,0 +1,9 @@
+Listening on port 3004
+GET / HTTP/1.1
+awk: non-terminated regular expression ^date:[[:s... at source line 1
+ context is
+	/^---$/{f=1;next}/^---$/{f=0}f&&/^date:/{sub(/^date:[[:space]]*, ""); >>>  print} <<< 
+awk: unknown character class: space]]*, ""); print}
+ source line number 1
+awk: nonterminated character class ^date:[[:space]]*, "
+ source line number 1
