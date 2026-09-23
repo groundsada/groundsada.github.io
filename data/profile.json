@@ -3,6 +3,7 @@
   "title": "Research Networking Systems Engineer at ESnet (Lawrence Berkeley National Laboratory) | Moving science data for a living",
   "shortTitle": "Research Networking Systems Engineer at ESnet (LBNL) | Science data | Programmable networks",
   "greeting": "Hi, I'm Firas — welcome to my corner of the internet",
+  "now": "Now: moving high-energy physics data at ESnet · just published PEARC '26 · teaching the NRP on the side",
   "about": {
     "description": "I move science data for a living. By day I'm a research networking systems engineer at ESnet, helping high-energy physics pipelines get their petabytes across the country; by night you'll find me in a data-frame, a P4 compiler, or a good baseball stat sheet.",
     "details": [

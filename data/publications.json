@@ -35,6 +35,11 @@
       "title": "Introduction to the National Research Platform",
       "venue": "EPOC talk with E. Khoda (SDSC), June 2025",
       "url": "https://youtu.be/qkG4SaTFPE4"
+    },
+    {
+      "title": "Using Xilinx Alveo FPGAs as SmartNICs with ESnet Framework (video tutorial series)",
+      "venue": "Tutorial video series",
+      "url": "https://www.youtube.com/playlist?list=PL5Ght4QkHL8Sd7rTLNPv3TjYCZ3GorqPE"
     }
   ]
 }

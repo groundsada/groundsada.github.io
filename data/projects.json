@@ -22,20 +22,6 @@
       "description": "Minimal sFlow collector for Kubernetes: listens on UDP/6343 behind a ClusterIP service, decodes samples to JSON (sflowtool -J) or PCAP (-t), and self-tests with a synthetic packet. The practical way to get real packet data on the National Research Platform."
     },
     {
-      "title": "rucio-sense-dmm",
-      "category": "Data movement",
-      "featured": true,
-      "url": "https://github.com/groundsada/rucio-sense-dmm",
-      "description": "The Data Movement Manager: the interface layer between Rucio/FTS and SENSE so high-energy physics transfers can request SDN circuits. X.509 and SENSE OAuth credentials, Helm on NRP, web UI with site refresh. My working fork of the Rucio-SENSE interop effort."
-    },
-    {
-      "title": "ESnet SmartNIC: hw, tutorial, bitfiles",
-      "category": "Programmable networks",
-      "featured": true,
-      "url": "https://github.com/groundsada/esnet-smartnic-hw-sn1022",
-      "description": "The ESnet SmartNIC line: SN1022-based hardware bring-up (esnet-smartnic-hw-sn1022), the 'Using Xilinx Alveo FPGAs as SmartNICs with ESnet Framework' tutorial with its [video series](https://www.youtube.com/playlist?list=PL5Ght4QkHL8Sd7rTLNPv3TjYCZ3GorqPE), and a bitfile builder for reproducible builds."
-    },
-    {
       "title": "P4-on-Xilinx-FPGAs",
       "category": "Programmable networks",
       "featured": true,
