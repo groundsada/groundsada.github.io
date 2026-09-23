@@ -42,7 +42,11 @@ cat <<'EOF'
     <h2>Off the clock</h2>
     <p>Baseball analytics in R (a permanently in-progress WAR calculator), machine-learning image experiments, competitive-programming warmups, and a long-standing belief that every big idea deserves a small weekend prototype.</p>
   </section>
+EOF
 
+source components/publications.sh
+
+cat <<'EOF'
   <section class="about-section">
     <h2>Find me</h2>
     <p>GitHub: <a href="https://github.com/groundsada">github.com/groundsada</a> · LinkedIn: <a href="https://www.linkedin.com/in/msada">linkedin.com/in/msada</a> · Papers: <a href="https://arxiv.org/abs/2609.13185">arXiv</a></p>
