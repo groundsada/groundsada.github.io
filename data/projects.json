@@ -1,18 +1,32 @@
 {
   "projects": [
     {
-      "title": "qaic-prometheus-exporter",
-      "category": "AI infrastructure",
+      "title": "Jupyter-Agent",
+      "category": "Kubernetes & platforms",
       "featured": true,
-      "url": "https://github.com/groundsada/qaic-prometheus-exporter",
-      "description": "Prometheus exporter for Qualcomm Cloud AI 100 accelerators. Scrapes qaic-util every 15 seconds and exposes 20+ per-QID metrics (power, temperature, DRAM, NSP utilization, inference load). Injected as a ConfigMap, no custom image needed."
+      "url": "https://github.com/groundsada/Jupyter-Agent",
+      "description": "Gives plain JupyterHub the features that usually belong to Coder: SSH into user server pods over HTTPS, wildcard subdomain port forwarding, and one-click VS Code into a pod's workspace. Deploys as an overlay using only published extension points, no changes to core JupyterHub."
+    },
+    {
+      "title": "JupyterCluster",
+      "category": "Kubernetes & platforms",
+      "featured": true,
+      "url": "https://github.com/groundsada/JupyterCluster",
+      "description": "Multi-hub management for JupyterHub on Kubernetes: a hub that provisions and manages many JupyterHub Helm releases in separate namespaces, with a Kubernetes-based HubSpawner, RBAC, an authenticator, and a REST API for programmatic control."
     },
     {
       "title": "llms-or-naive-bayes",
       "category": "AI infrastructure",
       "featured": true,
       "url": "https://github.com/groundsada/llms-or-naive-bayes",
-      "description": "Reproduction artifact for the PEARC '26 paper 'LLMs or Naive Bayes? Old Gems or New Ways'. Complement Naive Bayes vs zero/few-shot LLMs across four model families and a 37x scale range, with a Helm operator that picks the model by policy."
+      "description": "Reproduction artifact for the PEARC '26 paper 'LLMs or Naive Bayes? Old Gems or New Ways'. Complement Naive Bayes vs zero/few-shot LLMs across four model families and a 37x scale range, with a Helm operator that picks the model by policy and Prometheus metrics you can verify."
+    },
+    {
+      "title": "Jaily",
+      "category": "Network data & measurement",
+      "featured": true,
+      "url": "https://github.com/groundsada/Jaily",
+      "description": "Just Another Interpreter Like Yours: a Java transpiler that converts natural-language rules (NRL) into BPF packet filters. Parser plus code generator, stateful rules, manual packet manipulation, evaluated against PCAP files, applied with a C toolchain. Tell your filter what you want in English."
     },
     {
       "title": "nrp-header-collection",
@@ -22,16 +36,16 @@
       "description": "Minimal sFlow collector for Kubernetes: listens on UDP/6343 behind a ClusterIP service, decodes samples to JSON (sflowtool -J) or PCAP (-t), and self-tests with a synthetic packet. The practical way to get real packet data on the National Research Platform."
     },
     {
-      "title": "JupyterCluster",
-      "category": "Kubernetes & platforms",
+      "title": "qaic-prometheus-exporter",
+      "category": "AI infrastructure",
       "featured": true,
-      "url": "https://github.com/groundsada/JupyterCluster",
-      "description": "Multi-hub management for JupyterHub on Kubernetes: a hub that provisions and manages many JupyterHub Helm releases in separate namespaces, with a k8s-based HubSpawner, RBAC (admin-all / user-own), authenticator, and a REST API for programmatic control."
+      "url": "https://github.com/groundsada/qaic-prometheus-exporter",
+      "description": "Prometheus exporter for Qualcomm Cloud AI 100 accelerators. Scrapes qaic-util every 15 seconds and exposes 20+ per-QID metrics (power, temperature, DRAM, NSP utilization, inference load). Injected as a ConfigMap, no custom image needed."
     },
     {
       "title": "sailorcapy",
       "category": "Network data & measurement",
-      "featured": true,
+      "featured": false,
       "url": "https://github.com/groundsada/sailorcapy",
       "description": "Python packet generation with Scapy: build and customize packets across protocols and parameters, for testing network paths, switch behavior, and sFlow collection pipelines. The lab gear that gets used more than it gets documented."
     },
@@ -43,25 +57,18 @@
       "description": "Java eBPF bytecode generator plus PCAP tools: custom packet filter rules compiled to eBPF, a PCAP reader/writer, packet filtering and manipulation, and an IPv4 packet generator."
     },
     {
+      "title": "Naruto (NaRuTo)",
+      "category": "Network data & measurement",
+      "featured": false,
+      "url": "https://github.com/groundsada/Naruto",
+      "description": "Yes, it's named Naruto. It's actually NaRuTo, a Natural Rule Tool: an extended parser for the Natural Rule Language, letting you express model constraints in near-English and write mapping programs in Python or JavaScript, not just Java. The grammar half of the Jaily story."
+    },
+    {
       "title": "7NRP-AI-Presentation",
       "category": "AI infrastructure",
       "featured": false,
       "url": "https://github.com/groundsada/7NRP-AI-Presentation",
       "description": "The 30-minute AI infrastructure talk from the 7th National Research Platform Workshop (2026, UC San Diego / SDSC), built with Slidev."
-    },
-    {
-      "title": "Naruto (NaRuTo)",
-      "category": "Archive",
-      "featured": false,
-      "url": "https://github.com/groundsada/Naruto",
-      "description": "Yes, it's named Naruto. It's actually NaRuTo, a Natural Rule Tool: an extended parser for the Natural Rule Language, letting you express model constraints in near-English and execute mappings in Python or JavaScript, not just Java."
-    },
-    {
-      "title": "ImageColorization",
-      "category": "Archive",
-      "featured": false,
-      "url": "https://github.com/groundsada/ImageColorization",
-      "description": "Grayscale image colorization with CNNs and GANs, built for CS 512 Computer Vision at Illinois Tech."
     },
     {
       "title": "Single-Image-Facial-Superresolution-GAN",
@@ -71,11 +78,18 @@
       "description": "Single-image facial super-resolution with GANs, built for CS 584 at Illinois Tech."
     },
     {
+      "title": "ImageColorization",
+      "category": "Archive",
+      "featured": false,
+      "url": "https://github.com/groundsada/ImageColorization",
+      "description": "Grayscale image colorization with CNNs and GANs, built for CS 512 Computer Vision at Illinois Tech."
+    },
+    {
       "title": "NBAmazonReviews",
       "category": "Archive",
       "featured": false,
       "url": "https://github.com/groundsada/NBAmazonReviews",
-      "description": "Amazon reviews classification experiments, the seed of the Naive Bayes benchmarking work that became PEARC '26."
+      "description": "Naive Bayes classifier for sentiment analysis on Amazon reviews, built from scratch for CS 481 at Illinois Tech. The seed of the benchmarking work that became PEARC '26."
     }
   ]
 }

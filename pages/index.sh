@@ -21,7 +21,7 @@ EOF
 
 source components/intro.sh
 source components/recent-posts.sh 3
-source components/projects.sh 5
+source components/projects.sh 6
 
 cat <<'EOF'
 </main>
