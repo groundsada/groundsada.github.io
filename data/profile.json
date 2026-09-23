@@ -1,13 +1,13 @@
 {
   "name": "Mohammad Firas Sada",
-  "title": "Research Networking Systems Engineer at ESnet | Scientific Data Movement | Programmable Networks | AI/ML Infrastructure",
-  "shortTitle": "Research Networking Systems Engineer at ESnet (LBNL) | Scientific Data Movement | Programmable Networks | AI/ML Infrastructure",
+  "title": "Researcher at San Diego Supercomputer Center - HPC - AI/ML - Networking - FPGAs - DevOps",
+  "shortTitle": "Researcher at San Diego Supercomputer Center | HPC | AI/ML | Networking | FPGAs | DevOps",
   "greeting": "Hi, My name is Mohammad Firas Sada",
   "about": {
-    "description": "Research networking systems engineer at ESnet (Energy Sciences Network) — Lawrence Berkeley National Laboratory — working on scientific data movement, SENSE-SDN orchestration, and AI/ML infrastructure for research computing.",
+    "description": "Researcher at San Diego Supercomputer Center specializing in HPC, AI/ML, networking, and FPGA acceleration for high-performance systems.",
     "details": [
-      "I work at the intersection of research networking and high-energy physics data movement: SENSE software-defined networking, Rucio/FTS interoperability, telemetry and observability for multi-site network fleets, and Kubernetes infrastructure for science.",
-      "Previously at the San Diego Supercomputer Center (UCSD), where I worked on FPGA and programmable-data-plane acceleration, network monitoring, and ML-infrastructure tooling — including P4 on Xilinx FPGAs, SmartNIC testbeds, and a Prometheus exporter for Qualcomm Cloud AI 100 accelerators."
+      "I work on accelerating network infrastructure and AI workloads using FPGAs and specialized hardware. My research spans P4-programmable switches, distributed computing, and containerized HPC environments.",
+      "Previously developed ML predictive models at SAP. Passionate about building efficient, scalable systems at the intersection of hardware and software."
     ]
   },
   "social": {
@@ -15,5 +15,6 @@
     "github": "https://github.com/groundsada",
     "instagram": "https://www.instagram.com/firas_sada/"
   },
-  "photo": "/static/assets/images/firas-sada.jpg"
+  "photo": "/static/assets/jpeg/firas-sada.jpg"
 }
+

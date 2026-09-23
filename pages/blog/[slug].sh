@@ -9,7 +9,7 @@ if [[ ! -f "$BLOG_FILE" ]]; then
 fi
 
 # Extract frontmatter
-TITLE=$(awk '/^---$/{f=1;next}/^---$/{f=0}f&&/^title:/{sub(/^title:[[:space:]]*/, ""); print}' "$BLOG_FILE" | sed 's/^"//; s/"$//')
+TITLE=$(awk '/^---$/{f=1;next}/^---$/{f=0}f&&/^title:/{sub(/^title:[[:space:]]*/, ""); print}' "$BLOG_FILE")
 DATE=$(awk '/^---$/{f=1;next}/^---$/{f=0}f&&/^date:/{sub(/^date:[[:space:]]*/, ""); print}' "$BLOG_FILE")
 
 # Get content after frontmatter
