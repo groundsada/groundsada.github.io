@@ -134,6 +134,7 @@ p { margin: 0 0 1em; }
   vertical-align: 1px;
 }
 .entry-row__meta { font-size: 0.85rem; color: var(--muted); }
+.entry-row__desc { font-size: 0.95rem; color: var(--muted); margin-top: 4px; }
 
 /* ---------- Blog post ---------- */
 .entry__content { max-width: 66ch; }

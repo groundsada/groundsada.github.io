@@ -1,74 +1,53 @@
 #!/usr/bin/env bash
 
-# Get project root
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Curated projects. No star counts, no API fetches.
+# Usage: source with LIMIT (default 0 = all, grouped by category).
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-GITHUB_USER="groundsada"
-CACHE_FILE="$PROJECT_ROOT/data/github-cache.json"
-LIMIT=${1:-3}
+LIMIT=${1:-0}
 
-# Simple cache check
-should_fetch() {
-  [[ ! -f "$CACHE_FILE" ]] && return 0
-  find "$CACHE_FILE" -mmin +1440 2>/dev/null | grep -q . && return 0  # 24 hours
-  return 1
+render_row() {
+  local title="$1" desc="$2" url="$3"
+  cat <<ROW
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="$url" target="_blank" rel="noopener">$title</a></div>
+    <div class="entry-row__desc">$desc</div>
+  </div>
+ROW
 }
 
-# Fetch from GitHub
-if should_fetch; then
-  curl -s "https://api.github.com/users/$GITHUB_USER/repos?sort=updated&per_page=50" > "$CACHE_FILE" 2>/dev/null || true
+if [[ ! -f "$PROJECT_ROOT/data/projects.json" ]]; then
+  echo "<p>Projects data unavailable.</p>"
+  exit 0
 fi
 
-cat <<'EOF'
+if [[ "$LIMIT" -gt 0 ]]; then
+  # Homepage: featured only, with a link to the full page
+  cat <<'EOF'
 <div class="section-title">
-  <h2>Recent Projects</h2>
+  <h2>Selected work</h2>
 </div>
+<div class="entry-list">
 EOF
-
-if [[ -f "$CACHE_FILE" ]] && command -v jq &> /dev/null; then
-  cat "$CACHE_FILE" | jq -r '.[] | select(.fork == false and .name != "sense-otel" and .name != "rtmon-archify") | @json' | head -n $LIMIT | while read -r project; do
-    NAME=$(echo "$project" | jq -r '.name')
-    DESC=$(echo "$project" | jq -r '.description // "No description"')
-    URL=$(echo "$project" | jq -r '.html_url')
-    STARS=$(echo "$project" | jq -r '.stargazers_count')
-    LANG=$(echo "$project" | jq -r '.language // "Code"')
-    
-    cat <<PROJECT
-<div class="project-card">
-  <h3 class="project-card__title">
-    <a href="$URL" target="_blank">$NAME</a>
-  </h3>
-  <div class="project-card__meta">$LANG • $STARS stars</div>
-  <div class="project-card__desc">
-    <p>$DESC</p>
-  </div>
-  <a href="$URL" class="btn btn-secondary" target="_blank">View on GitHub</a>
-</div>
-PROJECT
+  jq -r '.projects[] | select(.featured == true) | @json' "$PROJECT_ROOT/data/projects.json" | head -n "$LIMIT" | while read -r p; do
+    TITLE=$(echo "$p" | jq -r '.title'); DESC=$(echo "$p" | jq -r '.description'); URL=$(echo "$p" | jq -r '.url')
+    render_row "$TITLE" "$DESC" "$URL"
   done
-else
-  cat <<'FALLBACK'
-<div class="project-card">
-  <h3 class="project-card__title">
-    <a href="https://github.com/groundsada" target="_blank">View Projects</a>
-  </h3>
-  <div class="project-card__desc">
-    <p>Check out my open source projects and research work on GitHub.</p>
-  </div>
-  <a href="https://github.com/groundsada?tab=repositories" class="btn" target="_blank">View All Repositories</a>
+  cat <<'EOF'
 </div>
-FALLBACK
-fi
-
-cat <<EOF
-<div class="text-center mt-4">
-  <a href="https://github.com/$GITHUB_USER?tab=repositories" class="btn" target="_blank">View All Projects</a>
-</div>
+<p style="font-size: 0.95rem;"><a href="/projects">All projects &rarr;</a></p>
 EOF
-
-
-
-
-
-
+else
+  # Full page: grouped by category
+  jq -r '.projects[].category' "$PROJECT_ROOT/data/projects.json" | sort -u | while read -r cat; do
+    echo "<div class=\"section-title\"><h2>$cat</h2></div>"
+    echo '<div class="entry-list">'
+    jq -r '.projects[] | select(.category == "'$cat'") | @json' "$PROJECT_ROOT/data/projects.json" | while read -r p; do
+      TITLE=$(echo "$p" | jq -r '.title'); DESC=$(echo "$p" | jq -r '.description'); URL=$(echo "$p" | jq -r '.url')
+      render_row "$TITLE" "$DESC" "$URL"
+    done
+    echo '</div>'
+  done
+fi
