@@ -7,7 +7,7 @@ cat <<'EOF'
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects - Mohammad Firas Sada</title>
-  <meta name="description" content="Selected projects by Mohammad Firas Sada — network data collection on the NRP, SmartNICs and P4, data movement for HEP, AI accelerator metrics, and more.">
+  <meta name="description" content="Selected projects by Mohammad Firas Sada — packet data collection on the NRP, P4 on FPGAs, AI accelerator metrics, reproducible ML benchmarks, and more.">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
