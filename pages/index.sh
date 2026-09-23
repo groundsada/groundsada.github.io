@@ -7,7 +7,7 @@ cat <<'EOF'
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohammad Firas Sada - Research Networking Systems Engineer at ESnet</title>
-  <meta name="description" content="Research networking systems engineer at ESnet/LBNL — scientific data movement, SENSE-SDN orchestration, programmable networks, and AI/ML infrastructure for high-energy physics.">
+  <meta name="description" content="Research networking systems engineer at ESnet/LBNL — software-defined networks and transfer tooling for high-energy physics data movement. Remote. Petabytes. Orchestrated.">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -17,11 +17,28 @@ source components/header.sh
 
 cat <<'EOF'
 <main class="main-content">
+  <section class="hero-stage" id="hero">
+    <div class="hero-layer hero-layer--blob" data-parallax="0.22"></div>
+    <div class="hero-layer hero-layer--dots" data-parallax="0.12"></div>
+    <div class="hero-grid">
+      <div>
 EOF
 
 source components/intro.sh
+
+cat <<'EOF'
+      </div>
+EOF
+
+source components/tui.sh
+
+cat <<'EOF'
+    </div>
+  </section>
+EOF
+
 source components/recent-posts.sh 3
-source components/projects.sh 6
+source components/projects.sh 5
 
 cat <<'EOF'
 </main>
@@ -30,6 +47,7 @@ EOF
 source components/footer.sh
 
 cat <<'EOF'
+<script src="/static/parallax.js"></script>
 </body>
 </html>
 EOF
