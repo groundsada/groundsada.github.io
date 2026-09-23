@@ -1,29 +1,21 @@
 ---
-title: "Baseball WAR in R: the side project I keep coming back to"
+title: "Baseball WAR in R: the forever project"
 date: 2024-04-25
-excerpt: I've written half a Wins Above Replacement calculator in R more times than I can count. Why sabermetrics is my forever project — and what it taught me about real data work.
+excerpt: A half-finished Wins Above Replacement calculator in R, in at least three branches, is the project I keep coming back to. Here's what it keeps teaching me.
 ---
 
-# Baseball WAR in R: the side project I keep coming back to
+# Baseball WAR in R: the forever project
 
-Some people have a novel in a drawer. I have a half-finished Wins Above Replacement (WAR) calculator in R, in at least three branches, dating back to 2024. [It's public.](https://github.com/groundsada/Baseball-WAR-in-R) I refuse to apologize.
+Some people have a novel in a drawer. I have a half-finished Wins Above Replacement calculator in R, in at least three branches, dating back to 2024. It's public: [Baseball-WAR-in-R](https://github.com/groundsada/Baseball-WAR-in-R).
 
-## Why WAR
+WAR is the stat that asks a good question: how many wins did this player add compared to a replacement-level player? It folds batting runs, baserunning, fielding, and pitching into one number. It's also a swamp of research questions. Park factors, positional adjustments, era adjustments, fielding metrics that are hard to measure well. For a systems person it has the same shape as a production problem: a pile of noisy measurements, a model that's defensible but not perfect, and a number that someone will dispute.
 
-WAR is the stat that asks the best possible question in sports analytics: *how many wins did this player add compared to a replacement-level player?* It's the batting runs, baserunning, fielding, pitching — all folded into one number. It's also an absolute swamp of research questions: park factors, positional adjustments, era adjustments, fielding metrics you can't measure well. For a systems person, it's a toy with the same shape as a real production problem: **a bunch of noisy measurements, a model that is defensible but not perfect, and a number people will dispute forever.**
+Every rewrite has taught me something that later paid off at work:
 
-## What it keeps teaching me
+- Missing values are the enemy. Half the play-by-play data I wanted wasn't in the file. Learning to trace where data disappears is the same skill as debugging a stalled transfer.
+- Measure twice, commit once. My functions gained tests not because I'm disciplined but because a rolling-window bug burned me once and I didn't want a second time.
+- A model is a story you tell with evidence. A WAR estimate is only as good as its assumptions, so state them.
 
-Every rewrite taught me something that later paid off in science infrastructure:
+It's a forever project because nobody is waiting on it. No deadlines, no reviewer, no ticket. I get to write R at my own pace and argue with myself about whether a particular fielding adjustment is reasonable.
 
-- **Missing values are the enemy.** Half the play-by-play data I wanted simply wasn't in the file. Learning to trace where data disappears is the same skill as debugging why a transfer stalled.
-- **Measure twice, commit once.** My functions gained tests not because I'm disciplined, but because I got burned by one bad rolling-window calculation.
-- **The model is a story you tell with evidence.** A WAR estimate is only as good as its assumptions — state them, or someone will (rightly) catch you.
-
-## Why it's a forever project
-
-Because, unlike everything at work, nobody is waiting on it. It's the rare hobby with a hard craft and zero deadlines. I get to write R at my own pace, drifting between datasets and arguing with myself about whether a particular fielder adjustment is reasonable.
-
-One day it'll be a finished notebook, and then — and I know exactly what will happen — I'll think of a better position adjustment and start over. That's the point.
-
-*If you also keep a "one day" data project: I see you. The repo is open-sourced, so if you find a cleaner way to do fielding runs, the branch is yours.*
+One day it'll be a finished notebook. Then I'll think of a better position adjustment, and start over. That's what it's for.

@@ -27,7 +27,7 @@ cat <<'EOF'
 EOF
 
 if [[ -f "$CACHE_FILE" ]] && command -v jq &> /dev/null; then
-  cat "$CACHE_FILE" | jq -r '.[] | select(.fork == false) | @json' | head -n $LIMIT | while read -r project; do
+  cat "$CACHE_FILE" | jq -r '.[] | select(.fork == false and .name != "sense-otel" and .name != "rtmon-archify") | @json' | head -n $LIMIT | while read -r project; do
     NAME=$(echo "$project" | jq -r '.name')
     DESC=$(echo "$project" | jq -r '.description // "No description"')
     URL=$(echo "$project" | jq -r '.html_url')

@@ -6,7 +6,7 @@ excerpt: Twenty-plus metrics scraped from qaic-util every 15 seconds — power, 
 
 # Metrics for an AI card: a Prometheus exporter for Qualcomm Cloud AI 100
 
-Research platforms are quietly adopting AI accelerators that are not Nvidia GPUs. One of them, the **Qualcomm Cloud AI 100**, is a genuinely interesting device: a purpose-built inference accelerator with program cores, NSPs (Neural Streaming Processors), and its own memory hierarchy. It also ships with a famous problem in shared infrastructure: **nobody knows what it's doing.**
+Research platforms are quietly adopting AI accelerators that are not Nvidia GPUs. One of them, the **Qualcomm Cloud AI 100**, is a genuinely interesting device: a purpose-built inference accelerator with program cores, NSPs (Neural Streaming Processors), and its own memory hierarchy. It also has the classic shared-infrastructure problem: nobody can see what it's doing.
 
 That's where [qaic-prometheus-exporter](https://github.com/groundsada/qaic-prometheus-exporter) comes in.
 
@@ -26,7 +26,7 @@ Every 15 seconds, the exporter scrapes `qaic-util` and exposes **per-QID metrics
 - **Inference** — loaded/active networks, constants in use
 - **Health** — scrape success, duration, device status
 
-That's **20+ metrics** per card, which turns "is the cluster of AI cards okay?" from a prayer into a dashboard.
+That's 20+ metrics per card, which is the difference between wondering whether the accelerator fleet is okay and knowing.
 
 ## The design detail I like most
 
@@ -34,4 +34,4 @@ No custom image needed. The scraper is injected as a **ConfigMap into the offici
 
 ## Why this matters
 
-Observability is the quiet part of AI infrastructure. A card that can be *seen* can be *scheduled* — and a research platform that can schedule underutilized accelerators is one that serves more science per dollar. Same philosophy I brought to [the SENSE observability work]... which is still under construction — this one is shipped, documented, and [live on GitHub](https://github.com/groundsada/qaic-prometheus-exporter).
+Observability is the quiet part of AI infrastructure. A card that can be seen can be scheduled, and a platform that schedules underutilized accelerators serves more science per dollar. This one is shipped, documented, and [live on GitHub](https://github.com/groundsada/qaic-prometheus-exporter).

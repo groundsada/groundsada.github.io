@@ -30,6 +30,6 @@ Two deployment paths: **Docker** for quick local setups, and **Helm on Kubernete
 
 ## Why I care about this
 
-Data movement is the spine of HEP. Getting network awareness into the transfer layer isn't a nice-to-have — it's how science workflows stop leaving bandwidth on the table. DMM is still early, but it's the part of the Rucio-SENSE interop that makes "SDN-operated HEP data flows" a real sentence instead of a slide.
+Data movement is the spine of HEP. Getting network awareness into the transfer layer is how science workflows stop leaving bandwidth on the table, and right now most of them do. DMM is still early, but it's the piece that makes "SDN-operated HEP data flows" something you can actually operate instead of something you present.
 
 More details (config reference, secrets, Helm values, and the SENSE OAuth wiring) are in the [repo README](https://github.com/groundsada/rucio-sense-dmm).
