@@ -7,7 +7,7 @@ cat <<'EOF'
     <span class="tui-dot" style="background:#f4c04f"></span>
     <span class="tui-dot" style="background:#6fd18b"></span>
     <span class="tui-bar-title">firas@esnet: ~</span>
-    <span class="tui-bar-note">charmbracelet</span>
+    <span class="tui-bar-note">vice city</span>
   </div>
   <div class="tui-chips">
     <button class="tui-chip" data-cmd="whoami">whoami</button>

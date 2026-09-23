@@ -18,6 +18,8 @@ source components/header.sh
 cat <<'EOF'
 <main class="main-content">
   <section class="hero-stage" id="hero">
+    <div class="hero-layer hero-layer--sun" data-parallax="0.18"></div>
+    <div class="hero-layer hero-layer--grid" data-parallax="0.05"></div>
     <div class="hero-layer hero-layer--blob" data-parallax="0.22"></div>
     <div class="hero-layer hero-layer--dotsphere" data-parallax="0.12"></div>
     <div class="hero-grid">
