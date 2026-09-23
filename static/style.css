@@ -4,13 +4,13 @@
    ============================================================ */
 
 :root {
-  --paper: #f2f0ea;
-  --card: #fbfaf5;
-  --ink: #121412;
-  --muted: #565b53;
-  --faint: #8f948a;
-  --line: #e0ddd2;
-  --accent: #25664a;
+  --paper: #fbfbf9;
+  --card: #ffffff;
+  --ink: #121417;
+  --muted: #565b62;
+  --faint: #959ba3;
+  --line: #e6e6e2;
+  --accent: #1fa050;
   --mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -89,7 +89,7 @@ p { margin: 0 0 1em; }
   height: 480px;
   left: -140px;
   top: -80px;
-  background: radial-gradient(circle, rgba(217, 111, 62, 0.14), transparent 65%);
+  background: radial-gradient(circle, rgba(31, 160, 80, 0.10), transparent 65%);
   filter: blur(20px);
 }
 .hero-layer--dots {
@@ -97,7 +97,7 @@ p { margin: 0 0 1em; }
   top: -40px;
   width: 320px;
   height: 320px;
-  background-image: radial-gradient(rgba(18, 20, 18, 0.15) 1.2px, transparent 1.2px);
+  background-image: radial-gradient(rgba(18, 20, 23, 0.14) 1.2px, transparent 1.2px);
   background-size: 18px 18px;
   opacity: 0.5;
 }
