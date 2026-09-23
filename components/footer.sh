@@ -6,7 +6,7 @@ cat <<'EOF'
     <div class="footer-content">
       <div class="footer-section">
         <h3>About This Site</h3>
-        <p>&copy; 2025 Mohammad Firas Sada. All rights reserved.</p>
+        <p>&copy; 2026 Mohammad Firas Sada. All rights reserved.</p>
         <p>Personal website showcasing research, projects, and technical insights.</p>
       </div>
       

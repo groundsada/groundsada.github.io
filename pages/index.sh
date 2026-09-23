@@ -6,8 +6,8 @@ cat <<'EOF'
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammad Firas Sada - Researcher at SDSC</title>
-  <meta name="description" content="Researcher at San Diego Supercomputer Center specializing in HPC, AI/ML, networking, and FPGA acceleration">
+  <title>Mohammad Firas Sada - Research Networking Systems Engineer at ESnet</title>
+  <meta name="description" content="Research networking systems engineer at ESnet/LBNL — scientific data movement, SENSE-SDN orchestration, programmable networks, and AI/ML infrastructure for high-energy physics.">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -20,6 +20,7 @@ cat <<'EOF'
 EOF
 
 source components/intro.sh
+source components/publications.sh
 source components/recent-posts.sh 3
 source components/projects.sh 3
 
@@ -33,9 +34,3 @@ cat <<'EOF'
 </body>
 </html>
 EOF
-
-
-
-
-
-

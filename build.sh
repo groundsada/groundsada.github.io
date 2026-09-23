@@ -10,7 +10,7 @@ mkdir -p dist/
 
 # Environment
 export DEV=false
-export PORT=3002
+export PORT=${PORT:-3002}
 export TCP_PROVIDER=tcpserver
 
 if ! command -v tcpserver &> /dev/null; then
@@ -36,11 +36,21 @@ fetch_page() {
   local path=$1
   local output=$2
   echo "  Fetching $path"
-  curl -s "http://localhost:$PORT$path" > "dist/$output" 2>/dev/null || {
-    echo "  ERROR: Failed to fetch $path"
+  # NOTE: core.sh closes the socket with a TCP RST after a complete response,
+  # so curl exits 56 even on success. Verify by content, not exit code, and
+  # retry truncated responses (race can cut a page mid-stream).
+  local attempt
+  for attempt in 1 2 3; do
+    curl -s "http://localhost:$PORT$path" > "dist/$output" 2>/dev/null || true
+    if [[ -s "dist/$output" ]] && grep -q '</html>' "dist/$output"; then
+      break
+    fi
+    sleep 1
+  done
+  if [[ ! -s "dist/$output" ]] || ! grep -q '</html>' "dist/$output"; then
+    echo "  ERROR: Empty or truncated page for $path"
     return 1
-  }
-  [[ ! -s "dist/$output" ]] && echo "  ERROR: Empty file" && return 1
+  fi
   
   # Clean up
   if [[ -f "dist/$output" ]]; then
@@ -51,6 +61,14 @@ fetch_page() {
 
 fetch_page "/" "index.html"
 fetch_page "/blog" "blog.html"
+
+# Pre-render individual blog posts (fixes /blog/<slug> 404s)
+mkdir -p dist/blog
+for post in blog/*.md; do
+  [ -f "$post" ] || continue
+  slug=$(basename "$post" .md)
+  fetch_page "/blog/$slug" "blog/$slug.html"
+done
 
 # Copy assets
 cp -r static dist/

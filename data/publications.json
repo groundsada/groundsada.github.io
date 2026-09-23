@@ -1,0 +1,16 @@
+{
+  "publications": [
+    {
+      "title": "LLMs or Naive Bayes? Old Gems or New Ways",
+      "venue": "PEARC '26 (Practice and Experience in Advanced Research Computing) — short paper. arXiv:2609.13185",
+      "authors": "Mohammad Firas Sada, Dmitry Mishin, John Graham, Seungmin Kim, Mahidhar Tatineni, Frank Würthwein",
+      "url": "https://arxiv.org/abs/2609.13185"
+    },
+    {
+      "title": "30-minute AI presentation — 7th National Research Platform Workshop (7NRP)",
+      "venue": "QI Auditorium, UC San Diego / SDSC, 2026",
+      "authors": "Mohammad Firas Sada",
+      "url": "https://github.com/groundsada/7NRP-AI-Presentation"
+    }
+  ]
+}
