@@ -1,41 +1,6 @@
 {
   "projects": [
     {
-      "title": "nrp-header-collection",
-      "category": "Network data & measurement",
-      "featured": true,
-      "url": "https://github.com/groundsada/nrp-header-collection",
-      "description": "Minimal sFlow collector for Kubernetes: listens on UDP/6343 behind a ClusterIP service, decodes samples to JSON (sflowtool -J) or PCAP (-t), and self-tests with a synthetic packet. The practical way to get real packet data on the National Research Platform."
-    },
-    {
-      "title": "ebpf-generator",
-      "category": "Network data & measurement",
-      "featured": false,
-      "url": "https://github.com/groundsada/ebpf-generator",
-      "description": "Java eBPF bytecode generator plus PCAP tools: custom packet filter rules compiled to eBPF, a PCAP reader/writer, packet filtering and manipulation, and an IPv4 packet generator."
-    },
-    {
-      "title": "P4-on-Xilinx-FPGAs",
-      "category": "Programmable networks",
-      "featured": true,
-      "url": "https://github.com/groundsada/P4-on-Xilinx-FPGAs",
-      "description": "Docs and examples for running P4 programs on Xilinx FPGAs: Vivado for the hardware side, P4 tools for the language side, and the glue in between. Where I learned that packet processing is a memory budget, not a clock speed."
-    },
-    {
-      "title": "ESnet SmartNIC: hw, tutorial, bitfiles",
-      "category": "Programmable networks",
-      "featured": true,
-      "url": "https://github.com/groundsada/esnet-smartnic-hw-sn1022",
-      "description": "The ESnet SmartNIC line: SN1022-based hardware bring-up (esnet-smartnic-hw-sn1022), the 'Using Xilinx Alveo FPGAs as SmartNICs with ESnet Framework' tutorial with its [video series](https://www.youtube.com/playlist?list=PL5Ght4QkHL8Sd7rTLNPv3TjYCZ3GorqPE), and a bitfile builder for reproducible builds."
-    },
-    {
-      "title": "rucio-sense-dmm",
-      "category": "Data movement",
-      "featured": true,
-      "url": "https://github.com/groundsada/rucio-sense-dmm",
-      "description": "The Data Movement Manager: the interface layer between Rucio/FTS and SENSE so high-energy physics transfers can request SDN circuits. X.509 and SENSE OAuth credentials, Helm on NRP, web UI with site refresh. My working fork of the Rucio-SENSE interop effort."
-    },
-    {
       "title": "qaic-prometheus-exporter",
       "category": "AI infrastructure",
       "featured": true,
@@ -50,11 +15,32 @@
       "description": "Reproduction artifact for the PEARC '26 paper 'LLMs or Naive Bayes? Old Gems or New Ways'. Complement Naive Bayes vs zero/few-shot LLMs across four model families and a 37x scale range, with a Helm operator that picks the model by policy."
     },
     {
-      "title": "7NRP-AI-Presentation",
-      "category": "AI infrastructure",
-      "featured": false,
-      "url": "https://github.com/groundsada/7NRP-AI-Presentation",
-      "description": "The 30-minute AI infrastructure talk from the 7th National Research Platform Workshop (2026, UC San Diego / SDSC), built with Slidev."
+      "title": "nrp-header-collection",
+      "category": "Network data & measurement",
+      "featured": true,
+      "url": "https://github.com/groundsada/nrp-header-collection",
+      "description": "Minimal sFlow collector for Kubernetes: listens on UDP/6343 behind a ClusterIP service, decodes samples to JSON (sflowtool -J) or PCAP (-t), and self-tests with a synthetic packet. The practical way to get real packet data on the National Research Platform."
+    },
+    {
+      "title": "rucio-sense-dmm",
+      "category": "Data movement",
+      "featured": true,
+      "url": "https://github.com/groundsada/rucio-sense-dmm",
+      "description": "The Data Movement Manager: the interface layer between Rucio/FTS and SENSE so high-energy physics transfers can request SDN circuits. X.509 and SENSE OAuth credentials, Helm on NRP, web UI with site refresh. My working fork of the Rucio-SENSE interop effort."
+    },
+    {
+      "title": "ESnet SmartNIC: hw, tutorial, bitfiles",
+      "category": "Programmable networks",
+      "featured": true,
+      "url": "https://github.com/groundsada/esnet-smartnic-hw-sn1022",
+      "description": "The ESnet SmartNIC line: SN1022-based hardware bring-up (esnet-smartnic-hw-sn1022), the 'Using Xilinx Alveo FPGAs as SmartNICs with ESnet Framework' tutorial with its [video series](https://www.youtube.com/playlist?list=PL5Ght4QkHL8Sd7rTLNPv3TjYCZ3GorqPE), and a bitfile builder for reproducible builds."
+    },
+    {
+      "title": "P4-on-Xilinx-FPGAs",
+      "category": "Programmable networks",
+      "featured": true,
+      "url": "https://github.com/groundsada/P4-on-Xilinx-FPGAs",
+      "description": "Docs and examples for running P4 programs on Xilinx FPGAs: Vivado for the hardware side, P4 tools for the language side, and the glue in between. Where I learned that packet processing is a memory budget, not a clock speed."
     },
     {
       "title": "Baseball-WAR-in-R",
@@ -62,6 +48,20 @@
       "featured": true,
       "url": "https://github.com/groundsada/Baseball-WAR-in-R",
       "description": "Wins Above Replacement in R. A forever side project about park factors, positional adjustments, and the argument that any WAR number is only as good as its assumptions."
+    },
+    {
+      "title": "ebpf-generator",
+      "category": "Network data & measurement",
+      "featured": false,
+      "url": "https://github.com/groundsada/ebpf-generator",
+      "description": "Java eBPF bytecode generator plus PCAP tools: custom packet filter rules compiled to eBPF, a PCAP reader/writer, packet filtering and manipulation, and an IPv4 packet generator."
+    },
+    {
+      "title": "7NRP-AI-Presentation",
+      "category": "AI infrastructure",
+      "featured": false,
+      "url": "https://github.com/groundsada/7NRP-AI-Presentation",
+      "description": "The 30-minute AI infrastructure talk from the 7th National Research Platform Workshop (2026, UC San Diego / SDSC), built with Slidev."
     },
     {
       "title": "ImageColorization",

@@ -22,7 +22,7 @@ EOF
 source components/intro.sh
 source components/publications.sh
 source components/recent-posts.sh 3
-source components/projects.sh 3
+source components/projects.sh 5
 
 cat <<'EOF'
 </main>

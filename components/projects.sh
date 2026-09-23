@@ -44,7 +44,7 @@ else
   jq -r '.projects[].category' "$PROJECT_ROOT/data/projects.json" | sort -u | while read -r cat; do
     echo "<div class=\"section-title\"><h2>$cat</h2></div>"
     echo '<div class="entry-list">'
-    jq -r '.projects[] | select(.category == "'$cat'") | @json' "$PROJECT_ROOT/data/projects.json" | while read -r p; do
+    jq -r --arg c "$cat" '.projects[] | select(.category == $c) | @json' "$PROJECT_ROOT/data/projects.json" | while read -r p; do
       TITLE=$(echo "$p" | jq -r '.title'); DESC=$(echo "$p" | jq -r '.description'); URL=$(echo "$p" | jq -r '.url')
       render_row "$TITLE" "$DESC" "$URL"
     done
