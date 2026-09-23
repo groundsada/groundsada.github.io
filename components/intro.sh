@@ -29,7 +29,7 @@ cat <<EOF
 <div class="page-intro">
   <div class="page-intro__inner">
     <div class="page-intro__image">
-      <img src="/static/assets/images/firas-sada.jpg" alt="$NAME" class="profile-image">
+      <img src="/static/assets/images/avatar-vice.png" alt="$NAME" class="profile-image">
     </div>
     <div class="page-intro__content">
       <h1 class="page-intro__title">$NAME</h1>
