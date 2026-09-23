@@ -9,8 +9,17 @@ cat <<'EOF'
     <span class="tui-bar-title">firas@esnet: ~</span>
     <span class="tui-bar-note">charmbracelet</span>
   </div>
+  <div class="tui-chips">
+    <button class="tui-chip" data-cmd="whoami">whoami</button>
+    <button class="tui-chip" data-cmd="now">now</button>
+    <button class="tui-chip" data-cmd="projects">projects</button>
+    <button class="tui-chip" data-cmd="papers">papers</button>
+    <button class="tui-chip" data-cmd="talks">talks</button>
+    <button class="tui-chip" data-cmd="help">help</button>
+    <button class="tui-chip" data-cmd="sudo rm -rf /">sudo…</button>
+  </div>
   <div class="tui-body" id="tui-body">
-    <div class="tui-line tui-out">> hello. type <b>help</b>, <b>projects</b>, or <b>papers</b>.</div>
+    <div class="tui-line tui-out">&gt; booting… type <b>help</b> or click a chip.</div>
   </div>
   <div class="tui-prompt-row">
     <span class="tui-prompt">firas@esnet $</span>

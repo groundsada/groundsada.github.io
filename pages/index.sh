@@ -19,7 +19,7 @@ cat <<'EOF'
 <main class="main-content">
   <section class="hero-stage" id="hero">
     <div class="hero-layer hero-layer--blob" data-parallax="0.22"></div>
-    <div class="hero-layer hero-layer--dots" data-parallax="0.12"></div>
+    <div class="hero-layer hero-layer--dotsphere" data-parallax="0.12"></div>
     <div class="hero-grid">
       <div>
 EOF
