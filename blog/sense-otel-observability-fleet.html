@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Telemetry Endpoint for a Multi-Site Fleet: sense-otel in Production - Mohammad Firas Sada</title>
+  <meta name="description" content="One Telemetry Endpoint for a Multi-Site Fleet: sense-otel in Production">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <h1 class="site-title">
+      <a href="/">groundsada</a>
+    </h1>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="https://github.com/groundsada" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="main-content">
+  <article class="entry">
+    <p><a href="/blog">← Back to Blog</a></p>
+    <h1 class="entry__title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">One Telemetry Endpoint for a Multi-Site Fleet: sense-otel in Production</h1>
+    <div class="entry__meta" style="margin-bottom: 2rem;">2026-09-05</div>
+    <div class="entry__content" style="max-width: 48rem;">
+      
+<p>
+<h1>One Telemetry Endpoint for a Multi-Site Fleet: sense-otel in Production</h1>
+
+<p>
+Running SENSE infrastructure means operating a fleet of SiteRM frontends across a lot of sites — 29 of them in the demo fleet, with 27 known issuers and 20 enrolled so far. Telemetry from all of them has to land somewhere usable without every site hardcoding our backend topology. That's what [sense-otel](https://github.com/groundsada/sense-otel) does.
+
+<p>
+<h2>The architecture</h2>
+
+<p>
+`sense-otel` is an <strong>OTLP gateway plus LGTM backends</strong> in the `sense-viz` namespace. Every SiteRM frontend pushes <strong>traces, logs, and metrics</strong> to <strong>one endpoint</strong> — the gateway — which then fans out to Tempo (traces), Loki (logs), and Mimir (metrics), all in the `sense-viz` namespace. One push channel in, three backends out:
+
+<p>
+<li>SiteRM frontends (29 sites in the demo fleet) → OTLP push → otlp-gateway (authenticates and stamps identity) → Tempo / Loki / Mimir</li>
+<li>Metrics also continue to the autogole Prometheus and Grafana via pull (unchanged, still primary)</li>
+
+<p>
+Sites never address Tempo, Loki, or Mimir directly. Backends can be moved, scaled, or replaced <strong>without reconfiguring a single site</strong> — that's the property the whole design is optimized for.
+
+<p>
+<h2>The one property that matters</h2>
+
+<p>
+<strong>Site identity comes from the credential, never from the payload.</strong>
+
+<p>
+There is no separate identity provider to run. Every SiteRM frontend is already an OIDC issuer: it publishes `/.well-known/openid-configuration` and `/.well-known/jwks.json`, and mints short-lived RS256 tokens from an X.509 challenge-response against the host certificate. The gateway trusts them all because the collector's `oidc` extension takes `providers` as a list — so a <strong>new site self-enrolls</strong> by being added to `sites/registry.yaml`, and the fleet roster stays the source of truth. 20 of 27 known sites are enrolled today.
+
+<p>
+<h2>Public endpoints</h2>
+
+<p>
+<li>OTLP ingest: `https://sense-otlp.nrp-nautilus.io/v1/{traces,metrics,logs}`</li>
+<li>In-cluster gRPC: `otlp-gateway.sense-viz.svc:4317`</li>
+<li>Grafana: `https://sense-viz.nrp-nautilus.io`</li>
+<li>Issuer registry: `sites/registry.yaml`</li>
+
+<p>
+<h2>Why this pattern generalizes</h2>
+
+<p>
+It's the same lesson as any fleet with a mutable topology: <strong>centralize the trust boundary</strong> (one gateway, credential-derived identity), <strong>keep the fan-out internal</strong>, and your telemetry layer becomes something you can operate rather than something that drags 29 configs behind it. If you're running multi-site observability, this is a pattern worth stealing.
+    </div>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About This Site</h3>
+        <p>&copy; 2026 Mohammad Firas Sada. All rights reserved.</p>
+        <p>Personal website showcasing research, projects, and technical insights.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Built with bash-stack</h3>
+        <p>This site is powered by <a href="https://github.com/cgsdev0/bash-stack" target="_blank">bash-stack</a>, an innovative HTTP server and framework for building modern web applications entirely in Bash.</p>
+        
+        <h4>Key Features:</h4>
+        <ul>
+          <li><strong>File-based routing:</strong> All routes exist as .sh files in the pages/ folder</li>
+          <li><strong>HTTP request handling:</strong> Framework locates and executes corresponding scripts</li>
+          <li><strong>stdout to HTTP:</strong> Anything written to stdout becomes the HTTP response body</li>
+          <li><strong>HTMX integration:</strong> Included by default for dynamic interactions</li>
+          <li><strong>Static site generation:</strong> Pre-renders dynamic content for deployment</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Deployment & CI/CD</h3>
+        <p>This site is automatically deployed using GitHub Actions with the following workflow:</p>
+        
+        <h4>Build Process:</h4>
+        <ol>
+          <li><strong>Trigger:</strong> Push to main/master branch</li>
+          <li><strong>Environment:</strong> Ubuntu runner with Node.js 18</li>
+          <li><strong>Dependencies:</strong> Install jq for JSON processing</li>
+          <li><strong>Build:</strong> Run build.sh to generate static files</li>
+          <li><strong>Deploy:</strong> Push to gh-pages branch via GitHub Pages</li>
+        </ol>
+        
+        <h4>Technical Stack:</h4>
+        <ul>
+          <li><strong>Server:</strong> bash-stack (Bash 5+ with associative arrays)</li>
+          <li><strong>Styling:</strong> Custom CSS (inspired by Basically Basic Jekyll theme)</li>
+          <li><strong>Content:</strong> Markdown blog posts with frontmatter parsing</li>
+          <li><strong>Data:</strong> JSON configuration files + GitHub API integration</li>
+          <li><strong>Hosting:</strong> GitHub Pages (static site hosting)</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Architecture</h3>
+        <p>The site uses a component-based architecture where each UI element is a reusable Bash script:</p>
+        
+        <h4>Components:</h4>
+        <ul>
+          <li><code>header.sh</code> - Navigation and site branding</li>
+          <li><code>intro.sh</code> - Profile section with social links</li>
+          <li><code>recent-posts.sh</code> - Blog post listings</li>
+          <li><code>projects.sh</code> - GitHub repository integration</li>
+          <li><code>footer.sh</code> - This technical documentation</li>
+        </ul>
+        
+        <h4>Pages:</h4>
+        <ul>
+          <li><code>index.sh</code> - Homepage composition</li>
+          <li><code>blog.sh</code> - Blog listing page</li>
+          <li><code>blog/[slug].sh</code> - Dynamic blog post rendering</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Built with ❤️ using bash-stack | <a href="https://github.com/groundsada/groundsada.github.io" target="_blank">View Source</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

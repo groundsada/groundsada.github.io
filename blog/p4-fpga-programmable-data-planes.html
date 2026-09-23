@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P4 on FPGAs and SmartNICs: What Programmable Data Planes Taught Me - Mohammad Firas Sada</title>
+  <meta name="description" content="P4 on FPGAs and SmartNICs: What Programmable Data Planes Taught Me">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <h1 class="site-title">
+      <a href="/">groundsada</a>
+    </h1>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="https://github.com/groundsada" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="main-content">
+  <article class="entry">
+    <p><a href="/blog">← Back to Blog</a></p>
+    <h1 class="entry__title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">P4 on FPGAs and SmartNICs: What Programmable Data Planes Taught Me</h1>
+    <div class="entry__meta" style="margin-bottom: 2rem;">2025-10-25</div>
+    <div class="entry__content" style="max-width: 48rem;">
+      
+<p>
+<h1>P4 on FPGAs and SmartNICs: What Programmable Data Planes Taught Me</h1>
+
+<p>
+Before I moved into research networking systems, I spent my time as close to the packets as you can get on commodity hardware — programmable data planes. This is a short retrospective on that work, collected in one place.
+
+<p>
+<h2>P4 on Xilinx FPGAs</h2>
+
+<p>
+The [P4-on-Xilinx-FPGAs](https://github.com/groundsada/P4-on-Xilinx-FPGAs) project was about running P4 programs on Xilinx FPGAs — the toolchain pain most people don't talk about: Vivado for the hardware side, P4 development tools on the language side, and a lot of glue to make the two agree. It taught me that the interesting constraints in packet processing are never where you expect: memory bandwidth, table sizes, and pipeline stages dominate, not raw clock speed.
+
+<p>
+<h2>SmartNIC testbeds and SRv6</h2>
+
+<p>
+Around the same time I was working on the ESnet SmartNIC line of work — hardware bring-up on SN1022-based NICs, the [esnet-smartnic-hw-sn1022](https://github.com/groundsada/esnet-smartnic-hw-sn1022) board support layer, a tutorial repo for getting started, and a bitfile builder for reproducible builds. On the protocol side, the SPRITE-SRv6-FPGA work combined segment routing (SRv6) with FPGA-offloaded processing — my first real taste of "the network is programmable, not just configurable."
+
+<p>
+<h2>Observing the data plane</h2>
+
+<p>
+You can't optimize what you can't see, which is why I also build the tooling around the plane: [sflowtool](https://github.com/groundsada/sflowtool) for decoding binary sFlow feeds, plus P4Kube-adjacent experiments for running programmable data planes next to Kubernetes workloads. In my current work the same principle shows up in [sense-otel](/blog/sense-otel-observability-fleet) — you instrument first, then you can reason about what the network is actually doing.
+
+<p>
+<h2>What stuck with me</h2>
+
+<p>
+Three lessons carried forward into everything since:
+
+<p>
+<li><strong>The data plane is a resource budget.</strong> Every table, every pipeline stage, every SRAM byte is a trade-off. Systems who know this can build networks that do real work at line rate.</li>
+<li><strong>Repeatable builds are infrastructure.</strong> A bitfile builder, a versioned toolchain, a testbed — the boring parts are what let you actually experiment.</li>
+<li><strong>Programmability is a spectrum.</strong> From FPGA-specific P4 targets to SmartNIC offload to software switches, the right answer depends on what you're willing to pay in development time vs. what you get in flexibility.</li>
+
+<p>
+The repos are public if you want to poke around: [P4-on-Xilinx-FPGAs](https://github.com/groundsada/P4-on-Xilinx-FPGAs), [esnet-smartnic-hw-sn1022](https://github.com/groundsada/esnet-smartnic-hw-sn1022), [sflowtool](https://github.com/groundsada/sflowtool).
+    </div>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About This Site</h3>
+        <p>&copy; 2026 Mohammad Firas Sada. All rights reserved.</p>
+        <p>Personal website showcasing research, projects, and technical insights.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Built with bash-stack</h3>
+        <p>This site is powered by <a href="https://github.com/cgsdev0/bash-stack" target="_blank">bash-stack</a>, an innovative HTTP server and framework for building modern web applications entirely in Bash.</p>
+        
+        <h4>Key Features:</h4>
+        <ul>
+          <li><strong>File-based routing:</strong> All routes exist as .sh files in the pages/ folder</li>
+          <li><strong>HTTP request handling:</strong> Framework locates and executes corresponding scripts</li>
+          <li><strong>stdout to HTTP:</strong> Anything written to stdout becomes the HTTP response body</li>
+          <li><strong>HTMX integration:</strong> Included by default for dynamic interactions</li>
+          <li><strong>Static site generation:</strong> Pre-renders dynamic content for deployment</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Deployment & CI/CD</h3>
+        <p>This site is automatically deployed using GitHub Actions with the following workflow:</p>
+        
+        <h4>Build Process:</h4>
+        <ol>
+          <li><strong>Trigger:</strong> Push to main/master branch</li>
+          <li><strong>Environment:</strong> Ubuntu runner with Node.js 18</li>
+          <li><strong>Dependencies:</strong> Install jq for JSON processing</li>
+          <li><strong>Build:</strong> Run build.sh to generate static files</li>
+          <li><strong>Deploy:</strong> Push to gh-pages branch via GitHub Pages</li>
+        </ol>
+        
+        <h4>Technical Stack:</h4>
+        <ul>
+          <li><strong>Server:</strong> bash-stack (Bash 5+ with associative arrays)</li>
+          <li><strong>Styling:</strong> Custom CSS (inspired by Basically Basic Jekyll theme)</li>
+          <li><strong>Content:</strong> Markdown blog posts with frontmatter parsing</li>
+          <li><strong>Data:</strong> JSON configuration files + GitHub API integration</li>
+          <li><strong>Hosting:</strong> GitHub Pages (static site hosting)</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Architecture</h3>
+        <p>The site uses a component-based architecture where each UI element is a reusable Bash script:</p>
+        
+        <h4>Components:</h4>
+        <ul>
+          <li><code>header.sh</code> - Navigation and site branding</li>
+          <li><code>intro.sh</code> - Profile section with social links</li>
+          <li><code>recent-posts.sh</code> - Blog post listings</li>
+          <li><code>projects.sh</code> - GitHub repository integration</li>
+          <li><code>footer.sh</code> - This technical documentation</li>
+        </ul>
+        
+        <h4>Pages:</h4>
+        <ul>
+          <li><code>index.sh</code> - Homepage composition</li>
+          <li><code>blog.sh</code> - Blog listing page</li>
+          <li><code>blog/[slug].sh</code> - Dynamic blog post rendering</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Built with ❤️ using bash-stack | <a href="https://github.com/groundsada/groundsada.github.io" target="_blank">View Source</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

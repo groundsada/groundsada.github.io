@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLMs or Naive Bayes? Old Gems or New Ways - Mohammad Firas Sada</title>
+  <meta name="description" content="LLMs or Naive Bayes? Old Gems or New Ways">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <h1 class="site-title">
+      <a href="/">groundsada</a>
+    </h1>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="https://github.com/groundsada" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="main-content">
+  <article class="entry">
+    <p><a href="/blog">← Back to Blog</a></p>
+    <h1 class="entry__title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">LLMs or Naive Bayes? Old Gems or New Ways</h1>
+    <div class="entry__meta" style="margin-bottom: 2rem;">2026-07-31</div>
+    <div class="entry__content" style="max-width: 48rem;">
+      
+<p>
+<h1>LLMs or Naive Bayes? Old Gems or New Ways</h1>
+
+<p>
+<em>With Dmitry Mishin, John Graham, Seungmin Kim, Mahidhar Tatineni, and Frank Würthwein. Published as a short paper at PEARC '26; the preprint is on [arXiv:2609.13185](https://arxiv.org/abs/2609.13185).</em>
+
+<p>
+There's a recurring question in research computing: with LLMs this good, should we retire classical methods like Naive Bayes? Our PEARC '26 paper answers it with measurements, not vibes — and the answer isn't what the hype suggests.
+
+<p>
+<h2>What we did</h2>
+
+<p>
+We benchmarked <strong>Complement Naive Bayes (CNB) with TF-IDF bigrams</strong> against <strong>zero-shot and few-shot LLMs</strong> spanning four model families and a 37× range in scale (27B up to a 1T-parameter mixture-of-experts), across three text-classification tasks — plus a low-contamination control to keep the numbers honest.
+
+<p>
+<h2>The headline results</h2>
+
+<p>
+<li><strong>Zero-data regimes favor LLMs — but not by much, and not robustly.</strong> On Amazon Polarity sentiment, a zero-shot LLM hits 98.0% vs 88.2% for CNB. Yet that win is contamination-prone: on a low-contamination sentiment task, NB beats the zero-shot LLM — <strong>81.7% vs 73.0%</strong>.</li>
+<li><strong>Once labels exist, CNB matches or beats every LLM we tested.</strong> On AG News, NB reaches <strong>89.1%</strong> — statistically indistinguishable from the zero-shot 27B model (89.0%) and <em>better</em> than a 397B frontier MoE (84.8%) — at thousands of samples per second on a commodity CPU.</li>
+<li><strong>Fine-tuned DistilBERT edges accuracy (90.6%)</strong> but at far lower throughput than NB.</li>
+<li><strong>The cost gap is structural.</strong> Small-LLM batched inference was <strong>40–486× slower than NB CPU inference</strong> (multiplier depends strongly on host CPU), with roughly two orders of magnitude higher energy per sample.</li>
+
+<p>
+<h2>The decision line</h2>
+
+<p>
+The takeaway isn't "classical always wins" — it's that the right choice is <strong>task- and data-dependent</strong>:
+
+<p>
+<li>NB reaches LLM parity around <strong>N ≈ 10⁴ labels</strong> for topic classification.</li>
+<li>Zero-data sentiment continues to favor the LLM at every N we tested.</li>
+
+<p>
+To make that call automatic instead of tribal, the paper includes a <strong>Kubernetes Helm operator</strong> that automates model selection using configurable thresholds and verifiable Prometheus metrics — pick the policy, the operator routes the work.
+
+<p>
+<h2>Why this matters in HPC</h2>
+
+<p>
+For resource-constrained HPC practitioners doing text classification with labeled data, <strong>NB remains the optimal choice</strong> — thousands of samples/sec on one CPU, no GPU cluster, no energy bill, and full reproducibility. Every number in the paper traces to a committed JSON in the [reproduction repository](https://github.com/groundsada/llms-or-naive-bayes), so anyone can regenerate the results.
+
+<p>
+Follow-up work is ongoing — the full benchmark and model-selection tooling now live in the decision-model benchmark suite.
+    </div>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About This Site</h3>
+        <p>&copy; 2026 Mohammad Firas Sada. All rights reserved.</p>
+        <p>Personal website showcasing research, projects, and technical insights.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Built with bash-stack</h3>
+        <p>This site is powered by <a href="https://github.com/cgsdev0/bash-stack" target="_blank">bash-stack</a>, an innovative HTTP server and framework for building modern web applications entirely in Bash.</p>
+        
+        <h4>Key Features:</h4>
+        <ul>
+          <li><strong>File-based routing:</strong> All routes exist as .sh files in the pages/ folder</li>
+          <li><strong>HTTP request handling:</strong> Framework locates and executes corresponding scripts</li>
+          <li><strong>stdout to HTTP:</strong> Anything written to stdout becomes the HTTP response body</li>
+          <li><strong>HTMX integration:</strong> Included by default for dynamic interactions</li>
+          <li><strong>Static site generation:</strong> Pre-renders dynamic content for deployment</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Deployment & CI/CD</h3>
+        <p>This site is automatically deployed using GitHub Actions with the following workflow:</p>
+        
+        <h4>Build Process:</h4>
+        <ol>
+          <li><strong>Trigger:</strong> Push to main/master branch</li>
+          <li><strong>Environment:</strong> Ubuntu runner with Node.js 18</li>
+          <li><strong>Dependencies:</strong> Install jq for JSON processing</li>
+          <li><strong>Build:</strong> Run build.sh to generate static files</li>
+          <li><strong>Deploy:</strong> Push to gh-pages branch via GitHub Pages</li>
+        </ol>
+        
+        <h4>Technical Stack:</h4>
+        <ul>
+          <li><strong>Server:</strong> bash-stack (Bash 5+ with associative arrays)</li>
+          <li><strong>Styling:</strong> Custom CSS (inspired by Basically Basic Jekyll theme)</li>
+          <li><strong>Content:</strong> Markdown blog posts with frontmatter parsing</li>
+          <li><strong>Data:</strong> JSON configuration files + GitHub API integration</li>
+          <li><strong>Hosting:</strong> GitHub Pages (static site hosting)</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Architecture</h3>
+        <p>The site uses a component-based architecture where each UI element is a reusable Bash script:</p>
+        
+        <h4>Components:</h4>
+        <ul>
+          <li><code>header.sh</code> - Navigation and site branding</li>
+          <li><code>intro.sh</code> - Profile section with social links</li>
+          <li><code>recent-posts.sh</code> - Blog post listings</li>
+          <li><code>projects.sh</code> - GitHub repository integration</li>
+          <li><code>footer.sh</code> - This technical documentation</li>
+        </ul>
+        
+        <h4>Pages:</h4>
+        <ul>
+          <li><code>index.sh</code> - Homepage composition</li>
+          <li><code>blog.sh</code> - Blog listing page</li>
+          <li><code>blog/[slug].sh</code> - Dynamic blog post rendering</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Built with ❤️ using bash-stack | <a href="https://github.com/groundsada/groundsada.github.io" target="_blank">View Source</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

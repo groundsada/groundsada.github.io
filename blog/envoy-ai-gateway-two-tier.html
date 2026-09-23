@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How LLM Gateways Work: A Two-Tier Envoy Architecture for AI Services - Mohammad Firas Sada</title>
+  <meta name="description" content="How LLM Gateways Work: A Two-Tier Envoy Architecture for AI Services">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <h1 class="site-title">
+      <a href="/">groundsada</a>
+    </h1>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="https://github.com/groundsada" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="main-content">
+  <article class="entry">
+    <p><a href="/blog">← Back to Blog</a></p>
+    <h1 class="entry__title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">How LLM Gateways Work: A Two-Tier Envoy Architecture for AI Services</h1>
+    <div class="entry__meta" style="margin-bottom: 2rem;">2026-05-20</div>
+    <div class="entry__content" style="max-width: 48rem;">
+      
+<p>
+<h1>How LLM Gateways Work: A Two-Tier Envoy Architecture for AI Services</h1>
+
+<p>
+When you're running LLM inference for a fleet of users — or a fleet of agents — you quickly discover that "point the client at the model server" doesn't scale. You need authentication, routing, rate limits, observability, and the ability to shift traffic between local models and providers. That's the job of an <strong>LLM gateway</strong>, and the pattern I want to describe is the one I covered in my 7NRP workshop talk: the <strong>two-tier gateway</strong> built on Envoy Gateway and the [Envoy AI Gateway](https://github.com/groundsada/ai-gateway) project.
+
+<p>
+<h2>The two tiers</h2>
+
+<p>
+<li><strong>Tier One — the centralized entry point.</strong> Handles authentication, top-level routing, and global rate limiting. Every client request hits this tier first, so policy is enforced exactly once, in one place, outside the blast radius of any single model backend.</li>
+<li><strong>Tier Two — the model serving cluster ingress.</strong> Provides fine-grained control over self-hosted model access, including the <strong>endpoint picker</strong> — which chooses between replicas/instances for LLM inference optimization. This is where locality, load, and latency get mixed into routing decisions.</li>
+
+<p>
+Requests flow straight down the tiers: clients hit the Tier One Gateway (auth, routing, global rate limiting), which forwards to the Tier Two Gateway (endpoint picker, fine-grained model access), which selects a backend in the model serving cluster.
+
+<p>
+<h2>Why Envoy</h2>
+
+<p>
+Envoy Gateway inherits the essential attributes of Envoy: battle-tested HTTP/RPC handling, rich observability (access logs, metrics, tracing), and a pluggable filter chain that makes extension points like the endpoint picker natural. The gateway also supports a wide range of AI providers — OpenAI, Azure OpenAI, Google Gemini, Vertex AI, AWS Bedrock, and self-hosted endpoints — so one entry point can front a heterogeneous model fleet.
+
+<p>
+<h2>Why this matters for research platforms</h2>
+
+<p>
+On a shared platform like the National Research Platform, you have many users, a handful of GPU nodes with different model loads, and providers that may or may not be reachable at any given moment. A two-tier gateway is what lets you:
+
+<p>
+<li>Enforce quotas and auth once, regardless of which model a request lands on.</li>
+<li>Route around a loaded backend via the endpoint picker instead of failing.</li>
+<li><strong>Understand your AI traffic</strong> — per-user, per-model, per-backend — because the gateway sees everything.</li>
+
+<p>
+Observability-first routing has been my theme through [sense-otel](/blog/sense-otel-observability-fleet) and the ai-gateway work: gateways aren't just policy — they're the best telemetry point you have. The full two-tier reference (including the deployment/reference docs and draw.io diagrams) is in the [ai-gateway repository](https://github.com/groundsada/ai-gateway).
+    </div>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About This Site</h3>
+        <p>&copy; 2026 Mohammad Firas Sada. All rights reserved.</p>
+        <p>Personal website showcasing research, projects, and technical insights.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Built with bash-stack</h3>
+        <p>This site is powered by <a href="https://github.com/cgsdev0/bash-stack" target="_blank">bash-stack</a>, an innovative HTTP server and framework for building modern web applications entirely in Bash.</p>
+        
+        <h4>Key Features:</h4>
+        <ul>
+          <li><strong>File-based routing:</strong> All routes exist as .sh files in the pages/ folder</li>
+          <li><strong>HTTP request handling:</strong> Framework locates and executes corresponding scripts</li>
+          <li><strong>stdout to HTTP:</strong> Anything written to stdout becomes the HTTP response body</li>
+          <li><strong>HTMX integration:</strong> Included by default for dynamic interactions</li>
+          <li><strong>Static site generation:</strong> Pre-renders dynamic content for deployment</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Deployment & CI/CD</h3>
+        <p>This site is automatically deployed using GitHub Actions with the following workflow:</p>
+        
+        <h4>Build Process:</h4>
+        <ol>
+          <li><strong>Trigger:</strong> Push to main/master branch</li>
+          <li><strong>Environment:</strong> Ubuntu runner with Node.js 18</li>
+          <li><strong>Dependencies:</strong> Install jq for JSON processing</li>
+          <li><strong>Build:</strong> Run build.sh to generate static files</li>
+          <li><strong>Deploy:</strong> Push to gh-pages branch via GitHub Pages</li>
+        </ol>
+        
+        <h4>Technical Stack:</h4>
+        <ul>
+          <li><strong>Server:</strong> bash-stack (Bash 5+ with associative arrays)</li>
+          <li><strong>Styling:</strong> Custom CSS (inspired by Basically Basic Jekyll theme)</li>
+          <li><strong>Content:</strong> Markdown blog posts with frontmatter parsing</li>
+          <li><strong>Data:</strong> JSON configuration files + GitHub API integration</li>
+          <li><strong>Hosting:</strong> GitHub Pages (static site hosting)</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Architecture</h3>
+        <p>The site uses a component-based architecture where each UI element is a reusable Bash script:</p>
+        
+        <h4>Components:</h4>
+        <ul>
+          <li><code>header.sh</code> - Navigation and site branding</li>
+          <li><code>intro.sh</code> - Profile section with social links</li>
+          <li><code>recent-posts.sh</code> - Blog post listings</li>
+          <li><code>projects.sh</code> - GitHub repository integration</li>
+          <li><code>footer.sh</code> - This technical documentation</li>
+        </ul>
+        
+        <h4>Pages:</h4>
+        <ul>
+          <li><code>index.sh</code> - Homepage composition</li>
+          <li><code>blog.sh</code> - Blog listing page</li>
+          <li><code>blog/[slug].sh</code> - Dynamic blog post rendering</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Built with ❤️ using bash-stack | <a href="https://github.com/groundsada/groundsada.github.io" target="_blank">View Source</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
