@@ -22,18 +22,18 @@
       "description": "Minimal sFlow collector for Kubernetes: listens on UDP/6343 behind a ClusterIP service, decodes samples to JSON (sflowtool -J) or PCAP (-t), and self-tests with a synthetic packet. The practical way to get real packet data on the National Research Platform."
     },
     {
-      "title": "P4-on-Xilinx-FPGAs",
-      "category": "Programmable networks",
+      "title": "JupyterCluster",
+      "category": "Kubernetes & platforms",
       "featured": true,
-      "url": "https://github.com/groundsada/P4-on-Xilinx-FPGAs",
-      "description": "Docs and examples for running P4 programs on Xilinx FPGAs: Vivado for the hardware side, P4 tools for the language side, and the glue in between. Where I learned that packet processing is a memory budget, not a clock speed."
+      "url": "https://github.com/groundsada/JupyterCluster",
+      "description": "Multi-hub management for JupyterHub on Kubernetes: a hub that provisions and manages many JupyterHub Helm releases in separate namespaces, with a k8s-based HubSpawner, RBAC (admin-all / user-own), authenticator, and a REST API for programmatic control."
     },
     {
-      "title": "Baseball-WAR-in-R",
-      "category": "Side projects",
+      "title": "sailorcapy",
+      "category": "Network data & measurement",
       "featured": true,
-      "url": "https://github.com/groundsada/Baseball-WAR-in-R",
-      "description": "Wins Above Replacement in R. A forever side project about park factors, positional adjustments, and the argument that any WAR number is only as good as its assumptions."
+      "url": "https://github.com/groundsada/sailorcapy",
+      "description": "Python packet generation with Scapy: build and customize packets across protocols and parameters, for testing network paths, switch behavior, and sFlow collection pipelines. The lab gear that gets used more than it gets documented."
     },
     {
       "title": "ebpf-generator",
@@ -50,22 +50,29 @@
       "description": "The 30-minute AI infrastructure talk from the 7th National Research Platform Workshop (2026, UC San Diego / SDSC), built with Slidev."
     },
     {
+      "title": "Naruto (NaRuTo)",
+      "category": "Archive",
+      "featured": false,
+      "url": "https://github.com/groundsada/Naruto",
+      "description": "Yes, it's named Naruto. It's actually NaRuTo, a Natural Rule Tool: an extended parser for the Natural Rule Language, letting you express model constraints in near-English and execute mappings in Python or JavaScript, not just Java."
+    },
+    {
       "title": "ImageColorization",
-      "category": "Archive: course work",
+      "category": "Archive",
       "featured": false,
       "url": "https://github.com/groundsada/ImageColorization",
       "description": "Grayscale image colorization with CNNs and GANs, built for CS 512 Computer Vision at Illinois Tech."
     },
     {
       "title": "Single-Image-Facial-Superresolution-GAN",
-      "category": "Archive: course work",
+      "category": "Archive",
       "featured": false,
       "url": "https://github.com/groundsada/Single-Image-Facial-Superresolution-GAN",
       "description": "Single-image facial super-resolution with GANs, built for CS 584 at Illinois Tech."
     },
     {
       "title": "NBAmazonReviews",
-      "category": "Archive: course work",
+      "category": "Archive",
       "featured": false,
       "url": "https://github.com/groundsada/NBAmazonReviews",
       "description": "Amazon reviews classification experiments, the seed of the Naive Bayes benchmarking work that became PEARC '26."
