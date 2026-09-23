@@ -61,6 +61,7 @@ fetch_page() {
 
 fetch_page "/" "index.html"
 fetch_page "/blog" "blog.html"
+fetch_page "/about" "about.html"
 
 # Pre-render individual blog posts (fixes /blog/<slug> 404s)
 mkdir -p dist/blog

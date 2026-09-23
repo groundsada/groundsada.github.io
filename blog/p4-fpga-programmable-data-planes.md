@@ -18,7 +18,7 @@ Around the same time I was working on the ESnet SmartNIC line of work — hardwa
 
 ## Observing the data plane
 
-You can't optimize what you can't see, which is why I also build the tooling around the plane: [sflowtool](https://github.com/groundsada/sflowtool) for decoding binary sFlow feeds, plus P4Kube-adjacent experiments for running programmable data planes next to Kubernetes workloads. In my current work the same principle shows up in [sense-otel](/blog/sense-otel-observability-fleet) — you instrument first, then you can reason about what the network is actually doing.
+You can't optimize what you can't see, which is why I also build the tooling around the plane: [sflowtool](https://github.com/groundsada/sflowtool) for decoding binary sFlow feeds, plus P4Kube-adjacent experiments for running programmable data planes next to Kubernetes workloads. The same principle carries into my current work — instrument first, then you can reason about what the network is actually doing.
 
 ## What stuck with me
 
