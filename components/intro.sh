@@ -34,8 +34,6 @@ cat <<EOF
     <div class="page-intro__content">
       <h1 class="page-intro__title">$NAME</h1>
       <p class="page-intro__lead">$TITLE</p>
-      <p class="page-intro__desc">$DESC</p>
-      <p class="page-intro__now">$NOW</p>
       <div class="social-icons">
         <a href="$LINKEDIN" target="_blank" title="LinkedIn" class="social-icon social-icon--linkedin">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
