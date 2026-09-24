@@ -351,6 +351,7 @@ p { margin: 0 0 1em; }
   text-transform: uppercase;
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
+  -webkit-text-stroke: 0.8px #ff2d95;
   text-shadow: 0 0 6px rgba(255, 45, 149, 0.55), 0 2px 0 #8a1145;
   display: inline-block;
   transform: skew(-10deg);
@@ -419,19 +420,21 @@ p { margin: 0 0 1em; }
 .about-section { margin-bottom: 48px; max-width: 760px; }
 .about-section h2 {
   font-family: var(--display);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 900;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #fff;
   -webkit-text-fill-color: #ffffff;
-  -webkit-text-stroke: 1px #ff2d95;
-  background: rgba(18, 8, 31, 0.6);
+  -webkit-text-stroke: 0.8px #ff2d95;
+  text-shadow: 0 0 6px rgba(255, 45, 149, 0.55), 0 2px 0 #8a1145;
+  background: rgba(18, 8, 31, 0.72);
   display: inline-block;
-  padding: 7px 18px;
+  padding: 9px 26px;
   border-radius: 4px;
   margin: 0 0 16px;
-  transform: skew(-8deg);
+  transform: skew(-10deg);
+  box-shadow: 0 0 24px rgba(255, 45, 149, 0.3);
 }
 .about-section p, .about-section li { color: var(--muted); }
 .about-section ul { padding-left: 1.3em; }
