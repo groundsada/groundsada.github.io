@@ -1,5 +1,4 @@
-/* groundsada TUI v4 — challenge box, now with working Wordle colors + toys.
-   No help. No clues. Fake FS, hidden Wordle, rickroll trap, and a toy drawer. */
+/* groundsada TUI v5 — Matrix intro + challenge box + toys + rickroll trap. */
 (function () {
   const el = document.getElementById("tui");
   if (!el) return;
@@ -7,9 +6,10 @@
   const input = el.querySelector(".tui-input");
   const prompt = "firas@groundsada";
 
-  let mode = "shell";
+  let mode = "shell";          // shell | wordle | matrix
   let cwd = "~";
-  let word = "", tries = 0, rick = false;
+  let word = "", tries = 0, rick = false, woke = false;
+  let mstep = 0;               // matrix sequence step
   const MAX_TRIES = 6;
 
   const DIRS = {
@@ -26,7 +26,6 @@
     "docs/p4-notes.md": "- packet processing is a memory budget, not a clock speed\n- 100G is a baseline, not a flex\n- always measure before optimizing\n- sFlow: sample everything, apologize to no one",
   };
   const WORDS = ["NODES", "PORTS", "FIBER", "PACKS", "BYTES", "SCALE", "SENSE", "FLOWS", "NEONS", "ROUTE", "QUEUE", "ETHER"];
-
   const FORTUNES = [
     "you will move petabytes. you will also debug sFlow at 2am.",
     "today's forecast: packet storms with a chance of flow control.",
@@ -63,6 +62,17 @@
     const s = document.createElement("span");
     s.className = cls; s.textContent = txt; return s;
   }
+  function typeLine(s, cls, cb) {
+    const div = document.createElement("div");
+    div.className = "tui-line" + (cls ? " " + cls : "");
+    out.appendChild(div);
+    let i = 0;
+    const iv = setInterval(() => {
+      div.textContent = s.slice(0, ++i);
+      out.scrollTop = out.scrollHeight;
+      if (i >= s.length) { clearInterval(iv); if (cb) cb(); }
+    }, 22);
+  }
   function syncWidth() { input.style.width = Math.max(2, input.value.length + 1) + "ch"; }
 
   function rickroll() {
@@ -83,6 +93,64 @@
     out.appendChild(wrap);
     rick = true;
     out.scrollTop = out.scrollHeight;
+  }
+
+  /* ---------- the matrix ---------- */
+  function startMatrix() {
+    mode = "matrix";
+    mstep = 0;
+    typeLine("wake up, neo...", "tui-ok", () => {
+      typeLine("the matrix has you.", "tui-ok", () => {
+        typeLine("follow the white rabbit.", "tui-ok", () => {
+          typeLine("knock, knock.", "tui-ok", () => {
+            mstep = 1;
+            print("", "tui-out");
+            typeLine("red pill or blue pill?", "tui-ok", () => {
+              print(prompt + " $ ", "tui-cmd");
+              input.focus();
+            });
+          });
+        });
+      });
+    });
+  }
+  function matrixAnswer(raw) {
+    const a = raw.toLowerCase().trim();
+    if (mstep === 1) {
+      if (a === "red") {
+        mstep = 2;
+        print("", "tui-out");
+        typeLine("there is no spoon.", "tui-ok", () => {
+          typeLine("a transmission arrives, caesar +3:", "tui-ok", () => {
+            typeLine("WKH PDWULA", "tui-ok", () => {
+              print(prompt + " $ ", "tui-cmd");
+              input.focus();
+            });
+          });
+        });
+      } else if (a === "blue") {
+        rickroll();
+      } else {
+        print("that's not a pill.", "tui-err");
+        print(prompt + " $ ", "tui-cmd");
+      }
+    } else if (mstep === 2) {
+      if (a.replace(/\s+/g, "") === "thematrix") {
+        woke = true;
+        mstep = 0;
+        typeLine("welcome to the real world.", "tui-ok", () => {
+          typeLine("you are the one.", "tui-ok", () => {
+            typeLine("(there is more in here. keep digging.)", "tui-ok", () => {
+              mode = "shell";
+              print(prompt + ":" + cwd + " $ ", "tui-cmd");
+              input.focus();
+            });
+          });
+        });
+      } else {
+        rickroll();
+      }
+    }
   }
 
   /* ---------- toys ---------- */
@@ -256,14 +324,24 @@
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       const v = input.value;
-      if (/\brm\b/i.test(v)) {
+      const empty = !v.trim();
+      if (!empty && /\brm\b/i.test(v)) {
         print(prompt + ":" + cwd + " $ " + v, "tui-cmd");
         input.value = ""; syncWidth();
         rickroll();
         return;
       }
+      // THE MATRIX: first Enter (even empty) wakes Neo — once.
+      if ((mode === "shell" && !woke)) {
+        if (!empty) { print(prompt + ":" + cwd + " $ " + v, "tui-cmd"); }
+        input.value = ""; syncWidth();
+        startMatrix();
+        return;
+      }
       input.value = ""; syncWidth();
-      if (mode === "wordle") wordleGuess(v); else run(v);
+      if (mode === "matrix") matrixAnswer(v);
+      else if (mode === "wordle") wordleGuess(v);
+      else run(v);
     } else if (e.key === "Tab") {
       e.preventDefault(); // no clues.
     }
