@@ -23,7 +23,7 @@
   --card: #181129;
   --ink: #f7f1ff;
   --muted: #cec1ea;
-  --faint: #8f7bb0;
+  --faint: #a08bc0;
   --line: #2c2140;
   --pink: #ff2d95;
   --orange: #ff8a3d;
@@ -469,7 +469,7 @@ p { margin: 0 0 1em; }
 .site-footer p { font-size: 0.95rem; color: #b3abd0; margin: 0; }
 .site-footer a { color: #d4cded; }
 .site-footer a:hover { color: var(--cyan); }
-.site-footer .site-footer__fun { margin-top: 0; font-size: 0.85rem; font-style: italic; color: #aea6d2; }
+.site-footer .site-footer__fun { margin-top: 0; font-size: 0.88rem; font-style: italic; color: #b7abd9; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
