@@ -27,7 +27,7 @@ if [[ "$LIMIT" -gt 0 ]]; then
   # Homepage: featured only, with a link to the full page
   cat <<'EOF'
 <div class="section-title">
-  <h2>Selected work</h2>
+  <h2>Recent projects</h2>
 </div>
 <div class="entry-list">
 EOF

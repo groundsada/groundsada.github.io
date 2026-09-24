@@ -256,7 +256,6 @@ p { margin: 0 0 1em; }
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   margin-left: 8px;
-  text-transform: uppercase;
 }
 .tui-bar-note {
   margin-left: auto;
@@ -267,32 +266,6 @@ p { margin: 0 0 1em; }
   padding: 2px 9px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-}
-.tui-chips {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  padding: 10px 14px;
-  background: #14111f;
-  border-bottom: 1px solid #2c2140;
-}
-.tui-chip {
-  font-family: var(--mono);
-  font-size: 0.73rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #f5edff;
-  background: #2b1d47;
-  border: 1px solid #a180c7;
-  border-radius: 3px;
-  padding: 4px 6px;
-  cursor: pointer;
-  transition: border-color 0.12s, color 0.12s, box-shadow 0.12s;
-}
-.tui-chip:hover {
-  color: var(--cyan);
-  border-color: var(--cyan);
-  box-shadow: 0 0 12px rgba(41, 217, 255, 0.5);
 }
 .tui-body {
   padding: 14px 16px 4px;
@@ -329,16 +302,19 @@ p { margin: 0 0 1em; }
   min-width: 0;
   padding: 2px 0;
 }
-.tui-input::placeholder { color: #8b78b0; opacity: 0.8; }
-.tui-cursor {
-  width: 8px;
-  height: 16px;
-  background: var(--cyan);
-  box-shadow: 0 0 8px rgba(41, 217, 255, 0.8);
-  animation: blink 1s steps(1) infinite;
-  flex: 0 0 auto;
-}
 @keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- TUI: challenge extras ---------- */
+.tui-rick { margin: 10px 0 4px; }
+.tui-rick iframe { width: 100%; height: 210px; border: 1px solid #4c3660; border-radius: 8px; background: #000; }
+.tui-rick__label { font-size: 0.7rem; color: #b3a9d2; margin-top: 8px; }
+.tui-w { display: inline-block; width: 1.5ch; text-align: center; font-weight: 700; }
+.tui-w.wg { color: #0a0614; background: #4ade80; border-radius: 3px; }
+.tui-w.wa { color: #0a0614; background: #ffcf5c; border-radius: 3px; }
+.tui-w.wx { color: #7d6a9e; }
+.tui-cmd { color: var(--amber); }
+.tui-ok { color: var(--green); }
+.tui-err { color: var(--orange); }
 
 /* ---------- Sections (Vice City cover style: skewed plaques) ---------- */
 .section-title { margin: 0 0 20px; }
@@ -500,7 +476,4 @@ p { margin: 0 0 1em; }
   .tui, .tui * { min-width: 0; }
   .tui-bar { padding-right: 10px; }
   .tui-bar-note { font-size: 0.6rem; }
-  .tui-chips { gap: 5px; padding: 8px 12px; }
-  .tui-chip { font-size: 0.68rem; padding: 3px 5px; }
-  .entries-list, .entry-list, .entry-list--quad { grid-template-columns: 1fr; }
-}
+  
