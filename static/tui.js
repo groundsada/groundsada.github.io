@@ -1,19 +1,19 @@
-/* groundsada TUI — Charm-style terminal widget, v2 (typewriter + history + chips) */
+/* groundsada TUI — clean. No prefill, no demo. Just a terminal. */
 (function () {
   const el = document.getElementById("tui");
   if (!el) return;
   const out = el.querySelector(".tui-body");
   const input = el.querySelector(".tui-input");
-  const prompt = "firas@esnet";
+  const prompt = "firas@groundsada";
 
   const DATA = {
     whoami: [
       ["Mohammad Firas Sada", ""],
-      ["research networking systems engineer @ ESnet (LBNL) — remote", ""],
-      ["moves physics data; builds networks that can be programmed", ""],
+      ["research networking systems engineer", ""],
+      ["i move science data & build networks you can program", ""],
     ],
     now: [
-      ["making HEP data move at ESnet", ""],
+      ["making high-energy physics data move", ""],
       ["just published PEARC '26: LLMs or Naive Bayes?", ""],
       ["teaching the National Research Platform", ""],
       ["side projects: Jupyter-Agent, JupyterCluster, Jaily", ""],
@@ -38,18 +38,19 @@
       ["SmartNIC tutorial series: Xilinx Alveo (YouTube)", "video"],
     ],
     help: [
-      ["available commands:", ""],
-      [" whoami   now   projects   papers   talks   clear   help", ""],
-      ["hint: Tab autocompletes. ↑ recalls history.", ""],
+      ["commands: whoami · now · projects · papers · talks · clear · sudo rm -rf /", ""],
+      ["tab autocompletes · ↑ recalls history", ""],
     ],
-    sudo: [
-      ["nice try. this terminal is on the friendly side.", "err"],
-    ],
+    sudo: [["nice try. this terminal is on the friendly side.", "err"]],
   };
 
   const KEYS = ["help", "whoami", "now", "projects", "papers", "talks", "clear", "sudo"];
   const history = [];
   let hIdx = -1;
+
+  function syncWidth() {
+    input.style.width = Math.max(2, input.value.length + 1) + "ch";
+  }
 
   function print(s, cls) {
     const div = document.createElement("div");
@@ -72,49 +73,39 @@
     if (DATA[c]) {
       DATA[c].forEach(([t, d]) => print(d ? t + "  " + d : t, d === "err" ? "tui-err" : d ? "tui-out" : "tui-ok"));
     } else if (c.startsWith("sudo")) {
-      DATA.sudo.forEach(([t, d]) => print(t, "tui-err"));
+      DATA.sudo.forEach(([t]) => print(t, "tui-err"));
     } else {
-      print("command not found: " + c + " — try “help”", "tui-err");
+      print("command not found: " + c + " — try help", "tui-err");
     }
   }
 
-  function typeOut(cmd) {
-    input.value = "";
-    let i = 0;
-    const iv = setInterval(() => {
-      input.value = cmd.slice(0, ++i);
-      if (i >= cmd.length) {
-        clearInterval(iv);
-        setTimeout(() => run(cmd), 220);
-      }
-    }, 45);
-  }
-
+  input.addEventListener("input", syncWidth);
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       run(input.value);
       input.value = "";
+      syncWidth();
     } else if (e.key === "Tab") {
       e.preventDefault();
       const v = input.value.toLowerCase();
       const m = KEYS.find((k) => k.startsWith(v));
-      if (m) input.value = m;
+      if (m) { input.value = m; syncWidth(); }
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       if (hIdx > 0) input.value = history[--hIdx];
+      syncWidth();
     } else if (e.key === "ArrowDown") {
       e.preventDefault();
       if (hIdx < history.length - 1) input.value = history[++hIdx];
       else { hIdx = history.length; input.value = ""; }
+      syncWidth();
     }
   });
 
-  // clickable chips
   document.querySelectorAll(".tui-chip").forEach((chip) => {
-    chip.addEventListener("click", () => typeOut(chip.getAttribute("data-cmd")));
+    chip.addEventListener("click", () => run(chip.getAttribute("data-cmd")));
   });
 
-  // auto-demo (typewriter)
-  setTimeout(() => typeOut("whoami"), 900);
-  setTimeout(() => typeOut("projects"), 3400);
+  syncWidth();
+  input.focus();
 })();
