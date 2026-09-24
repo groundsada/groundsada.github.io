@@ -58,17 +58,20 @@
   function norm(stack) { return stack.length ? "/" + stack.join("/") : "/"; }
 
   /* ---------------- rendering ---------------- */
+  const inline = document.getElementById("tui-inline");
   function print(s, cls) {
     const div = document.createElement("div");
     div.className = "tui-line" + (cls ? " " + cls : "");
     if (typeof s === "string") div.textContent = s; else div.appendChild(s);
-    out.appendChild(div);
+    if (inline && inline.parentNode === out) out.insertBefore(div, inline);
+    else out.appendChild(div);
     out.scrollTop = out.scrollHeight;
   }
   function typeLine(s, cls, cb) {
     const div = document.createElement("div");
     div.className = "tui-line" + (cls ? " " + cls : "");
-    out.appendChild(div);
+    if (inline && inline.parentNode === out) out.insertBefore(div, inline);
+    else out.appendChild(div);
     let i = 0;
     const iv = setInterval(() => {
       div.textContent = s.slice(0, ++i);
@@ -80,6 +83,7 @@
 
   function rickroll() {
     out.innerHTML = "";
+    if (inline) out.appendChild(inline);
     print("nice try.", "tui-err");
     const wrap = document.createElement("div");
     wrap.className = "tui-rick";
@@ -175,7 +179,7 @@
     const m = cmd.match(/^(\S+)\s*(.*)$/);
     const verb = m[1], rest = m[2];
 
-    if (verb === "clear") { out.innerHTML = ""; return; }
+    if (verb === "clear") { out.innerHTML = ""; if (inline) out.appendChild(inline); return; }
     if (/^daemon-up$/.test(verb + " " + rest) || verb === "daemon-up") {
       if (restarted) return finish();
       print("not yet. the service is still down.", "tui-err");
