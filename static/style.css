@@ -227,9 +227,9 @@ p { margin: 0 0 1em; }
   border: 1px solid #4c3660;
   border-radius: 14px;
   box-shadow:
-    0 0 0 1px rgba(255, 45, 149, 0.25),
-    0 0 26px rgba(255, 45, 149, 0.18),
-    0 18px 40px rgba(0, 0, 0, 0.4);
+    0 0 0 1px rgba(255, 45, 149, 0.15),
+    0 0 20px rgba(255, 45, 149, 0.12),
+    0 18px 30px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   font-family: var(--mono);
   position: relative;
@@ -344,14 +344,14 @@ p { margin: 0 0 1em; }
 .section-title { margin: 0 0 20px; }
 .section-title h2 {
   font-family: var(--display);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 900;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
   -webkit-text-stroke: 0.6px #29d9ff;
-  text-shadow: 0 0 4px rgba(41, 217, 255, 0.3), 0 2px 0 #0e5e75;
+  text-shadow: 0 0 3px rgba(41, 217, 255, 0.22), 0 2px 0 #0e5e75;
   display: inline-block;
   transform: skew(-10deg);
   background: rgba(18, 8, 31, 0.72);
