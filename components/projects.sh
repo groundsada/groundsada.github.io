@@ -43,7 +43,13 @@ else
   # Full page: grouped by category
   jq -r '.projects[].category' "$PROJECT_ROOT/data/projects.json" | sort -u | while read -r cat; do
     echo "<div class=\"section-title\"><h2>$cat</h2></div>"
-    echo '<div class="entry-list">'
+    # 4-card categories get a 2x2 grid (--quad) so no card orphans in the 3-col rows
+    CNT=$(jq --arg c "$cat" '[.projects[] | select(.category == $c)] | length' "$PROJECT_ROOT/data/projects.json")
+    if [[ "$CNT" -eq 4 ]]; then
+      echo '<div class="entry-list entry-list--quad">'
+    else
+      echo '<div class="entry-list">'
+    fi
     jq -r --arg c "$cat" '.projects[] | select(.category == $c) | @json' "$PROJECT_ROOT/data/projects.json" | while read -r p; do
       TITLE=$(echo "$p" | jq -r '.title'); DESC=$(echo "$p" | jq -r '.description'); URL=$(echo "$p" | jq -r '.url')
       render_row "$TITLE" "$DESC" "$URL"
