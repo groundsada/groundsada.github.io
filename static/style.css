@@ -305,6 +305,13 @@ p { margin: 0 0 1em; }
 @keyframes blink { 50% { opacity: 0; } }
 
 /* ---------- TUI: challenge extras ---------- */
+.tui--party {
+  animation: tui-party 0.35s linear infinite;
+}
+@keyframes tui-party {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
 .tui-rick { margin: 10px 0 4px; }
 .tui-rick iframe { width: 100%; height: 210px; border: 1px solid #4c3660; border-radius: 8px; background: #000; }
 .tui-rick__label { font-size: 0.7rem; color: #b3a9d2; margin-top: 8px; }
