@@ -51,7 +51,7 @@
     },
     {
       "title": "ebpf-generator",
-      "category": "Network data & measurement",
+      "category": "Kubernetes & platforms",
       "featured": false,
       "url": "https://github.com/groundsada/ebpf-generator",
       "description": "Java eBPF bytecode generator plus PCAP tools: custom packet filter rules compiled to eBPF, a PCAP reader/writer, packet filtering and manipulation, and an IPv4 packet generator."

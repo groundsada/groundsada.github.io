@@ -22,8 +22,8 @@
   --panel: #140f22;
   --card: #181129;
   --ink: #f7f1ff;
-  --muted: #c3b4e0;
-  --faint: #7d6a9e;
+  --muted: #cec1ea;
+  --faint: #8f7bb0;
   --line: #2c2140;
   --pink: #ff2d95;
   --orange: #ff8a3d;
@@ -187,11 +187,10 @@ p { margin: 0 0 1em; }
   -webkit-text-fill-color: #ffffff;
   -webkit-text-stroke: 1.2px #ff2d95;
   text-shadow:
-    0 2px 0 #ffffff, 0 -2px 0 #ffffff, 2px 0 0 #ffffff, -2px 0 0 #ffffff,
     0 4px 0 #8a1145,
     0 8px 0 #5c0b30,
     0 12px 20px rgba(0, 0, 0, 0.4),
-    0 0 14px rgba(255, 45, 149, 0.34);
+    0 0 10px rgba(255, 45, 149, 0.28);
 }
 .page-intro__lead {
   font-size: 1.25rem;
@@ -403,12 +402,12 @@ p { margin: 0 0 1em; }
   border-color: rgba(41, 217, 255, 0.6);
   box-shadow: 0 0 24px rgba(41, 217, 255, 0.22);
 }
-.entry-row__title { font-size: 1.02rem; margin-bottom: 4px; }
+.entry-row__title { font-size: 1.08rem; margin-bottom: 5px; }
 .entry-row__title a { color: var(--ink); }
 .entry-row__title a:hover { color: var(--pink); text-decoration: none; }
 .entry-row__kind { font-size: 0.68rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.08em; }
 .entry-row__meta { font-size: 0.8rem; color: var(--faint); margin-bottom: 6px; }
-.entry-row__desc { font-size: 0.92rem; color: var(--muted); }
+.entry-row__desc { font-size: 0.95rem; color: var(--muted); }
 
 /* ---------- Blog post ---------- */
 .entry__content { max-width: 70ch; }
