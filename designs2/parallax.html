@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Mohammad Sada — parallax</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#1d1d1f;line-height:1.7}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;color:#fff}
+.bg1,.bg2{position:absolute;inset:-20%;background:linear-gradient(160deg,#0b2036,#14532d);transform:translateZ(0)}
+.bg2{background:radial-gradient(ellipse at 30% 40%,rgba(255,255,255,.14),transparent 60%);animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translateY(-4%)}to{transform:translateY(4%)}}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);margin:0 0 18px;letter-spacing:-.02em;position:relative}
+.hero p{font-size:1.15rem;opacity:.85;position:relative;max-width:60ch}
+.hero .chip{position:relative;margin-top:22px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:8px 18px;border-radius:999px;font-size:.85rem}
+.scroll-hint{position:absolute;bottom:26px;font-size:.8rem;letter-spacing:.25em;opacity:.6}
+section{max-width:980px;margin:0 auto;padding:90px 28px}
+.sec-title{font-size:.9rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#14532d;margin:0 0 14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;perspective:800px}
+.card{background:#fff;border-radius:18px;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.10);transition:transform .5s cubic-bezier(.2,.6,.2,1);transform:translateY(0)}
+.card:hover{transform:translateY(-10px) rotateX(2deg)}
+.card h3{margin:0 0 8px;font-size:1.1rem}.card p{margin:0;color:#555;font-size:.95rem}
+.posts{max-width:720px}.post{border-bottom:1px solid #e5e5e5;padding:26px 0}.post h3{margin:0 0 6px;font-size:1.25rem}
+.post .d{font-size:.8rem;color:#999;text-transform:uppercase;letter-spacing:.08em}
+.dark{background:#0b2036;color:#e8eef5}.dark .post{border-color:rgba(255,255,255,.15)}.dark h2{color:#fff}
+footer{background:#071420;color:#9fb3c8;padding:44px;text-align:center;font-size:.88rem}
+</style></head><body>
+<div class="hero"><div class="bg1"></div><div class="bg2"></div>
+<h1>Mohammad Firas Sada</h1>
+<p>Research networking systems engineer at ESnet. I make high-energy physics data move at petabyte scale — software-defined networks, SENSE, and the transfer tooling underneath.</p>
+<div class="chip">Currently: ESnet (remote) · PEARC '26 · teaching the NRP</div>
+<div class="scroll-hint">SCROLL</div></div>
+<section><div class="sec-title">Selected work</div>
+<div class="cards">
+<div class="card"><h3>Jupyter-Agent</h3><p>SSH over HTTPS into JupyterHub pods, wildcard port-forwarding, one-click VS Code. Extension points only.</p></div>
+<div class="card"><h3>JupyterCluster</h3><p>A hub for many JupyterHubs: k8s HubSpawner, RBAC, REST API.</p></div>
+<div class="card"><h3>llms-or-naive-bayes</h3><p>PEARC '26: Naive Bayes matches frontier LLMs at 40x the throughput.</p></div>
+<div class="card"><h3>nrp-header-collection</h3><p>sFlow packet data on the NRP: UDP/6343, JSON or PCAP.</p></div>
+</div></section>
+<section class="dark"><div class="sec-title" style="color:#7dd3fc">Latest posts</div><div class="posts">
+<div class="post"><h3>Hello, I'm Mohammad Firas Sada</h3><div class="d">Sep 20, 2026</div><p>To be clear: I go by Mohammad. Some call me Firas. Now that that's settled: remote engineer, science data mover.</p></div>
+<div class="post"><h3>From SDSC to ESnet: changing the problem, not the desk</h3><div class="d">Sep 1, 2026</div><p>The work changed, the desk didn't. What it's like to swap problems mid-career without moving an inch.</p></div>
+</div></section>
+<footer>© 2026 Mohammad Firas Sada · parallax concept</footer></body></html>

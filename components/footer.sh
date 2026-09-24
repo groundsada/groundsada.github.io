@@ -3,6 +3,7 @@
 cat <<'EOF'
 <footer class="site-footer">
   <div class="site-footer__inner">
+<<<<<<< HEAD
     <div class="footer-content">
       <div class="footer-section">
         <h3>About This Site</h3>
@@ -72,12 +73,10 @@ cat <<'EOF'
     <div class="footer-bottom">
       <p>Built with ❤️ using bash-stack | <a href="https://github.com/groundsada/groundsada.github.io" target="_blank">View Source</a></p>
     </div>
+=======
+    <p>&copy; 2026 Mohammad Firas Sada &middot; <a href="/about">about</a> &middot; <a href="/blog">blog</a> &middot; <a href="https://github.com/groundsada">github</a></p>
+    <p class="site-footer__fun">Powered by a web framework written in Bash.</p>
+>>>>>>> redesign
   </div>
 </footer>
 EOF
-
-
-
-
-
-

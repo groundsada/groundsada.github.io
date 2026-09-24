@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>The Sada Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:'Inter',serif;background:#fbfaf7;color:#1a1a1a;line-height:1.75}
+.masthead{border-bottom:3px double #1a1a1a;text-align:center;padding:34px 20px 18px}
+.masthead h1{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:800;letter-spacing:-.01em;margin:0}
+.masthead .tag{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:#8a8a8a;margin-top:8px}
+.navstrip{border-bottom:1px solid #d9d5cc;display:flex;justify-content:center;gap:34px;padding:12px 20px;font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600;position:sticky;top:0;background:#fbfaf7;z-index:5}
+.navstrip a{color:#8a8a8a;text-decoration:none}.navstrip a:hover{color:#1a1a1a}
+.wrap{max-width:860px;margin:0 auto;padding:54px 24px}
+.lede{font-family:'Playfair Display',serif;font-size:1.5rem;line-height:1.5;font-weight:500;margin:0 0 30px}
+.lede::first-letter{font-size:4rem;float:left;line-height:.85;padding-right:10px;font-weight:800}
+body{color:#1a1a1a}
+.byline{font-size:.8rem;color:#8a8a8a;text-transform:uppercase;letter-spacing:.12em;margin-bottom:34px}
+h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;margin:46px 0 16px}
+.cols{column-count:2;column-gap:40px;font-size:.98rem}
+.proj{break-inside:avoid;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid #d9d5cc}
+.proj h3{font-family:'Playfair Display',serif;margin:0 0 4px;font-size:1.1rem;font-weight:600}
+.proj p{margin:0;color:#555;font-size:.92rem}
+.post{padding:22px 0;border-bottom:1px solid #d9d5cc}
+.post h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin:0 0 4px;font-weight:600}
+.post .d{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8a8a}
+footer{border-top:3px double #1a1a1a;margin-top:60px;padding:30px 24px;display:flex;justify-content:space-between;font-size:.8rem;color:#8a8a8a;max-width:860px;margin-left:auto;margin-right:auto}
+@media(max-width:700px){.cols{column-count:1}}
+</style></head><body>
+<div class="masthead"><h1>The Sada Review</h1><div class="tag">Networking · Data · Systems — Vol. 1, Issue 1</div></div>
+<div class="navstrip"><a>Front page</a><a>Projects</a><a>Papers</a><a>Talks</a><a>Archive</a></div>
+<div class="wrap">
+<p class="lede">Mohammad Firas Sada is a research networking systems engineer at ESnet who believes the internet should move science data the way a good editorial moves a reader: on time, without drama, and with the citations visible.</p>
+<div class="byline">By Mohammad Firas Sada · Remote · In this issue: petabyte-scale data movement, an argument for Naive Bayes, and a defense of writing tools in Bash</div>
+<h2>From the workbench: selected projects</h2>
+<div class="cols">
+<div class="proj"><h3>Jupyter-Agent</h3><p>An essay in extension: SSH over HTTPS, wildcard port forwarding, and one-click VS Code, grafted onto plain JupyterHub without touching its core.</p></div>
+<div class="proj"><h3>JupyterCluster</h3><p>A hub that shepherds other hubs. Many JupyterHub releases in many namespaces, one RBAC to rule them.</p></div>
+<div class="proj"><h3>llms-or-naive-bayes</h3><p>PEARC '26. The counter-argument to model inflation, with numbers: a 397B frontier MoE loses to a Bayesian on labeled data.</p></div>
+<div class="proj"><h3>nrp-header-collection</h3><p>The quiet kind of tool: a sFlow collector that turns the NRP's packet streams into something you can finally inspect.</p></div>
+<div class="proj"><h3>Jaily</h3><p>Natural language, compiled to BPF. The poetry of a firewall rule someone actually understands.</p></div>
+<div class="proj"><h3>qaic-prometheus-exporter</h3><p>Twenty metrics for a card that was previously a void: power, temperature, NSPs, DRAM — readable at last.</p></div>
+</div>
+<h2>From the desk: latest posts</h2>
+<div class="post"><h3>Hello, I'm Mohammad Firas Sada</h3><div class="d">Twenty September, 2026</div><p>On the name (Mohammad, with Firas for the old friends), on remote work, and on the business of making data move.</p></div>
+<div class="post"><h3>From SDSC to ESnet: changing the problem, not the desk</h3><div class="d">One September, 2026</div><p>No trucks were involved in the writing of this column.</p></div>
+</div>
+<footer><span>© 2026 Mohammad Firas Sada</span><span>Printed on recycled bandwidth</span></footer></body></html>

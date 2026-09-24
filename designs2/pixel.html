@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>MFS.EXE</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#1a1c2c;color:#ffcd75;font-family:'Press Start 2P',monospace;line-height:1.9;image-rendering:pixelated}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 2px,transparent 2px 4px);z-index:99}
+.screen{max-width:1000px;margin:24px auto;background:#0f1020;border:6px solid #16182e;border-radius:8px;box-shadow:0 0 0 4px #3b2a4d,0 0 40px rgba(255,205,117,.15);padding:30px}
+header h1{color:#38b764;font-size:1.3rem;margin:0 0 6px;letter-spacing:2px}
+.sub{color:#7e7ea0;font-size:.6rem;margin-bottom:24px}
+.blink{animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+nav{margin-bottom:26px}nav a{color:#ffcd75;font-size:.58rem;margin-right:18px;text-decoration:none}nav a:hover{color:#38b764}
+.hud{border:3px solid #50506e;padding:16px;margin-bottom:26px;background:#12142a}
+.hud .row{display:flex;justify-content:space-between;font-size:.6rem;margin-bottom:8px;color:#8b8bc0}
+.bar{height:14px;background:#22244a;border:2px solid #50506e;margin-bottom:12px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#38b764,#ffcd75)}
+h2{color:#68a8d8;font-size:.8rem;letter-spacing:1px;margin:30px 0 16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.item{background:#12142a;border:3px solid #3b3b66;padding:16px}
+.item h3{color:#ffcd75;font-size:.62rem;margin:0 0 8px}
+.item p{color:#8b8bc0;font-size:.5rem;line-height:2}
+.post{background:#12142a;border:3px solid #3b3b66;padding:14px;margin-bottom:12px}
+.post h3{font-size:.6rem;margin:0 0 6px;color:#ffcd75}.post .d{color:#68a8d8;font-size:.5rem}
+footer{color:#50506e;font-size:.5rem;margin-top:30px;text-align:center}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+</style></head><body>
+<div class="screen">
+<header><h1>GROUNDSADA.EXE</h1><div class="sub">MOHAMMAD FIRAS SADA — PLAYER 1 · ESnet / LBNL · REMOTE</div></header>
+<nav><a>START</a><a>PROJECTS</a><a>BLOG</a><a>HI-SCORE</a></nav>
+<div class="hud">
+<div class="row"><span>LVL: DATA-MOVER</span><span>SCORE: 260913185</span></div>
+<div class="row"><span>HP: PETABYTES</span><span>GOLD: PEARC '26</span></div>
+<div class="bar"><i style="width:80%"></i></div>
+<div class="row"><span>STATUS: POWERED ON</span><span class="blink">CURSOR_BLINK_</span></div>
+</div>
+<h2>SELECTED WORK (PRESS A TO EQUIP)</h2>
+<div class="grid">
+<div class="item"><h3>JUPYTER-AGENT</h3><p>UNLOCKED: SSH OVER HTTPS + PORT FORWARDING + VS CODE FOR JUPYTERHUB PODS</p></div>
+<div class="item"><h3>JUPYTERCLUSTER</h3><p>RARE ITEM: ONE HUB TO RULE ALL JUPYTERHUBS (K8s, RBAC, REST)</p></div>
+<div class="item"><h3>LLMS-OR-NAIVE-BAYES</h3><p>BOSS DEFEATED: 1T MoE (97% ACCURACY HP LEFT: 89.1%)</p></div>
+<div class="item"><h3>NRP-HEADER-COLLECTION</h3><p>TOOL: SFLOW COLLECTOR — CAPTURE PACKETS ON NRP, 1 HIT=JSON</p></div>
+</div>
+<h2>BLOG LOG</h2>
+<div class="post"><h3>HELLO, I'M MOHAMMAD FIRAS SADA</h3><div class="d">LEVER 2026-09-20</div></div>
+<div class="post"><h3>FROM SDSC TO ESNET: CHANGING THE PROBLEM, NOT THE DESK</h3><div class="d">LEVER 2026-09-01</div></div>
+<footer>© 2026 MFS · PRESS START TO CONTINUE · 8-BIT CONCEPT</footer></div></body></html>

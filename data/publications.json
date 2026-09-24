@@ -1,0 +1,45 @@
+{
+  "publications": [
+    {
+      "title": "LLMs or Naive Bayes? Old Gems or New Ways",
+      "venue": "PEARC '26 (Practice and Experience in Advanced Research Computing) — short paper",
+      "authors": "Mohammad Firas Sada, Dmitry Mishin, John Graham, Seungmin Kim, Mahidhar Tatineni, Frank Würthwein",
+      "url": "https://arxiv.org/abs/2609.13185"
+    },
+    {
+      "title": "Real-Time In-Network Machine Learning on P4-Programmable FPGA SmartNICs with Fixed-Point Arithmetic and Taylor Approximations",
+      "venue": "PEARC '25 — ACM",
+      "authors": "Mohammad Firas Sada, John J. Graham, Mahidhar Tatineni, Dmitry Mishin, Thomas A. DeFanti, Frank Würthwein",
+      "url": "https://arxiv.org/abs/2507.00428"
+    },
+    {
+      "title": "Serving LLMs in HPC Clusters: A Comparative Study of Qualcomm Cloud AI 100 Ultra and NVIDIA Data Center GPUs",
+      "venue": "PEARC '25 — ACM",
+      "authors": "Mohammad Firas Sada, John J. Graham, Elham E Khoda, Mahidhar Tatineni, Dmitry Mishin, Rajesh K. Gupta, et al.",
+      "url": "https://arxiv.org/abs/2507.00418"
+    },
+    {
+      "title": "The National Research Platform: Stretched, Multi-Tenant, Scientific Kubernetes Cluster",
+      "venue": "PEARC '25 — ACM",
+      "authors": "Derek Weitzel, Ashton Graves, Sam Albin, Huijun Zhu, Frank Würthwein, Mahidhar Tatineni, et al. (co-author: M. F. Sada)",
+      "url": "https://arxiv.org/abs/2505.22864"
+    }
+  ],
+  "talks": [
+    {
+      "title": "Inter-Testbed Networking with FPGA/SmartNICs across FABRIC and NRP",
+      "venue": "EPOC workshop talk, July 2025",
+      "url": "https://youtu.be/wzKzJ7A4PS8"
+    },
+    {
+      "title": "Introduction to the National Research Platform",
+      "venue": "EPOC talk with E. Khoda (SDSC), June 2025",
+      "url": "https://youtu.be/qkG4SaTFPE4"
+    },
+    {
+      "title": "Using Xilinx Alveo FPGAs as SmartNICs with ESnet Framework (video tutorial series)",
+      "venue": "Tutorial video series",
+      "url": "https://www.youtube.com/playlist?list=PL5Ght4QkHL8Sd7rTLNPv3TjYCZ3GorqPE"
+    }
+  ]
+}

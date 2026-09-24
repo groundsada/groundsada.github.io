@@ -51,6 +51,8 @@ fetch_page() {
 
 fetch_page "/" "index.html"
 fetch_page "/blog" "blog.html"
+fetch_page "/about" "about.html"
+fetch_page "/projects" "projects.html"
 
 # Copy assets
 cp -r static dist/

@@ -11,13 +11,15 @@ if command -v jq &> /dev/null; then
   NAME=$(echo "$PROFILE" | jq -r '.name')
   TITLE=$(echo "$PROFILE" | jq -r '.title')
   DESC=$(echo "$PROFILE" | jq -r '.about.description')
+  NOW=$(echo "$PROFILE" | jq -r '.now // ""')
   LINKEDIN=$(echo "$PROFILE" | jq -r '.social.linkedin')
   GITHUB=$(echo "$PROFILE" | jq -r '.social.github')
   INSTAGRAM=$(echo "$PROFILE" | jq -r '.social.instagram')
 else
   NAME="Mohammad Firas Sada"
-  TITLE="Researcher at San Diego Supercomputer Center"
-  DESC="Researcher specializing in HPC, AI/ML, networking, and FPGA acceleration."
+  TITLE="Research Networking Systems Engineer at ESnet"
+  DESC="Research networking systems engineer at ESnet."
+  NOW=""
   LINKEDIN="https://www.linkedin.com/in/msada"
   GITHUB="https://github.com/groundsada"
   INSTAGRAM="https://www.instagram.com/firas_sada/"
@@ -27,12 +29,11 @@ cat <<EOF
 <div class="page-intro">
   <div class="page-intro__inner">
     <div class="page-intro__image">
-      <img src="/static/assets/images/firas-sada.jpg" alt="$NAME" class="profile-image">
+      <img src="/static/assets/images/avatar-vice.png" alt="$NAME" class="profile-image">
     </div>
     <div class="page-intro__content">
       <h1 class="page-intro__title">$NAME</h1>
       <p class="page-intro__lead">$TITLE</p>
-      <p class="page-intro__desc">$DESC</p>
       <div class="social-icons">
         <a href="$LINKEDIN" target="_blank" title="LinkedIn" class="social-icon social-icon--linkedin">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">

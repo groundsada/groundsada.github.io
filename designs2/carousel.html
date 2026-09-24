@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Mohammad Sada — carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:'Inter',system-ui;background:#101014;color:#f5f5f7;line-height:1.6}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid #26262c;position:sticky;top:0;background:#101014;z-index:10}
+.logo{font-weight:800;letter-spacing:-.02em}nav a{color:#a1a1aa;margin-left:22px;text-decoration:none;font-size:.9rem}nav a:hover{color:#fff}
+.carousel{position:relative;height:72vh;overflow:hidden}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;opacity:0;transition:opacity .7s ease;padding:0 24px}
+.slide.active{opacity:1}
+.s1{background:linear-gradient(140deg,#1d4ed8,#7c3aed)}.s2{background:linear-gradient(140deg,#0f766e,#1e293b)}
+.s3{background:linear-gradient(140deg,#b45309,#7c2d12)}.s4{background:linear-gradient(140deg,#4c1d95,#0f172a)}
+.slide h1{font-size:clamp(2.2rem,6vw,4.2rem);margin:0 0 14px;letter-spacing:-.02em}
+.slide p{font-size:1.1rem;max-width:60ch;color:rgba(255,255,255,.88);margin:0 auto}
+.dots{position:absolute;bottom:26px;left:0;right:0;display:flex;justify-content:center;gap:10px}
+.dot-cta{width:34px;height:6px;border-radius:99px;background:rgba(255,255,255,.35);border:none;cursor:pointer}.dot-cta.on{background:#fff}
+section{max-width:1000px;margin:0 auto;padding:70px 28px}
+h2{font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#8b8b93}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;margin-top:26px}
+.card{background:#1a1a20;border:1px solid #2a2a32;border-radius:14px;padding:24px}
+.card h3{margin:0 0 8px;font-size:1rem}.card p{margin:0;color:#a1a1aa;font-size:.9rem}
+.post{padding:18px 0;border-bottom:1px solid #26262c}.post h3{font-size:1.15rem;margin:0 0 4px}.post .d{color:#8b8b93;font-size:.8rem}
+footer{text-align:center;padding:40px;color:#71717a;font-size:.85rem;border-top:1px solid #26262c}
+</style></head><body>
+<header><span class="logo">groundsada</span><nav><a>Home</a><a>About</a><a>Projects</a><a>Blog</a><a>GitHub</a></nav></header>
+<div class="carousel" id="car">
+<div class="slide s1 active"><div><h1>Mohammad Firas Sada</h1><p>Research networking systems engineer at ESnet. Slide one: the story.</p></div></div>
+<div class="slide s2"><div><h1>Data, at petabyte scale</h1><p>Software-defined networks for high-energy physics. SENSE orchestration, Rucio/FTS interop, transfers that finish on schedule.</p></div></div>
+<div class="slide s3"><div><h1>PEARC '26</h1><p>"LLMs or Naive Bayes? Old Gems or New Ways" — Naive Bayes beats a 1T MoE on labeled data, at 40x the throughput.</p></div></div>
+<div class="slide s4"><div><h1>Currently</h1><p>ESnet (remote) · teaching the National Research Platform · side projects: Jupyter-Agent, JupyterCluster, and too many more.</p></div></div>
+<div class="dots" id="dots"></div></div>
+<section><h2>Selected work</h2><div class="cards">
+<div class="card"><h3>Jupyter-Agent</h3><p>SSH over HTTPS, wildcard port-forwarding, one-click VS Code — for plain JupyterHub.</p></div>
+<div class="card"><h3>JupyterCluster</h3><p>A meta-hub that provisions many JupyterHubs in k8s namespaces.</p></div>
+<div class="card"><h3>llms-or-naive-bayes</h3><p>PEARC '26 reproduction artifact + Helm model-selection operator.</p></div>
+<div class="card"><h3>nrp-header-collection</h3><p>Packet data on the NRP: minimal sFlow collector, self-tested.</p></div></div></section>
+<section><h2>Latest posts</h2><div class="post"><h3>Hello, I'm Mohammad Firas Sada</h3><div class="d">Sep 20, 2026</div></div>
+<div class="post"><h3>From SDSC to ESnet: changing the problem, not the desk</h3><div class="d">Sep 1, 2026</div></div></section>
+<footer>© 2026 Mohammad Firas Sada · carousel concept</footer>
+<script>
+const slides=[...document.querySelectorAll('.slide')],dots=document.getElementById('dots');
+let i=0;slides.forEach((_,k)=>{const b=document.createElement('button');b.className='dot-cta'+(k===0?' on':'');b.onclick=()=>go(k);dots.appendChild(b)});
+function go(k){slides[i].classList.remove('active');dots.children[i].classList.remove('on');i=k;slides[i].classList.add('active');dots.children[i].classList.add('on')}
+setInterval(()=>go((i+1)%slides.length),4200);
+</script></body></html>
