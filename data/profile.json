@@ -1,15 +1,5 @@
 {
   "name": "Mohammad Firas Sada",
-<<<<<<< HEAD
-  "title": "Researcher at San Diego Supercomputer Center - HPC - AI/ML - Networking - FPGAs - DevOps",
-  "shortTitle": "Researcher at San Diego Supercomputer Center | HPC | AI/ML | Networking | FPGAs | DevOps",
-  "greeting": "Hi, My name is Mohammad Firas Sada",
-  "about": {
-    "description": "Researcher at San Diego Supercomputer Center specializing in HPC, AI/ML, networking, and FPGA acceleration for high-performance systems.",
-    "details": [
-      "I work on accelerating network infrastructure and AI workloads using FPGAs and specialized hardware. My research spans P4-programmable switches, distributed computing, and containerized HPC environments.",
-      "Previously developed ML predictive models at SAP. Passionate about building efficient, scalable systems at the intersection of hardware and software."
-=======
   "title": "Research networking systems engineer — science data movement & programmable networks",
   "shortTitle": "Research Networking Systems Engineer at ESnet (LBNL)",
   "greeting": "Hi, I'm Mohammad Firas Sada — Mohammad to most, Firas to some",
@@ -20,7 +10,6 @@
       "My path ran through San Diego first: at the San Diego Supercomputer Center (UCSD) I led the SEAM project, worked on the National Research Platform's Kubernetes substrate and its FABRIC integration, taught the platform's intro courses, and spent a lot of late nights making P4 programs run on programmable FPGAs.",
       "In September 2026 I joined ESnet at LBNL as a research networking systems engineer, remotely, from the same city I've been in. The fun part is data movement: software-defined networking for high-energy physics, SENSE orchestration, and interop between the tools scientists use to move files.",
       "Off the clock I keep a long-lived list of side projects — network tooling, ML experiments, and the occasional impossible project — and I unironically believe every big idea deserves a small weekend prototype."
->>>>>>> redesign
     ]
   },
   "social": {
@@ -28,6 +17,5 @@
     "github": "https://github.com/groundsada",
     "instagram": "https://www.instagram.com/firas_sada/"
   },
-  "photo": "/static/assets/jpeg/firas-sada.jpg"
+  "photo": "/static/assets/images/firas-sada.jpg"
 }
-
