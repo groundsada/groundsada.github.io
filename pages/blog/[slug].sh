@@ -18,7 +18,7 @@ CONTENT=$(awk '/^---$/{ if(++count==2) next_line=1; next } next_line' "$BLOG_FIL
 # Convert markdown to HTML
 convert_md() {
   echo "$1" | sed -E \
-    -e 's/^# (.+)$/<h1>\1<\/h1>/' \
+    -e '/^#[^#]/d' \
     -e 's/^## (.+)$/<h2>\1<\/h2>/' \
     -e 's/^### (.+)$/<h3>\1<\/h3>/' \
     -e 's/\*\*([^*]+)\*\*/<strong>\1<\/strong>/g' \
