@@ -20,7 +20,7 @@
 :root {
   --bg: #0a0614;
   --panel: #140f22;
-  --card: #140f22;
+  --card: #181129;
   --ink: #f7f1ff;
   --muted: #b9a8d6;
   --faint: #7d6a9e;
@@ -330,7 +330,7 @@ p { margin: 0 0 1em; }
   min-width: 0;
   padding: 2px 0;
 }
-.tui-input::placeholder { color: #6a5a88; opacity: 0.55; }
+.tui-input::placeholder { color: #8b78b0; opacity: 0.8; }
 .tui-cursor {
   width: 8px;
   height: 16px;
@@ -392,7 +392,7 @@ p { margin: 0 0 1em; }
 }
 .entry-row {
   background: var(--card);
-  border: 1px solid var(--line);
+  border: 1px solid #3a2b58;
   border-radius: 14px;
   padding: 24px;
   line-height: 1.65;
