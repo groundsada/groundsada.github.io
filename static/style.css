@@ -279,14 +279,14 @@ p { margin: 0 0 1em; }
 }
 .tui-chip {
   font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.73rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #f5edff;
   background: #241739;
   border: 1px solid #8a66a8;
   border-radius: 3px;
-  padding: 3px 9px;
+  padding: 4px 10px;
   cursor: pointer;
   transition: border-color 0.12s, color 0.12s, box-shadow 0.12s;
 }
@@ -319,7 +319,7 @@ p { margin: 0 0 1em; }
 .tui-prompt { color: #ff5cb0; font-size: 0.84rem; white-space: nowrap; text-shadow: 0 0 10px rgba(255,45,149,.7); }
 .tui-input {
   flex: 0 0 auto;
-  width: 2ch;
+  width: 5ch;
   background: transparent;
   border: none;
   outline: none;

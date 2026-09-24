@@ -49,7 +49,8 @@
   let hIdx = -1;
 
   function syncWidth() {
-    input.style.width = Math.max(2, input.value.length + 1) + "ch";
+    // floor 5ch so the 4-char "help" placeholder is fully visible (2ch clipped it to "he")
+    input.style.width = Math.max(5, input.value.length + 1) + "ch";
   }
 
   function print(s, cls) {
