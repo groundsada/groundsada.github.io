@@ -16,7 +16,7 @@ cat <<'EOF'
     <button class="tui-chip" data-cmd="papers">papers</button>
     <button class="tui-chip" data-cmd="talks">talks</button>
     <button class="tui-chip" data-cmd="help">help</button>
-    <button class="tui-chip" data-cmd="sudo rm -rf /">sudo…</button>
+    <button class="tui-chip" data-cmd="sudo rm -rf /">sudo</button>
   </div>
   <div class="tui-body" id="tui-body"></div>
   <div class="tui-prompt-row">

@@ -478,6 +478,13 @@ p { margin: 0 0 1em; }
 .site-footer .site-footer__fun { margin-top: 0; font-size: 0.88rem; font-style: italic; color: #b7abd9; }
 
 /* ---------- Responsive ---------- */
+/* Desktop: let the terminal fill the hero column so the hero reads balanced */
+@media (min-width: 861px) {
+  .hero-grid { align-items: stretch; }
+  .tui { display: flex; flex-direction: column; }
+  .tui-body { flex: 1 1 auto; max-height: none; }
+}
+
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; gap: 28px; }
   .tui { max-width: 100%; }
