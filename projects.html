@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Mohammad Firas Sada</title>
+  <meta name="description" content="Selected projects by Mohammad Firas Sada — packet data collection on the NRP, packet generation, AI accelerator metrics, reproducible ML benchmarks, and Kubernetes platforms.">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <h1 class="site-title">
+      <a href="/">groundsada</a>
+    </h1>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="https://github.com/groundsada" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="main-content">
+<div class="section-title"><h2>AI infrastructure</h2></div>
+<div class="entry-list">
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/llms-or-naive-bayes" target="_blank" rel="noopener">llms-or-naive-bayes</a></div>
+    <div class="entry-row__desc">Reproduction artifact for the PEARC '26 paper 'LLMs or Naive Bayes? Old Gems or New Ways'. Complement Naive Bayes vs zero/few-shot LLMs across four model families and a 37x scale range, with a Helm operator that picks the model by policy and Prometheus metrics you can verify.</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/qaic-prometheus-exporter" target="_blank" rel="noopener">qaic-prometheus-exporter</a></div>
+    <div class="entry-row__desc">Prometheus exporter for Qualcomm Cloud AI 100 accelerators. Scrapes qaic-util every 15 seconds and exposes 20+ per-QID metrics (power, temperature, DRAM, NSP utilization, inference load). Injected as a ConfigMap, no custom image needed.</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/7NRP-AI-Presentation" target="_blank" rel="noopener">7NRP-AI-Presentation</a></div>
+    <div class="entry-row__desc">The 30-minute AI infrastructure talk from the 7th National Research Platform Workshop (2026, UC San Diego / SDSC), built with Slidev.</div>
+  </div>
+</div>
+<div class="section-title"><h2>Archive</h2></div>
+<div class="entry-list">
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/Single-Image-Facial-Superresolution-GAN" target="_blank" rel="noopener">Single-Image-Facial-Superresolution-GAN</a></div>
+    <div class="entry-row__desc">Single-image facial super-resolution with GANs, built for CS 584 at Illinois Tech.</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/ImageColorization" target="_blank" rel="noopener">ImageColorization</a></div>
+    <div class="entry-row__desc">Grayscale image colorization with CNNs and GANs, built for CS 512 Computer Vision at Illinois Tech.</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/NBAmazonReviews" target="_blank" rel="noopener">NBAmazonReviews</a></div>
+    <div class="entry-row__desc">Naive Bayes classifier for sentiment analysis on Amazon reviews, built from scratch for CS 481 at Illinois Tech. The seed of the benchmarking work that became PEARC '26.</div>
+  </div>
+</div>
+<div class="section-title"><h2>Kubernetes & platforms</h2></div>
+<div class="entry-list">
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/Jupyter-Agent" target="_blank" rel="noopener">Jupyter-Agent</a></div>
+    <div class="entry-row__desc">Gives plain JupyterHub the features that usually belong to Coder: SSH into user server pods over HTTPS, wildcard subdomain port forwarding, and one-click VS Code into a pod's workspace. Deploys as an overlay using only published extension points, no changes to core JupyterHub.</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/JupyterCluster" target="_blank" rel="noopener">JupyterCluster</a></div>
+    <div class="entry-row__desc">Multi-hub management for JupyterHub on Kubernetes: a hub that provisions and manages many JupyterHub Helm releases in separate namespaces, with a Kubernetes-based HubSpawner, RBAC, an authenticator, and a REST API for programmatic control.</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/ebpf-generator" target="_blank" rel="noopener">ebpf-generator</a></div>
+    <div class="entry-row__desc">Java eBPF bytecode generator plus PCAP tools: custom packet filter rules compiled to eBPF, a PCAP reader/writer, packet filtering and manipulation, and an IPv4 packet generator.</div>
+  </div>
+</div>
+<div class="section-title"><h2>Network data & measurement</h2></div>
+<div class="entry-list entry-list--quad">
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/Jaily" target="_blank" rel="noopener">Jaily</a></div>
+    <div class="entry-row__desc">Just Another Interpreter Like Yours: a Java transpiler that converts natural-language rules (NRL) into BPF packet filters. Parser plus code generator, stateful rules, manual packet manipulation, evaluated against PCAP files, applied with a C toolchain. Tell your filter what you want in English.</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/nrp-header-collection" target="_blank" rel="noopener">nrp-header-collection</a></div>
+    <div class="entry-row__desc">Minimal sFlow collector for Kubernetes: listens on UDP/6343 behind a ClusterIP service, decodes samples to JSON (sflowtool -J) or PCAP (-t), and self-tests with a synthetic packet. The practical way to get real packet data on the National Research Platform.</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/sailorcapy" target="_blank" rel="noopener">sailorcapy</a></div>
+    <div class="entry-row__desc">Python packet generation with Scapy: build and customize packets across protocols and parameters, for testing network paths, switch behavior, and sFlow collection pipelines. The lab gear that gets used more than it gets documented.</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://github.com/groundsada/Naruto" target="_blank" rel="noopener">Naruto (NaRuTo)</a></div>
+    <div class="entry-row__desc">Yes, it's named Naruto. It's actually NaRuTo, a Natural Rule Tool: an extended parser for the Natural Rule Language, letting you express model constraints in near-English and write mapping programs in Python or JavaScript, not just Java. The grammar half of the Jaily story.</div>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+<<<<<<< HEAD
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About This Site</h3>
+        <p>&copy; 2025 Mohammad Firas Sada. All rights reserved.</p>
+        <p>Personal website showcasing research, projects, and technical insights.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Built with bash-stack</h3>
+        <p>This site is powered by <a href="https://github.com/cgsdev0/bash-stack" target="_blank">bash-stack</a>, an innovative HTTP server and framework for building modern web applications entirely in Bash.</p>
+        
+        <h4>Key Features:</h4>
+        <ul>
+          <li><strong>File-based routing:</strong> All routes exist as .sh files in the pages/ folder</li>
+          <li><strong>HTTP request handling:</strong> Framework locates and executes corresponding scripts</li>
+          <li><strong>stdout to HTTP:</strong> Anything written to stdout becomes the HTTP response body</li>
+          <li><strong>HTMX integration:</strong> Included by default for dynamic interactions</li>
+          <li><strong>Static site generation:</strong> Pre-renders dynamic content for deployment</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Deployment & CI/CD</h3>
+        <p>This site is automatically deployed using GitHub Actions with the following workflow:</p>
+        
+        <h4>Build Process:</h4>
+        <ol>
+          <li><strong>Trigger:</strong> Push to main/master branch</li>
+          <li><strong>Environment:</strong> Ubuntu runner with Node.js 18</li>
+          <li><strong>Dependencies:</strong> Install jq for JSON processing</li>
+          <li><strong>Build:</strong> Run build.sh to generate static files</li>
+          <li><strong>Deploy:</strong> Push to gh-pages branch via GitHub Pages</li>
+        </ol>
+        
+        <h4>Technical Stack:</h4>
+        <ul>
+          <li><strong>Server:</strong> bash-stack (Bash 5+ with associative arrays)</li>
+          <li><strong>Styling:</strong> Custom CSS (inspired by Basically Basic Jekyll theme)</li>
+          <li><strong>Content:</strong> Markdown blog posts with frontmatter parsing</li>
+          <li><strong>Data:</strong> JSON configuration files + GitHub API integration</li>
+          <li><strong>Hosting:</strong> GitHub Pages (static site hosting)</li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Architecture</h3>
+        <p>The site uses a component-based architecture where each UI element is a reusable Bash script:</p>
+        
+        <h4>Components:</h4>
+        <ul>
+          <li><code>header.sh</code> - Navigation and site branding</li>
+          <li><code>intro.sh</code> - Profile section with social links</li>
+          <li><code>recent-posts.sh</code> - Blog post listings</li>
+          <li><code>projects.sh</code> - GitHub repository integration</li>
+          <li><code>footer.sh</code> - This technical documentation</li>
+        </ul>
+        
+        <h4>Pages:</h4>
+        <ul>
+          <li><code>index.sh</code> - Homepage composition</li>
+          <li><code>blog.sh</code> - Blog listing page</li>
+          <li><code>blog/[slug].sh</code> - Dynamic blog post rendering</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Built with ❤️ using bash-stack | <a href="https://github.com/groundsada/groundsada.github.io" target="_blank">View Source</a></p>
+    </div>
+=======
+    <p>&copy; 2026 Mohammad Firas Sada &middot; <a href="/about">about</a> &middot; <a href="/blog">blog</a> &middot; <a href="https://github.com/groundsada">github</a></p>
+    <p class="site-footer__fun">Powered by a web framework written in Bash.</p>
+>>>>>>> redesign
+  </div>
+</footer>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammad Firas Sada - Research Networking Systems Engineer at ESnet</title>
-  <meta name="description" content="Research networking systems engineer at ESnet/LBNL — software-defined networks and transfer tooling for high-energy physics data movement. Remote. Petabytes. Orchestrated.">
+  <title>About - Mohammad Firas Sada</title>
+  <meta name="description" content="About Mohammad Firas Sada — research networking systems engineer at ESnet, formerly SDSC. Moving science data, building programmable networks, teaching the NRP.">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -24,13 +24,7 @@
     </nav>
   </div>
 </header>
-<div class="vc-cover" id="hero">
-  <div class="vc-cover__sky" data-parallax="0.05"></div>
-  <div class="vc-cover__palms" data-parallax="0.10"></div>
-  <div class="vc-cover__grid" data-parallax="0.03"></div>
-  <div class="vc-cover__inner">
-    <div class="hero-grid">
-      <div>
+<main class="main-content">
 <div class="page-intro">
   <div class="page-intro__inner">
     <div class="page-intro__image">
@@ -59,94 +53,69 @@
     </div>
   </div>
 </div>
-      </div>
-<div class="tui" id="tui">
-  <div class="tui-bar">
-    <span class="tui-dot" style="background:#f9765b"></span>
-    <span class="tui-dot" style="background:#f4c04f"></span>
-    <span class="tui-dot" style="background:#6fd18b"></span>
-    <span class="tui-bar-title">firas@groundsada: ~</span>
-  </div>
-  <div class="tui-body" id="tui-body"></div>
-  <div class="tui-prompt-row">
-    <span class="tui-prompt">firas@groundsada $</span>
-    <input class="tui-input" id="tui-input" spellcheck="false" autocomplete="off" autocapitalize="none" aria-label="terminal input">
-    <span class="tui-cursor"></span>
-  </div>
-</div>
-<script src="/static/tui.js"></script>
-    </div>
-  </div>
-</div>
+  <section class="about-section">
+    <h2>The short version</h2>
+    <p>I'm a research networking systems engineer at <strong>ESnet</strong> (Energy Sciences Network) at Lawrence Berkeley National Laboratory, where I work on moving high-energy physics data across the country — software-defined networks for science, SENSE orchestration, and the interop between the transfer tools researchers actually use.</p>
+    <p>Before ESnet I was at the <strong>San Diego Supercomputer Center</strong> (UC San Diego): lead for the SEAM project, builder on the National Research Platform (NRP) Kubernetes substrate and its FABRIC integration, and developer of the SENSE Kubernetes operator. I'm also a three-PEARC-poster-and-paper person — most recently PEARC '26 (<em>LLMs or Naive Bayes?</em>) — and an instructor for SDSC's NRP courses.</p>
+  </section>
 
-<main class="main-content">
+  <section class="about-section">
+    <h2>What I care about</h2>
+    <ul>
+      <li><strong>Infrastructure people can actually use.</strong> A platform that needs a handbook to join isn't finished; it's in beta.</li>
+      <li><strong>Programmable data planes.</strong> I've spent real hours compiling P4 to FPGAs and I'd do it again.</li>
+      <li><strong>Honest measurements.</strong> If you're going to compare models (or networks, or clusters), publish the method.</li>
+      <li><strong>Teaching.</strong> You don't understand a system until you've explained it to someone who doesn't care about your system.</li>
+    </ul>
+  </section>
+
+  <section class="about-section">
+    <h2>Off the clock</h2>
+    <p>Baseball analytics in R (a permanently in-progress WAR calculator), machine-learning image experiments, competitive-programming warmups, and a long-standing belief that every big idea deserves a small weekend prototype.</p>
+  </section>
 <div class="section-title">
-  <h2>Recent Posts</h2>
-</div>
-<div class="entries-list">
-  <article class="entry">
-    <h3 class="entry__title">
-      <a href="/blog/welcome-to-my-blog">Technical Blog Coming Soon
-"Hello, I'm Mohammad Firas Sada"</a>
-    </h3>
-    <div class="entry__meta">Recently</div>
-    <div class="entry__excerpt">
-      <p>A new technical blog covering HPC, FPGA acceleration, distributed systems, and DevOps. First posts launching soon.
-Research networking systems engineer at ESnet, working remotely. I make science data move, build networks that can be programmed, and keep a list of side projects nobody asked for.</p>
-      <a href="/blog/welcome-to-my-blog" class="entry__more-link">Read more →</a>
-    </div>
-  </article>
-  <article class="entry">
-    <h3 class="entry__title">
-      <a href="/blog/teaching-nrp-intro-course">"Teaching the National Research Platform"</a>
-    </h3>
-    <div class="entry__meta">Recently</div>
-    <div class="entry__excerpt">
-      <p>In 2025 I became an instructor for SDSC's NRP courses. It turned out to be the best part of the job, and it made me a better engineer.</p>
-      <a href="/blog/teaching-nrp-intro-course" class="entry__more-link">Read more →</a>
-    </div>
-  </article>
-  <article class="entry">
-    <h3 class="entry__title">
-      <a href="/blog/qaic-ai-accelerators-monitoring">"Metrics for an AI card: a Prometheus exporter for Qualcomm Cloud AI 100"</a>
-    </h3>
-    <div class="entry__meta">Recently</div>
-    <div class="entry__excerpt">
-      <p>Twenty-plus metrics scraped from qaic-util every 15 seconds — power, temperature, NSP load, DRAM, inference load — in a tiny exporter that needs no custom image.</p>
-      <a href="/blog/qaic-ai-accelerators-monitoring" class="entry__more-link">Read more →</a>
-    </div>
-  </article>
-</div>
-<div class="section-title">
-  <h2>Recent projects</h2>
+  <h2>Papers</h2>
 </div>
 <div class="entry-list">
   <div class="entry-row">
-    <div class="entry-row__title"><a href="https://github.com/groundsada/Jupyter-Agent" target="_blank" rel="noopener">Jupyter-Agent</a></div>
-    <div class="entry-row__desc">Gives plain JupyterHub the features that usually belong to Coder: SSH into user server pods over HTTPS, wildcard subdomain port forwarding, and one-click VS Code into a pod's workspace. Deploys as an overlay using only published extension points, no changes to core JupyterHub.</div>
+    <div class="entry-row__title"><a href="https://arxiv.org/abs/2609.13185" target="_blank" rel="noopener">LLMs or Naive Bayes? Old Gems or New Ways</a></div>
+    <div class="entry-row__meta">PEARC '26 (Practice and Experience in Advanced Research Computing) — short paper · Mohammad Firas Sada, Dmitry Mishin, John Graham, Seungmin Kim, Mahidhar Tatineni, Frank Würthwein</div>
   </div>
   <div class="entry-row">
-    <div class="entry-row__title"><a href="https://github.com/groundsada/JupyterCluster" target="_blank" rel="noopener">JupyterCluster</a></div>
-    <div class="entry-row__desc">Multi-hub management for JupyterHub on Kubernetes: a hub that provisions and manages many JupyterHub Helm releases in separate namespaces, with a Kubernetes-based HubSpawner, RBAC, an authenticator, and a REST API for programmatic control.</div>
+    <div class="entry-row__title"><a href="https://arxiv.org/abs/2507.00428" target="_blank" rel="noopener">Real-Time In-Network Machine Learning on P4-Programmable FPGA SmartNICs with Fixed-Point Arithmetic and Taylor Approximations</a></div>
+    <div class="entry-row__meta">PEARC '25 — ACM · Mohammad Firas Sada, John J. Graham, Mahidhar Tatineni, Dmitry Mishin, Thomas A. DeFanti, Frank Würthwein</div>
   </div>
   <div class="entry-row">
-    <div class="entry-row__title"><a href="https://github.com/groundsada/llms-or-naive-bayes" target="_blank" rel="noopener">llms-or-naive-bayes</a></div>
-    <div class="entry-row__desc">Reproduction artifact for the PEARC '26 paper 'LLMs or Naive Bayes? Old Gems or New Ways'. Complement Naive Bayes vs zero/few-shot LLMs across four model families and a 37x scale range, with a Helm operator that picks the model by policy and Prometheus metrics you can verify.</div>
+    <div class="entry-row__title"><a href="https://arxiv.org/abs/2507.00418" target="_blank" rel="noopener">Serving LLMs in HPC Clusters: A Comparative Study of Qualcomm Cloud AI 100 Ultra and NVIDIA Data Center GPUs</a></div>
+    <div class="entry-row__meta">PEARC '25 — ACM · Mohammad Firas Sada, John J. Graham, Elham E Khoda, Mahidhar Tatineni, Dmitry Mishin, Rajesh K. Gupta, et al.</div>
   </div>
   <div class="entry-row">
-    <div class="entry-row__title"><a href="https://github.com/groundsada/Jaily" target="_blank" rel="noopener">Jaily</a></div>
-    <div class="entry-row__desc">Just Another Interpreter Like Yours: a Java transpiler that converts natural-language rules (NRL) into BPF packet filters. Parser plus code generator, stateful rules, manual packet manipulation, evaluated against PCAP files, applied with a C toolchain. Tell your filter what you want in English.</div>
-  </div>
-  <div class="entry-row">
-    <div class="entry-row__title"><a href="https://github.com/groundsada/nrp-header-collection" target="_blank" rel="noopener">nrp-header-collection</a></div>
-    <div class="entry-row__desc">Minimal sFlow collector for Kubernetes: listens on UDP/6343 behind a ClusterIP service, decodes samples to JSON (sflowtool -J) or PCAP (-t), and self-tests with a synthetic packet. The practical way to get real packet data on the National Research Platform.</div>
-  </div>
-  <div class="entry-row">
-    <div class="entry-row__title"><a href="https://github.com/groundsada/qaic-prometheus-exporter" target="_blank" rel="noopener">qaic-prometheus-exporter</a></div>
-    <div class="entry-row__desc">Prometheus exporter for Qualcomm Cloud AI 100 accelerators. Scrapes qaic-util every 15 seconds and exposes 20+ per-QID metrics (power, temperature, DRAM, NSP utilization, inference load). Injected as a ConfigMap, no custom image needed.</div>
+    <div class="entry-row__title"><a href="https://arxiv.org/abs/2505.22864" target="_blank" rel="noopener">The National Research Platform: Stretched, Multi-Tenant, Scientific Kubernetes Cluster</a></div>
+    <div class="entry-row__meta">PEARC '25 — ACM · Derek Weitzel, Ashton Graves, Sam Albin, Huijun Zhu, Frank Würthwein, Mahidhar Tatineni, et al. (co-author: M. F. Sada)</div>
   </div>
 </div>
-<p style="font-size: 0.95rem;"><a href="/projects">All projects &rarr;</a></p>
+
+<div class="section-title">
+  <h2>Talks</h2>
+</div>
+<div class="entry-list">
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://youtu.be/wzKzJ7A4PS8" target="_blank" rel="noopener">Inter-Testbed Networking with FPGA/SmartNICs across FABRIC and NRP</a> <span class="entry-row__kind">(video)</span></div>
+    <div class="entry-row__meta">EPOC workshop talk, July 2025</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://youtu.be/qkG4SaTFPE4" target="_blank" rel="noopener">Introduction to the National Research Platform</a> <span class="entry-row__kind">(video)</span></div>
+    <div class="entry-row__meta">EPOC talk with E. Khoda (SDSC), June 2025</div>
+  </div>
+  <div class="entry-row">
+    <div class="entry-row__title"><a href="https://www.youtube.com/playlist?list=PL5Ght4QkHL8Sd7rTLNPv3TjYCZ3GorqPE" target="_blank" rel="noopener">Using Xilinx Alveo FPGAs as SmartNICs with ESnet Framework (video tutorial series)</a> <span class="entry-row__kind">(video)</span></div>
+    <div class="entry-row__meta">Tutorial video series</div>
+  </div>
+</div>
+  <section class="about-section">
+    <h2>Find me</h2>
+    <p>GitHub: <a href="https://github.com/groundsada">github.com/groundsada</a> · LinkedIn: <a href="https://www.linkedin.com/in/msada">linkedin.com/in/msada</a> · Papers: <a href="https://arxiv.org/abs/2609.13185">arXiv</a></p>
+  </section>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
@@ -226,6 +195,5 @@ Research networking systems engineer at ESnet, working remotely. I make science 
 >>>>>>> redesign
   </div>
 </footer>
-<script src="/static/parallax.js"></script>
 </body>
 </html>
