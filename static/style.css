@@ -185,13 +185,13 @@ p { margin: 0 0 1em; }
   transform: skew(-8deg);
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
-  -webkit-text-stroke: 1.5px #ff2d95;
+  -webkit-text-stroke: 1.2px #ff2d95;
   text-shadow:
     0 2px 0 #ffffff, 0 -2px 0 #ffffff, 2px 0 0 #ffffff, -2px 0 0 #ffffff,
     0 4px 0 #8a1145,
     0 8px 0 #5c0b30,
     0 12px 20px rgba(0, 0, 0, 0.4),
-    0 0 26px rgba(255, 45, 149, 0.55);
+    0 0 18px rgba(255, 45, 149, 0.4);
 }
 .page-intro__lead {
   font-size: 1.25rem;
@@ -271,7 +271,7 @@ p { margin: 0 0 1em; }
 }
 .tui-chips {
   display: flex;
-  gap: 7px;
+  gap: 6px;
   flex-wrap: wrap;
   padding: 10px 14px;
   background: #14111f;
@@ -280,13 +280,13 @@ p { margin: 0 0 1em; }
 .tui-chip {
   font-family: var(--mono);
   font-size: 0.73rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #f5edff;
   background: #241739;
   border: 1px solid #8a66a8;
   border-radius: 3px;
-  padding: 4px 10px;
+  padding: 4px 6px;
   cursor: pointer;
   transition: border-color 0.12s, color 0.12s, box-shadow 0.12s;
 }
@@ -297,7 +297,7 @@ p { margin: 0 0 1em; }
 }
 .tui-body {
   padding: 14px 16px 4px;
-  min-height: 132px;
+  min-height: 100px;
   max-height: 260px;
   overflow-y: auto;
   font-size: 0.79rem;
@@ -459,7 +459,7 @@ p { margin: 0 0 1em; }
 .site-footer p { font-size: 0.95rem; color: #a79fc3; margin: 0; }
 .site-footer a { color: #c9c2e6; }
 .site-footer a:hover { color: var(--cyan); }
-.site-footer .site-footer__fun { margin-top: 10px; font-size: 0.85rem; font-style: italic; color: #8f87b0; }
+.site-footer .site-footer__fun { margin-top: 10px; font-size: 0.85rem; font-style: italic; color: #9d94c0; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
