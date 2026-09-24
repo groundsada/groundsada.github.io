@@ -16,12 +16,12 @@ EOF
 source components/header.sh
 
 cat <<'EOF'
-<main class="main-content">
-  <section class="hero-stage" id="hero">
-    <div class="hero-layer hero-layer--sun" data-parallax="0.18"></div>
-    <div class="hero-layer hero-layer--grid" data-parallax="0.05"></div>
-    <div class="hero-layer hero-layer--blob" data-parallax="0.22"></div>
-    <div class="hero-layer hero-layer--dotsphere" data-parallax="0.12"></div>
+<div class="vc-cover" id="hero">
+  <div class="vc-cover__sky" data-parallax="0.05"></div>
+  <div class="vc-cover__sun"></div>
+  <div class="vc-cover__palms" data-parallax="0.10"></div>
+  <div class="vc-cover__grid" data-parallax="0.03"></div>
+  <div class="vc-cover__inner">
     <div class="hero-grid">
       <div>
 EOF
@@ -36,7 +36,10 @@ source components/tui.sh
 
 cat <<'EOF'
     </div>
-  </section>
+  </div>
+</div>
+
+<main class="main-content">
 EOF
 
 source components/recent-posts.sh 3
