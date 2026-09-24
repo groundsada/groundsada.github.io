@@ -350,15 +350,15 @@ p { margin: 0 0 1em; }
   text-transform: uppercase;
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
-  -webkit-text-stroke: 0.8px #ff2d95;
-  text-shadow: 0 0 6px rgba(255, 45, 149, 0.55), 0 2px 0 #8a1145;
+  -webkit-text-stroke: 0.8px #29d9ff;
+  text-shadow: 0 0 8px rgba(41, 217, 255, 0.5), 0 2px 0 #0e5e75;
   display: inline-block;
   transform: skew(-10deg);
   background: rgba(18, 8, 31, 0.72);
   padding: 9px 26px;
   border-radius: 4px;
   margin: 0;
-  box-shadow: 0 0 24px rgba(255, 45, 149, 0.3);
+  box-shadow: 0 0 24px rgba(41, 217, 255, 0.22);
 }
 
 /* ---------- Blog list ---------- */
@@ -380,7 +380,7 @@ p { margin: 0 0 1em; }
 .entry__title a { color: var(--ink); }
 .entry__title a:hover { color: var(--cyan); text-decoration: none; }
 .entry__meta { font-family: var(--mono); font-size: 0.74rem; color: #b3a9d2; margin-bottom: 8px; }
-.entry__excerpt p { color: var(--muted); font-size: 0.96rem; margin: 0 0 8px; }
+.entry__excerpt p { color: var(--muted); font-size: 0.96rem; line-height: 1.65; margin: 0 0 8px; }
 .entry__more-link { font-size: 0.9rem; font-weight: 650; }
 
 /* ---------- Cards grid (projects / papers / talks) ---------- */
@@ -411,7 +411,7 @@ p { margin: 0 0 1em; }
 .entry-row__title a:hover { color: var(--pink); text-decoration: none; }
 .entry-row__kind { font-size: 0.68rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.08em; }
 .entry-row__meta { font-size: 0.8rem; color: var(--faint); margin-bottom: 6px; }
-.entry-row__desc { font-size: 0.95rem; color: var(--muted); }
+.entry-row__desc { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
 
 /* ---------- Blog post ---------- */
 .entry__content { max-width: 70ch; }
