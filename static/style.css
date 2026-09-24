@@ -121,24 +121,7 @@ p { margin: 0 0 1em; }
 .vc-cover__sky {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #ffd23f 0%, #ff9a3d 16%, #ff5e8a 40%, #d14dff 60%, #7a2bd0 78%, #2a1150 100%);
-}
-.vc-cover__sun {
-  position: absolute;
-  left: 50%;
-  top: 26%;
-  transform: translateX(-50%);
-  width: min(52vw, 540px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 30%, #ffcf4f 0%, #ff8a3d 45%, #ff3d8e 80%, #ff2d95 100%);
-}
-.vc-cover__sun::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: repeating-linear-gradient(0deg, rgba(122, 43, 208, 0.85) 0 12px, transparent 12px 20px);
+  background: linear-gradient(180deg, #07040d 0%, #0f0719 40%, #2a0d33 68%, #59103b 86%, #8a1a4a 100%);
 }
 .vc-cover__palms {
   position: absolute;
@@ -147,23 +130,22 @@ p { margin: 0 0 1em; }
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 320'%3E%3Cg stroke='%230d0520' stroke-width='18' stroke-linecap='round' fill='none'%3E%3Cpath d='M240 320 Q250 240 236 140'/%3E%3Cpath d='M236 140 Q188 108 128 118'/%3E%3Cpath d='M236 140 Q204 96 158 84'/%3E%3Cpath d='M236 140 Q236 88 206 62'/%3E%3Cpath d='M236 140 Q272 90 322 84'/%3E%3Cpath d='M236 140 Q286 110 320 130'/%3E%3Cpath d='M236 140 Q222 74 246 44'/%3E%3Cpath d='M650 320 Q660 250 648 170'/%3E%3Cpath d='M648 170 Q606 142 552 150'/%3E%3Cpath d='M648 170 Q622 130 580 118'/%3E%3Cpath d='M648 170 Q648 122 622 98'/%3E%3Cpath d='M648 170 Q678 124 724 120'/%3E%3Cpath d='M648 170 Q692 138 718 156'/%3E%3Cpath d='M648 170 Q638 128 658 96'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat, no-repeat;
   background-position: left bottom, right bottom;
-  background-size: 58% auto, 52% auto;
-  opacity: 0.95;
-  transform: scale(1.1);
+  background-size: 36% auto, 32% auto;
+  opacity: 0.22;
+  transform: scale(1.05);
 }
 .vc-cover__grid {
   position: absolute;
   left: -6%;
   right: -6%;
   bottom: -4px;
-  height: 210px;
-  transform: perspective(280px) rotateX(52deg);
+  height: 90px;
+  transform: perspective(240px) rotateX(52deg);
   transform-origin: bottom;
   background:
-    repeating-linear-gradient(90deg, rgba(41, 217, 255, 0.9) 0 2px, transparent 2px 54px),
-    repeating-linear-gradient(0deg, rgba(41, 217, 255, 0.9) 0 2px, transparent 2px 32px);
-  opacity: 0.6;
-  filter: drop-shadow(0 0 6px rgba(41, 217, 255, 0.9));
+    repeating-linear-gradient(90deg, rgba(41, 217, 255, 0.4) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(0deg, rgba(41, 217, 255, 0.4) 0 1px, transparent 1px 30px);
+  opacity: 0.3;
 }
 .vc-cover__inner {
   position: relative;
@@ -171,7 +153,7 @@ p { margin: 0 0 1em; }
   max-width: 1160px;
   margin: 0 auto;
   width: 100%;
-  padding: 96px 28px 170px;
+  padding: 88px 28px 130px;
 }
 .hero-grid {
   display: grid;
@@ -189,14 +171,14 @@ p { margin: 0 0 1em; }
   object-fit: cover;
   padding: 5px;
   background: linear-gradient(135deg, var(--pink) 0%, var(--orange) 50%, var(--cyan) 100%);
-  box-shadow: 0 0 36px rgba(255, 45, 149, 0.6), 0 12px 26px rgba(42, 17, 80, 0.5);
+  box-shadow: 0 0 22px rgba(255, 45, 149, 0.35), 0 10px 24px rgba(42, 17, 80, 0.35);
   margin-bottom: 24px;
 }
 .page-intro__title {
   font-family: var(--display);
-  font-size: clamp(3rem, 6.2vw, 4.6rem);
+  font-size: clamp(2.6rem, 5.2vw, 4rem);
   margin: 0 0 14px;
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
   font-weight: 900;
   text-transform: uppercase;
   transform: skew(-8deg);
@@ -204,10 +186,10 @@ p { margin: 0 0 1em; }
   -webkit-text-fill-color: #ffffff;
   -webkit-text-stroke: 2px #ff2d95;
   text-shadow:
-    0 4px 0 #8a1145,
-    0 8px 0 #5c0b30,
-    0 12px 20px rgba(0, 0, 0, 0.5),
-    0 0 32px rgba(255, 45, 149, 0.65);
+    0 3px 0 #8a1145,
+    0 6px 0 #5c0b30,
+    0 10px 18px rgba(0, 0, 0, 0.35),
+    0 0 22px rgba(255, 45, 149, 0.45);
 }
 .page-intro__lead {
   font-size: 1.1rem;
@@ -243,10 +225,9 @@ p { margin: 0 0 1em; }
   border: 1px solid #4c3660;
   border-radius: 14px;
   box-shadow:
-    0 0 0 1px rgba(255, 45, 149, 0.3),
-    0 0 34px rgba(255, 45, 149, 0.30),
-    0 0 60px rgba(41, 217, 255, 0.14),
-    0 22px 50px rgba(0, 0, 0, 0.5);
+    0 0 0 1px rgba(255, 45, 149, 0.25),
+    0 0 26px rgba(255, 45, 149, 0.18),
+    0 18px 40px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   font-family: var(--mono);
   position: relative;

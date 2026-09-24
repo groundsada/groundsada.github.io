@@ -18,7 +18,6 @@ source components/header.sh
 cat <<'EOF'
 <div class="vc-cover" id="hero">
   <div class="vc-cover__sky" data-parallax="0.05"></div>
-  <div class="vc-cover__sun"></div>
   <div class="vc-cover__palms" data-parallax="0.10"></div>
   <div class="vc-cover__grid" data-parallax="0.03"></div>
   <div class="vc-cover__inner">
