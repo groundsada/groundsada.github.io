@@ -106,6 +106,8 @@
     chip.addEventListener("click", () => run(chip.getAttribute("data-cmd")));
   });
 
+  // ergonomics: clicking anywhere on the terminal focuses the input
+  el.addEventListener("click", () => { try { input.focus(); } catch (e) {} });
   syncWidth();
   input.focus();
 })();

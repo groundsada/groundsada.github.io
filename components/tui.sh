@@ -21,7 +21,7 @@ cat <<'EOF'
   <div class="tui-body" id="tui-body"></div>
   <div class="tui-prompt-row">
     <span class="tui-prompt">firas@groundsada $</span>
-    <input class="tui-input" id="tui-input" spellcheck="false" autocomplete="off" aria-label="terminal input">
+    <input class="tui-input" id="tui-input" spellcheck="false" autocomplete="off" autocapitalize="none" enterkeyhint="send" placeholder="help" aria-label="terminal input">
     <span class="tui-cursor"></span>
   </div>
 </div>
