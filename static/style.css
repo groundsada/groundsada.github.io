@@ -194,13 +194,13 @@ p { margin: 0 0 1em; }
     0 0 26px rgba(255, 45, 149, 0.55);
 }
 .page-intro__lead {
-  font-size: 1.1rem;
-  font-weight: 650;
-  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
   margin: 0;
-  max-width: 54ch;
+  max-width: 56ch;
   overflow-wrap: break-word;
-  text-shadow: 0 2px 14px rgba(42, 17, 80, 0.8);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7), 0 0 16px rgba(255, 45, 149, 0.28);
 }
 .social-icons { display: flex; gap: 10px; margin-top: 24px; }
 .social-icon {
@@ -252,7 +252,7 @@ p { margin: 0 0 1em; }
 }
 .tui-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
 .tui-bar-title {
-  color: #d9b9d8;
+  color: #e6d6ee;
   font-family: var(--retro);
   font-size: 0.72rem;
   letter-spacing: 0.06em;
@@ -279,14 +279,14 @@ p { margin: 0 0 1em; }
 }
 .tui-chip {
   font-family: var(--mono);
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: #e5c9e2;
-  background: #1a1226;
-  border: 1px solid #5a4168;
+  color: #f5edff;
+  background: #241739;
+  border: 1px solid #8a66a8;
   border-radius: 3px;
-  padding: 2px 8px;
+  padding: 3px 9px;
   cursor: pointer;
   transition: border-color 0.12s, color 0.12s, box-shadow 0.12s;
 }
@@ -297,8 +297,8 @@ p { margin: 0 0 1em; }
 }
 .tui-body {
   padding: 14px 16px 4px;
-  min-height: 168px;
-  max-height: 280px;
+  min-height: 132px;
+  max-height: 260px;
   overflow-y: auto;
   font-size: 0.79rem;
   line-height: 1.85;
@@ -316,7 +316,7 @@ p { margin: 0 0 1em; }
   border-top: 1px solid #2c2140;
   cursor: text;
 }
-.tui-prompt { color: var(--pink); font-size: 0.84rem; white-space: nowrap; text-shadow: 0 0 10px rgba(255,45,149,.6); }
+.tui-prompt { color: #ff5cb0; font-size: 0.84rem; white-space: nowrap; text-shadow: 0 0 10px rgba(255,45,149,.7); }
 .tui-input {
   flex: 0 0 auto;
   width: 2ch;
@@ -330,7 +330,7 @@ p { margin: 0 0 1em; }
   min-width: 0;
   padding: 2px 0;
 }
-.tui-input::placeholder { color: #7d6a9e; opacity: 0.8; }
+.tui-input::placeholder { color: #6a5a88; opacity: 0.55; }
 .tui-cursor {
   width: 8px;
   height: 16px;
