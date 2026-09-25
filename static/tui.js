@@ -19,7 +19,7 @@
     opt: { machines: { "agent.core": { t: "f", c: "ELF executable (malicious)" },
                        "README": { t: "f", c: "the real one links to /opt/machines.\nthe decoys link to /usr/bin.\nfollow the exe. not the name." } },
            smith: { "root": { t: "f", c: "ELF executable (original smith)" },
-                    "truth.txt": { t: "f", c: "XRAARY" },
+                    "truth.txt": { t: "f", c: "GUR NEPUVGRPG" },
                     "journal.txt": { t: "f", c: "smith/1  -> copy\nsmith/2  -> ORIGINAL\nsmith/3  -> copy\nsmith/4  -> copy" } } },
     var: { log: { "watchdog.log": { t: "f", c: "09:41:50 watchdog: agent.core detected (pid 1337)\n09:42:10 watchdog: agent.core respawn=active\n09:42:40 watchdog: recompute pid on respawn\n09:44:10 watchdog: SMITH DETECTED (4 instances)" } } },
     tmp: { "smith.log": { t: "f", c: "the original laughs last: smith/2" } },
@@ -361,34 +361,36 @@
   function act3Answer(raw) {
     const a = raw.toLowerCase().trim();
     if (act3 === 1) {
-      if (a === "kernel") {
+      if (a === "the architect" || a === "thearchitect" || a === "architect") {
         act3 = 2;
-        typeLine("decoded: kernel. the core of the world.", "tui-ok", () => {
-          typeLine("word puzzle: the world one word. unscramble: E S Y T S M", "tui-out", () => {
+        typeLine("decoded: the architect. he says you made it this far.", "tui-ok", () => {
+          typeLine("word puzzle: one more. R P H M O U E S", "tui-out", () => {
             typeLine("(type the word)", "tui-out", () => input.focus());
           });
         });
-      } else print("not quite. rot13 it. type the word.", "tui-err");
+      } else print("not quite. rot13 it. type the decoded phrase.", "tui-err");
     } else if (act3 === 2) {
-      if (a === "system") {
+      if (a === "morpheus") {
         act3 = 3;
-        typeLine("system. yes.", "tui-ok", () => {
-          typeLine("riddle: first pid. kill me and the machine dies. who am i?", "tui-out", () => {
-            typeLine("(type my name)", "tui-out", () => input.focus());
+        typeLine("morpheus. the guide who started all of this.", "tui-ok", () => {
+          typeLine("riddle: i am created first, adopted by no one. my death is a story ", "tui-out", () => {
+            typeLine("the machine never survives. everyone fears to kill me. what is my name?", "tui-out", () => {
+              typeLine("(type my name)", "tui-out", () => input.focus());
+            });
           });
         });
-      } else print("unscramble again. five... six letters.", "tui-err");
+      } else print("eight letters. the one who offered the pills.", "tui-err");
     } else if (act3 === 3) {
       if (a === "init" || a === "systemd") {
         act3 = 4;
         typeLine("init. the one you may not kill.", "tui-ok", () => {
-          typeLine("the machines are gone. the world is deciphered. the one word is yours.", "tui-ok", () => {
-            typeLine("follow the white rabbit. it is right there. trust it.", "tui-ok", () => {
+          typeLine("the machines are gone. the architect is scheduled. morpheus nods.", "tui-ok", () => {
+            typeLine("the rabbit is loose in the hero. chase it.", "tui-ok", () => {
               finish3();
             });
           });
         });
-      } else print("the first pid. power. call my name.", "tui-err");
+      } else print("first pid. power. call my name.", "tui-err");
     }
   }
   function finish3() {
@@ -421,14 +423,20 @@
       const b = document.createElement("div");
       b.className = "matrix-rabbit";
       b.title = "";
-      b.innerHTML = '<svg width="12" height="15" viewBox="0 0 12 15" shape-rendering="crispEdges" aria-hidden="true">' +
+      b.innerHTML = '<svg width="26" height="33" viewBox="0 0 12 15" shape-rendering="crispEdges" aria-hidden="true">' +
         '<rect x="3" y="0" width="2" height="5" fill="#ff9ec2"/><rect x="7" y="0" width="2" height="5" fill="#ff9ec2"/>' +
         '<rect x="2" y="3" width="8" height="5" fill="#f6dce8"/><rect x="3" y="8" width="6" height="4" fill="#f6dce8"/>' +
         '<rect x="3" y="12" width="2" height="3" fill="#f6dce8"/><rect x="7" y="12" width="2" height="3" fill="#f6dce8"/>' +
         '<rect x="3" y="4" width="1" height="1" fill="#141414"/><rect x="8" y="4" width="1" height="1" fill="#141414"/></svg>';
       if (getComputedStyle(host).position === "static") host.style.position = "relative";
       b.style.left = (10 + Math.random() * 74) + "%";
-      b.addEventListener("click", () => rickroll("the rabbit was an agent. obviously."));
+      b.addEventListener("click", () => rickroll("the rabbit was an agent. obviously. you chased it into the trap."));
+      // it wanders. chase it.
+      b.__wander = setInterval(() => {
+        if (!document.body.contains(b)) { clearInterval(b.__wander); return; }
+        b.style.left = (8 + Math.random() * 78) + "%";
+        b.style.top = (12 + Math.random() * 70) + "%";
+      }, 3200);
       b.style.top = (16 + Math.random() * 62) + "%";
       host.appendChild(b);
     } catch (e) {}
