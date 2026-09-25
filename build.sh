@@ -9,7 +9,7 @@ rm -rf dist/
 mkdir -p dist/
 
 # Environment
-export DEV=false
+export DEV=${DEV:-true}
 export PORT="${PORT:-3002}"
 export TCP_PROVIDER=tcpserver
 
@@ -17,26 +17,30 @@ if ! command -v tcpserver &> /dev/null; then
   export TCP_PROVIDER=nc
 fi
 
-# Start server
-./start.sh > /dev/null 2>&1 &
-SERVER_PID=$!
-
-# Wait for ready
-echo "Waiting for server..."
-for i in {1..15}; do
-  if curl -s http://localhost:$PORT/ > /dev/null 2>&1; then
-    echo "Server ready!"
-    break
-  fi
-  sleep 1
-done
+# Use an existing render server if provided (avoids startup races)
+if [[ -z "$SOURCE_URL" ]]; then
+  ./start.sh > /dev/null 2>&1 &
+  SERVER_PID=$!
+  echo "Waiting for server..."
+  for i in {1..15}; do
+    if curl -s http://localhost:$PORT/ > /dev/null 2>&1; then
+      echo "Server ready!"
+      break
+    fi
+    sleep 1
+  done
+  BASE="http://localhost:$PORT"
+else
+  BASE="${SOURCE_URL%/}"
+  echo "Using render server at $BASE"
+fi
 
 # Fetch pages
 fetch_page() {
   local path=$1
   local output=$2
   echo "  Fetching $path"
-  curl -s "http://localhost:$PORT$path" > "dist/$output" 2>/dev/null || {
+  curl -s "$BASE$path" > "dist/$output" 2>/dev/null || {
     echo "  ERROR: Failed to fetch $path"
     return 1
   }
@@ -66,9 +70,11 @@ done
 cp -r static dist/
 touch dist/.nojekyll
 
-# Kill server
-kill $SERVER_PID 2>/dev/null || true
-wait $SERVER_PID 2>/dev/null || true
+# Kill server (only if we started one)
+if [[ -n "$SERVER_PID" ]]; then
+  kill $SERVER_PID 2>/dev/null || true
+  wait $SERVER_PID 2>/dev/null || true
+fi
 rm -rf pubsub sessions 2>/dev/null || true
 
 echo "Build complete!"

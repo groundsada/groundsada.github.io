@@ -36,7 +36,7 @@ jobs:
       
       - name: Build
         run: |
-          export DEV=false PORT=3002
+          export DEV=true PORT=3002
           ./build.sh
       
       - name: Deploy
