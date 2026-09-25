@@ -7,7 +7,7 @@ cat <<'EOF'
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohammad Firas Sada - Research Networking Systems Engineer at ESnet</title>
-  <meta name="description" content="Research networking systems engineer at ESnet/LBNL — software-defined networks and transfer tooling for high-energy physics data movement. Remote. Petabytes. Orchestrated.">
+  <meta name="description" content="Research networking systems engineer at ESnet/LBNL, software-defined networks and transfer tooling for high-energy physics data movement. Remotely, as always.">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
