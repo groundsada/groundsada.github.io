@@ -30,8 +30,9 @@
     <h1 class="entry__title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">"This Site Runs on a Bash Web Framework"</h1>
     <div class="entry__meta" style="margin-bottom: 2rem;">2025-10-23</div>
     <div class="entry__content" style="max-width: 48rem;">
-      
-<p>
+      <li><strong>Components.</strong> Shared bits, header, footer, intro, recent posts, projects, live in `components/` and are `source`d by the pages.</li>
+<li><strong>Markdown posts.</strong> Each blog post is a markdown file in `blog/` with YAML-ish frontmatter (`title`, `date`, `excerpt`). The page script pulls the frontmatter with `awk` and converts the body to HTML with `sed`. It's a miniature markdown engine, and it's about fifty lines.</li>
+<li><strong>Static output.</strong> A real site needs to survive GitHub Pages, so `build.sh` starts the server locally, `curl`s each route into `dist/`, copies the assets, and touches `.nojekyll`. The GitHub Actions workflow in `.github/workflows/deploy.yml` does the same thing on every push to `main`, install `ucspi-tcp` (for `tcpserver`), run the build, publish `dist/` to the `gh-pages` branch. ## The bug that had to be fixed The original build only pre-rendered two pages: `/` and `/blog`. Every post link pointed at `/blog/<slug>`, but no post page was ever generated, so <strong>every individual blog post 404'd</strong>. Classic. The fix was small: have `build.sh` discover the markdown files and pre-render each one into `dist/blog/<slug>.html`. There's also a date-sorting fix in the "recent posts" component so the list actually orders newest-first and shows real dates. ## Why bash? Honestly? Because it's a fun constraint, and because a framework that can't afford to be complex is a nice reminder that most of "web development" is convention, not machinery. The components, the frontmatter, the static export: it all maps 1:1 to what Jekyll or Hugo does, just with fewer moving parts. The framework is [cgsdev0/bash-stack](https://github.com/cgsdev0/bash-stack), give it a try if you like seeing how far shell can go.</li>
     </div>
   </article>
 </main>

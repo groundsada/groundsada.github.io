@@ -30,8 +30,10 @@
     <h1 class="entry__title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">"LLMs or Naive Bayes? Old Gems or New Ways"</h1>
     <div class="entry__meta" style="margin-bottom: 2rem;">2026-07-31</div>
     <div class="entry__content" style="max-width: 48rem;">
-      
-<p>
+      <li><strong>Once labels exist, CNB matches or beats every LLM we tested.</strong> On AG News, NB reaches <strong>89.1%</strong>, statistically indistinguishable from the zero-shot 27B model (89.0%) and <em>better</em> than a 397B frontier MoE (84.8%), at thousands of samples per second on a commodity CPU.</li>
+<li><strong>Fine-tuned DistilBERT edges accuracy (90.6%)</strong> but at far lower throughput than NB.</li>
+<li><strong>The cost gap is structural.</strong> Small-LLM batched inference was <strong>40-486× slower than NB CPU inference</strong> (multiplier depends strongly on host CPU), with roughly two orders of magnitude higher energy per sample. ## The decision line The takeaway isn't "classical always wins", it's that the right choice is <strong>task- and data-dependent</strong>: - NB reaches LLM parity around <strong>N ≈ 10⁴ labels</strong> for topic classification.</li>
+<li>Zero-data sentiment continues to favor the LLM at every N we tested. To make that call automatic instead of tribal, the paper includes a <strong>Kubernetes Helm operator</strong> that automates model selection using configurable thresholds and verifiable Prometheus metrics, pick the policy, the operator routes the work. ## Why this matters in HPC For resource-constrained HPC practitioners doing text classification with labeled data, <strong>NB remains the optimal choice</strong>, thousands of samples/sec on one CPU, no GPU cluster, no energy bill, and full reproducibility. Every number in the paper traces to a committed JSON in the [reproduction repository](https://github.com/groundsada/llms-or-naive-bayes), so anyone can regenerate the results. Follow-up work is ongoing, the full benchmark and model-selection tooling now live in the decision-model benchmark suite.</li>
     </div>
   </article>
 </main>

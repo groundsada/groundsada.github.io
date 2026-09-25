@@ -30,8 +30,10 @@
     <h1 class="entry__title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">"Metrics for an AI card: a Prometheus exporter for Qualcomm Cloud AI 100"</h1>
     <div class="entry__meta" style="margin-bottom: 2rem;">2026-03-25</div>
     <div class="entry__content" style="max-width: 48rem;">
-      
-<p>
+      <li><strong>Memory</strong>, DRAM total/free/used, fragmentation percentage, bandwidth; retired pages</li>
+<li><strong>Compute</strong>, NSP availability and frequency, program cores, virtual channels, semi-channels, MCIDs</li>
+<li><strong>Inference</strong>, loaded/active networks, constants in use</li>
+<li><strong>Health</strong>, scrape success, duration, device status That's 20+ metrics per card, which is the difference between wondering whether the accelerator fleet is okay and knowing. ## The design detail I like most No custom image needed. The scraper is injected as a <strong>ConfigMap into the official SDK image</strong>, so upgrading the exporter doesn't mean rebuilding and re-publishing a fork of a vendor image, a small thing that makes adoption way easier for operators (and for my future self). ## Why this matters Observability is the quiet part of AI infrastructure. A card that can be seen can be scheduled, and a platform that schedules underutilized accelerators serves more science per dollar. This one is shipped, documented, and [live on GitHub](https://github.com/groundsada/qaic-prometheus-exporter).</li>
     </div>
   </article>
 </main>
