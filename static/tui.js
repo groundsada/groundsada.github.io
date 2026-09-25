@@ -312,7 +312,7 @@
         n.c.split("\n").forEach((l) => { if (l.toLowerCase().includes(pat.toLowerCase())) print(l, "tui-out"); });
         return;
       }
-      case "whoami": print(eternal() ? "the one" : "firas", "tui-ok"); return;
+      case "whoami": print(eternal() ? "firas (no spoons in this household)" : "firas", "tui-ok"); return;
       case "uname": print("Linux groundsada 6.6.0-matrix", "tui-out"); return;
       default: print("command not found: " + verb, "tui-err");
     }
@@ -327,9 +327,9 @@
   }
   function finish2() {
     localStorage.setItem("the-one", "1");
-    typeLine("system 01 is yours.", "tui-ok", () => {
-      typeLine("you are the one. the machines have left the room.", "tui-ok", () => {
-        typeLine("the badge is permanent. type `reality` to see your receipt.", "tui-out", () => {
+    typeLine("the machines have left the room.", "tui-ok", () => {
+      typeLine("they were never really in it. anyway.", "tui-ok", () => {
+        typeLine("the receipt is permanent. type `reality`.", "tui-out", () => {
           drawRain();
           addBadge();
         });
@@ -337,8 +337,8 @@
     });
   }
   function reality() {
-    print("receipt: THE ONE — system 01, no refunds.", "tui-ok");
-    print("proof: " + window.location.origin + "/safebox", "tui-out");
+    print("receipt: agent.core defused + smith dissolved, this browser. no rickrolls survived.", "tui-ok");
+    print("proof: " + window.location.origin + "/safebox (non-transferable)", "tui-out");
   }
   function addBadge() {
     try {
@@ -346,7 +346,7 @@
       if (target.querySelector(".the-one-badge")) return;
       const b = document.createElement("div");
       b.className = "the-one-badge";
-      b.textContent = "★ THE ONE ★";
+      b.textContent = "matrix exit: certified (this browser)";
       target.appendChild(b);
     } catch (e) {}
   }
