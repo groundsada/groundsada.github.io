@@ -518,6 +518,14 @@
       const v = input.value;
       input.value = ""; syncWidth();
       if (/\brm\b/i.test(v)) { print(PROMPT + " $ " + v, "tui-cmd"); rickroll(); return; }
+      if (v.trim().toLowerCase() === "reset") {
+        print(PROMPT + " $ reset", "tui-cmd");
+        localStorage.removeItem("the-one");
+        const rr = document.querySelector(".matrix-rabbit");
+        if (rr) rr.remove();
+        print("the machines forget you. the rabbit goes back into the future.", "tui-ok");
+        return;
+      }
       if (mode === "matrix") { matrixAnswer(v); return; }
       if (!woke) { startMatrix(); return; }
       print(PROMPT + " $ " + v, "tui-cmd");
