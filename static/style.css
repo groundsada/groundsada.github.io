@@ -308,6 +308,18 @@ p { margin: 0 0 1em; }
 @keyframes blink { 50% { opacity: 0; } }
 
 /* ---------- TUI: challenge extras ---------- */
+.matrix-rabbit {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 5px rgba(255,158,194,0.65));
+  z-index: 3;
+  animation: rabbit-blink 4.2s infinite;
+}
+@keyframes rabbit-blink {
+  0%, 92%, 100% { opacity: 0.85; }
+  95% { opacity: 0.25; }
+}
 .the-one-badge {
   display: inline-block;
   margin-top: 14px;

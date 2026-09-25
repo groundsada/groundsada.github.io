@@ -255,7 +255,7 @@
         parts.push("agent.core: " + (agentDown ? "dead" : "active"));
         parts.push("smith: " + (smithDown ? "dissolved" : smithPhase ? "active (4 copies)" : "not yet"));
         parts.push("strikes: " + strikes + "/3");
-        parts.push(eternal() ? "reward: certified" : "reward: unclaimed");
+        parts.push(eternal() ? "rabbit: released" : "rabbit: still finding you");
         print(parts.join(" | "), "tui-out");
         return;
       }
@@ -333,7 +333,7 @@
         n.c.split("\n").forEach((l) => { if (l.toLowerCase().includes(pat.toLowerCase())) print(l, "tui-out"); });
         return;
       }
-      case "whoami": print(eternal() ? "firas (no spoons in this household)" : "firas", "tui-ok"); return;
+      case "whoami": print(eternal() ? "firas (the rabbit says hi)" : "firas", "tui-ok"); return;
       case "uname": print("Linux groundsada 6.6.0-matrix", "tui-out"); return;
       default: print("command not found: " + verb, "tui-err");
     }
@@ -350,25 +350,31 @@
     localStorage.setItem("the-one", "1");
     typeLine("the machines have left the room.", "tui-ok", () => {
       typeLine("they were never really in it. anyway.", "tui-ok", () => {
-        typeLine("the receipt is permanent. type `reality`.", "tui-out", () => {
+        typeLine("follow the white rabbit. it lives in the hero now.", "tui-out", () => {
           drawRain();
-          addBadge();
+          spawnBunny();
         });
       });
     });
   }
   function reality() {
-    print("receipt: agent.core defused + smith dissolved, this browser. no rickrolls survived.", "tui-ok");
-    print("proof: " + window.location.origin + "/safebox (non-transferable)", "tui-out");
+    print("the rabbit moves when you reload. that is the entire prize.", "tui-ok");
   }
-  function addBadge() {
+  function spawnBunny() {
     try {
-      const target = document.querySelector(".page-intro__content") || document.body;
-      if (target.querySelector(".the-one-badge")) return;
+      const host = document.querySelector(".vc-cover") || document.querySelector(".page-intro");
+      if (!host || host.querySelector(".matrix-rabbit")) return;
       const b = document.createElement("div");
-      b.className = "the-one-badge";
-      b.textContent = "matrix exit: certified (this browser)";
-      target.appendChild(b);
+      b.className = "matrix-rabbit";
+      b.innerHTML = '<svg width="12" height="15" viewBox="0 0 12 15" shape-rendering="crispEdges" aria-hidden="true">' +
+        '<rect x="3" y="0" width="2" height="5" fill="#ff9ec2"/><rect x="7" y="0" width="2" height="5" fill="#ff9ec2"/>' +
+        '<rect x="2" y="3" width="8" height="5" fill="#f6dce8"/><rect x="3" y="8" width="6" height="4" fill="#f6dce8"/>' +
+        '<rect x="3" y="12" width="2" height="3" fill="#f6dce8"/><rect x="7" y="12" width="2" height="3" fill="#f6dce8"/>' +
+        '<rect x="3" y="4" width="1" height="1" fill="#141414"/><rect x="8" y="4" width="1" height="1" fill="#141414"/></svg>';
+      if (getComputedStyle(host).position === "static") host.style.position = "relative";
+      b.style.left = (10 + Math.random() * 74) + "%";
+      b.style.top = (16 + Math.random() * 62) + "%";
+      host.appendChild(b);
     } catch (e) {}
   }
   function drawRain() {
@@ -401,5 +407,5 @@
 
   syncWidth();
   input.focus();
-  if (eternal()) addBadge();   // the badge survives reloads
+  if (eternal()) spawnBunny();   // the rabbit persists across reloads
 })();
