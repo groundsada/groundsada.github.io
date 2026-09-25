@@ -171,6 +171,14 @@
 
   /* ---------- command helpers ---------- */
   function psList() {
+    if (smithPhase && smithDown) {
+      print("  PID TTY          TIME CMD", "tui-out");
+      print(" 2041 pts/0    00:00:02 appd-worker", "tui-out");
+      print(" 3120 pts/1    00:00:01 monitor", "tui-out");
+      print(" 4242 pts/1    00:00:00 logger", "tui-out");
+      print("smith: dissolved. no copies remain.", "tui-ok");
+      return;
+    }
     if (smithPhase) {
       print("  PID TTY          TIME CMD", "tui-out");
       print(" 4001 pts/0    00:00:01 smith", "tui-err");
@@ -242,6 +250,15 @@
 
     switch (verb) {
       case "pwd": print(cwd, "tui-out"); return;
+      case "status": {
+        let parts = [];
+        parts.push("agent.core: " + (agentDown ? "dead" : "active"));
+        parts.push("smith: " + (smithDown ? "dissolved" : smithPhase ? "active (4 copies)" : "not yet"));
+        parts.push("strikes: " + strikes + "/3");
+        parts.push(eternal() ? "reward: certified" : "reward: unclaimed");
+        print(parts.join(" | "), "tui-out");
+        return;
+      }
       case "cd": {
         const t = parts[1] || "/";
         const n = nodeAt(resolve(t));
@@ -278,9 +295,11 @@
         if (smithPhase) {
           if (pid === "4002") {
             smithDown = true;
-            print("smith: *dissolves* ..." , "tui-ok");
-            print("you freed the one inside the copies.", "tui-ok");
-            print("[watchdog] smith gone. flag: SMITH-DOWN", "tui-ok");
+            print("----", "tui-strike");
+            print("smith: *dissolves* ...", "tui-ok");
+            print("the copies fall silent. ps will confirm.", "tui-ok");
+            print("flag: SMITH-DOWN — type it to collect.", "tui-ok");
+            print("----", "tui-strike");
             return;
           }
           if (SMITH[pid]) { strike("that was just an echo. smith of your own doubt."); return; }
@@ -289,8 +308,10 @@
         }
         if (pid === String(AGENT)) {
           agentDown = true;
-          print("agent.core terminated.", "tui-ok");
-          print("[watchdog] respawn stopped. flag: AGENT-DOWN", "tui-ok");
+          print("----", "tui-strike");
+          print("agent.core terminated. respawn stopped.", "tui-ok");
+          print("flag: AGENT-DOWN — but smith stirs...", "tui-ok");
+          print("----", "tui-strike");
           setTimeout(spawnSmith, 1400);
           return;
         }
