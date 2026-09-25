@@ -53,6 +53,7 @@ fetch_page "/" "index.html"
 fetch_page "/blog" "blog.html"
 fetch_page "/about" "about.html"
 fetch_page "/projects" "projects.html"
+fetch_page "/safebox" "safebox.html"
 
 # Copy assets
 cp -r static dist/
