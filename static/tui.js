@@ -9,6 +9,7 @@
 
   let woke = false, rick = false, mstep = 0, mode = "shell";
   let strikes = 0, agentDown = false, smithPhase = false, smithDown = false;
+  let act3 = 0; // 0=off 1=decipher 2=word 3=riddle 4=done
   const AGENT = 1337, DECOYS = { 2041: "appd-worker", 3120: "monitor", 4242: "logger" };
   const SMITH = { 4001: "copy", 4002: "original", 4003: "copy", 4004: "copy" };
 
@@ -18,6 +19,7 @@
     opt: { machines: { "agent.core": { t: "f", c: "ELF executable (malicious)" },
                        "README": { t: "f", c: "the real one links to /opt/machines.\nthe decoys link to /usr/bin.\nfollow the exe. not the name." } },
            smith: { "root": { t: "f", c: "ELF executable (original smith)" },
+                    "truth.txt": { t: "f", c: "XRAARY" },
                     "journal.txt": { t: "f", c: "smith/1  -> copy\nsmith/2  -> ORIGINAL\nsmith/3  -> copy\nsmith/4  -> copy" } } },
     var: { log: { "watchdog.log": { t: "f", c: "09:41:50 watchdog: agent.core detected (pid 1337)\n09:42:10 watchdog: agent.core respawn=active\n09:42:40 watchdog: recompute pid on respawn\n09:44:10 watchdog: SMITH DETECTED (4 instances)" } } },
     tmp: { "smith.log": { t: "f", c: "the original laughs last: smith/2" } },
@@ -236,7 +238,11 @@
 
     if (verb === "clear") { clearBody(); return; }
     if (/^smith-down$/.test(cmd)) {
-      if (smithDown) return finish2();
+      if (smithDown) {
+        if (act3 === 0) startAct3();
+        else print("act iii is on. no repeats.", "tui-err");
+        return;
+      }
       print("smith still has copies to spare.", "tui-err"); return;
     }
     if (/^agent-down$/.test(cmd)) {
@@ -342,9 +348,57 @@
   function eternal() { return !!localStorage.getItem("the-one"); }
 
   /* ---------- rewards ---------- */
+  function startAct3() {
+    act3 = 1;
+    typeLine("act iii: the machines' last laugh", "tui-strike", () => {
+      typeLine("they left one file before they left:", "tui-out", () => {
+        typeLine("[handoff] /opt/smith/truth.txt — rot13.", "tui-ok", () => {
+          typeLine("decode it. type the word you find.", "tui-out", () => input.focus());
+        });
+      });
+    });
+  }
+  function act3Answer(raw) {
+    const a = raw.toLowerCase().trim();
+    if (act3 === 1) {
+      if (a === "kernel") {
+        act3 = 2;
+        typeLine("decoded: kernel. the core of the world.", "tui-ok", () => {
+          typeLine("word puzzle: the world one word. unscramble: E S Y T S M", "tui-out", () => {
+            typeLine("(type the word)", "tui-out", () => input.focus());
+          });
+        });
+      } else print("not quite. rot13 it. type the word.", "tui-err");
+    } else if (act3 === 2) {
+      if (a === "system") {
+        act3 = 3;
+        typeLine("system. yes.", "tui-ok", () => {
+          typeLine("riddle: first pid. kill me and the machine dies. who am i?", "tui-out", () => {
+            typeLine("(type my name)", "tui-out", () => input.focus());
+          });
+        });
+      } else print("unscramble again. five... six letters.", "tui-err");
+    } else if (act3 === 3) {
+      if (a === "init" || a === "systemd") {
+        act3 = 4;
+        typeLine("init. the one you may not kill.", "tui-ok", () => {
+          typeLine("the machines are gone. the world is deciphered. the one word is yours.", "tui-ok", () => {
+            typeLine("follow the white rabbit. it is right there. trust it.", "tui-ok", () => {
+              finish3();
+            });
+          });
+        });
+      } else print("the first pid. power. call my name.", "tui-err");
+    }
+  }
+  function finish3() {
+    localStorage.setItem("the-one", "1");
+    drawRain();
+    spawnBunny();
+  }
   function finish1() {
     if (!smithDown) { print("smith is waiting. finish the job.", "tui-err"); return; }
-    finish2();
+    startAct3();
   }
   function finish2() {
     localStorage.setItem("the-one", "1");
@@ -366,6 +420,7 @@
       if (!host || host.querySelector(".matrix-rabbit")) return;
       const b = document.createElement("div");
       b.className = "matrix-rabbit";
+      b.title = "";
       b.innerHTML = '<svg width="12" height="15" viewBox="0 0 12 15" shape-rendering="crispEdges" aria-hidden="true">' +
         '<rect x="3" y="0" width="2" height="5" fill="#ff9ec2"/><rect x="7" y="0" width="2" height="5" fill="#ff9ec2"/>' +
         '<rect x="2" y="3" width="8" height="5" fill="#f6dce8"/><rect x="3" y="8" width="6" height="4" fill="#f6dce8"/>' +
@@ -373,6 +428,7 @@
         '<rect x="3" y="4" width="1" height="1" fill="#141414"/><rect x="8" y="4" width="1" height="1" fill="#141414"/></svg>';
       if (getComputedStyle(host).position === "static") host.style.position = "relative";
       b.style.left = (10 + Math.random() * 74) + "%";
+      b.addEventListener("click", () => rickroll("the rabbit was an agent. obviously."));
       b.style.top = (16 + Math.random() * 62) + "%";
       host.appendChild(b);
     } catch (e) {}
@@ -397,6 +453,7 @@
       if (mode === "matrix") { matrixAnswer(v); return; }
       if (!woke) { startMatrix(); return; }
       print(PROMPT + " $ " + v, "tui-cmd");
+      if (act3 >= 1 && act3 <= 3 && !/^(cat|ls|cd|pwd|ps|kill|tail|grep|whoami|clear|status|readlink|uname|head)\b/.test(v.trim())) { act3Answer(v); return; }
       handle(v);
     } else if (e.key === "Tab") e.preventDefault();
   });
