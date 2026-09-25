@@ -10,7 +10,7 @@
   let woke = false, rick = false, mstep = 0, mode = "shell";
   let strikes = 0, agentDown = false, smithPhase = false, smithDown = false;
   let act3 = 0; // 0=off 1=decipher 2=word 3=riddle 4=done
-  let act4 = 0, gateOpen = false, rabbitPranked = false;
+  let act4 = 0, gateOpen = false, rabbitPranked = false, rabbitLoose = false;
   const AGENT = 1337, DECOYS = { 2041: "appd-worker", 3120: "monitor", 4242: "logger" };
   const SMITH = { 4001: "copy", 4002: "original", 4003: "copy", 4004: "copy" };
 
@@ -281,7 +281,7 @@
         parts.push("agent.core: " + (agentDown ? "dead" : "active"));
         parts.push("smith: " + (smithDown ? "dissolved" : smithPhase ? "active (4 copies)" : "not yet"));
         parts.push("strikes: " + strikes + "/3");
-        parts.push(eternal() ? "rabbit: released" : "rabbit: still finding you");
+        parts.push(rabbitLoose ? "rabbit: loose" : "rabbit: hiding");
         print(parts.join(" | "), "tui-out");
         return;
       }
@@ -378,20 +378,18 @@
         return;
       }
       case "reset": {
-        localStorage.removeItem("the-one");
         const r = document.querySelector(".matrix-rabbit");
         if (r) r.remove();
-        print("the machines forget you. the rabbit goes back into the future.", "tui-ok");
-        print("solve it again. chase it again. nothing again.", "tui-out");
+        rabbitLoose = false;
+        print("nothing to reset. the rabbit forgets with the session.", "tui-out");
         return;
       }
-      case "whoami": print(eternal() ? "firas (the rabbit says hi)" : "firas", "tui-ok"); return;
+      case "whoami": print("firas", "tui-ok"); return;
       case "uname": print("Linux groundsada 6.6.0-matrix", "tui-out"); return;
       default: print("command not found: " + verb, "tui-err");
     }
   }
 
-  function eternal() { return !!localStorage.getItem("the-one"); }
 
   /* ---------- rewards ---------- */
   function startAct3() {
@@ -448,7 +446,7 @@
     });
   }
   function finish4() {
-    localStorage.setItem("the-one", "1");
+    rabbitLoose = true;
     drawRain();
     spawnBunny();
   }
@@ -520,10 +518,10 @@
       if (/\brm\b/i.test(v)) { print(PROMPT + " $ " + v, "tui-cmd"); rickroll(); return; }
       if (v.trim().toLowerCase() === "reset") {
         print(PROMPT + " $ reset", "tui-cmd");
-        localStorage.removeItem("the-one");
         const rr = document.querySelector(".matrix-rabbit");
         if (rr) rr.remove();
-        print("the machines forget you. the rabbit goes back into the future.", "tui-ok");
+        rabbitLoose = false;
+        print("nothing to reset. the rabbit forgets with the session.", "tui-out");
         return;
       }
       if (mode === "matrix") { matrixAnswer(v); return; }
@@ -547,5 +545,4 @@
 
   syncWidth();
   input.focus();
-  if (eternal()) spawnBunny();   // the rabbit persists across reloads
 })();
