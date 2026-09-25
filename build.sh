@@ -10,7 +10,7 @@ mkdir -p dist/
 
 # Environment
 export DEV=false
-export PORT=3002
+export PORT="${PORT:-3002}"
 export TCP_PROVIDER=tcpserver
 
 if ! command -v tcpserver &> /dev/null; then
@@ -54,6 +54,13 @@ fetch_page "/blog" "blog.html"
 fetch_page "/about" "about.html"
 fetch_page "/projects" "projects.html"
 fetch_page "/safebox" "safebox.html"
+
+# Blog posts (previously never fetched -> lived site had 404s)
+mkdir -p dist/blog
+for md in blog/*.md; do
+  slug=$(basename "$md" .md)
+  fetch_page "/blog/$slug" "blog/$slug.html" || exit 1
+done
 
 # Copy assets
 cp -r static dist/

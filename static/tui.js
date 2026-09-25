@@ -1,4 +1,4 @@
-/* groundsada TUI v10 — Matrix intro → Agent Race → SMITH. Win = rewards. */
+/* groundsada TUI v10 ,  Matrix intro → Agent Race → SMITH. Win = rewards. */
 (function () {
   const el = document.getElementById("tui");
   if (!el) return;
@@ -85,7 +85,7 @@
     wrap.appendChild(ifr);
     const label2 = document.createElement("div");
     label2.className = "tui-rick__label";
-    label2.textContent = "never gonna give you up — click the terminal to back out";
+    label2.textContent = "never gonna give you up ,  click the terminal to back out";
     wrap.appendChild(label2);
     out.appendChild(wrap);
     rick = true;
@@ -98,7 +98,7 @@
     el.classList.remove("tui--shake");
     void el.offsetWidth;
     el.classList.add("tui--shake");
-    print("⚠ STRIKE " + strikes + "/3 — " + why, "tui-strike");
+    print("⚠ STRIKE " + strikes + "/3 ,  " + why, "tui-strike");
     if (strikes >= 3) {
       typeLine("the machines found you.", "tui-err", () => {
         typeLine("you are not the one.", "tui-err", () => setTimeout(() => rickroll(), 700));
@@ -324,7 +324,7 @@
             print("----", "tui-strike");
             print("smith: *dissolves* ...", "tui-ok");
             print("the copies fall silent. ps will confirm.", "tui-ok");
-            print("flag: SMITH-DOWN — type it to collect.", "tui-ok");
+            print("flag: SMITH-DOWN ,  type it to collect.", "tui-ok");
             print("----", "tui-strike");
             return;
           }
@@ -336,7 +336,7 @@
           agentDown = true;
           print("----", "tui-strike");
           print("agent.core terminated. respawn stopped.", "tui-ok");
-          print("flag: AGENT-DOWN — but smith stirs...", "tui-ok");
+          print("flag: AGENT-DOWN ,  but smith stirs...", "tui-ok");
           print("----", "tui-strike");
           setTimeout(spawnSmith, 1400);
           return;
@@ -396,7 +396,7 @@
     act3 = 1;
     typeLine("act iii: the machines' last laugh", "tui-strike", () => {
       typeLine("they left one file before they left:", "tui-out", () => {
-        typeLine("[handoff] /opt/smith/truth.txt — rot13.", "tui-ok", () => {
+        typeLine("[handoff] /opt/smith/truth.txt ,  rot13.", "tui-ok", () => {
           typeLine("decode it. type the word you find.", "tui-out", () => input.focus());
         });
       });

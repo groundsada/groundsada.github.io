@@ -1,29 +1,5 @@
 ---
 title: "From SDSC to ESnet: changing the problem, not the desk"
 date: 2026-09-01
-excerpt: In September 2026 I joined ESnet remotely, from the same city where I'd been at SDSC. Same desk, different work — and that's the part that mattered.
----
-
-# From SDSC to ESnet: changing the problem, not the desk
-
-In September 2026 I joined **ESnet** at Lawrence Berkeley National Laboratory as a research networking systems engineer. A common assumption: I packed up and moved to Berkeley. I didn't. I stayed exactly where I was and started the new job **remotely** — the work changed, the desk didn't. No moving trucks, no new commute, just a new badge number and a much longer list of people on Slack.
-
-## The San Diego years
-
-SDSC was good to me. I came in working on the National Research Platform, that multi-tenant Kubernetes environment where researchers at campuses all over the country run science jobs from a browser tab. My corner of it: the Kubernetes substrate, stretching a cluster across states and keeping multi-tenancy from collapsing under its own weight, plus the FABRIC integration that let NRP and the testbed world talk to each other.
-
-I led the SEAM project, built the SENSE Kubernetes operator, and did the work I'm still fondest of: P4 on FPGAs, including a paper on real-time machine learning inside the packet path on SmartNICs. Fixed-point arithmetic and Taylor approximations got classifiers onto the wire at line rate, which is not a sentence I ever expected to write.
-
-Somewhere in there I also started teaching: SDSC's on-demand courses, Introduction to the National Research Platform and Intermediate Kubernetes. Teaching that material changed how I think about infrastructure, because it's hard to hand-wave a subsystem when someone is asking which knob to turn.
-
-## Why I left (the problem, not the city)
-
-I kept being one layer removed from the science. I'd build shared infrastructure, and the data that justified it was always somebody else's problem. High-energy physics moves tens of petabytes, and the network decides whether a transfer finishes tonight or next week. That was the problem I wanted.
-
-At ESnet that's the job: SENSE software-defined networking for science, Rucio and FTS interop for HEP, and the less glamorous work of making transfers something you can schedule, observe, and speed up.
-
-## The part nobody mentions
-
-Being new is still hard from the same desk. New tools, new people, new processes, and a whole new vocabulary for things you thought you knew. You're the new guy on a call where everyone else has six years of shared context, except you can't even walk over to anyone's office. Remote onboarding is real, and it's slower than the job posts admit.
-
-The work excites me in a way it hasn't in a while. That alone was worth the change — schedule and zip code unchanged.
+excerpt: In September 2026 I joined ESnet remotely, from the same city where I'd been at SDSC. Same desk, different work, and that's the part that mattered.
+--- # From SDSC to ESnet: changing the problem, not the desk In September 2026 I joined **ESnet** at Lawrence Berkeley National Laboratory as a research networking systems engineer. A common assumption: I packed up and moved to Berkeley. I didn't. I stayed exactly where I was and started the new job **remotely**, the work changed, the desk didn't. No moving trucks, no new commute, just a new badge number and a much longer list of people on Slack. ## The San Diego years SDSC was good to me. I came in working on the National Research Platform, that multi-tenant Kubernetes environment where researchers at campuses all over the country run science jobs from a browser tab. My corner of it: the Kubernetes substrate, stretching a cluster across states and keeping multi-tenancy from collapsing under its own weight, plus the FABRIC integration that let NRP and the testbed world talk to each other. I led the SEAM project, built the SENSE Kubernetes operator, and did the work I'm still fondest of: P4 on FPGAs, including a paper on real-time machine learning inside the packet path on SmartNICs. Fixed-point arithmetic and Taylor approximations got classifiers onto the wire at line rate, which is not a sentence I ever expected to write. Somewhere in there I also started teaching: SDSC's on-demand courses, Introduction to the National Research Platform and Intermediate Kubernetes. Teaching that material changed how I think about infrastructure, because it's hard to hand-wave a subsystem when someone is asking which knob to turn. ## Why I left (the problem, not the city) I kept being one layer removed from the science. I'd build shared infrastructure, and the data that justified it was always somebody else's problem. High-energy physics moves tens of petabytes, and the network decides whether a transfer finishes tonight or next week. That was the problem I wanted. At ESnet that's the job: SENSE software-defined networking for science, Rucio and FTS interop for HEP, and the less glamorous work of making transfers something you can schedule, observe, and speed up. ## The part nobody mentions Being new is still hard from the same desk. New tools, new people, new processes, and a whole new vocabulary for things you thought you knew. You're the new guy on a call where everyone else has six years of shared context, except you can't even walk over to anyone's office. Remote onboarding is real, and it's slower than the job posts admit. The work excites me in a way it hasn't in a while. That alone was worth the change, schedule and zip code unchanged.

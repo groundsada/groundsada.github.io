@@ -1,4 +1,4 @@
-/* groundsada — gentle parallax: layers drift at different speeds on scroll */
+/* groundsada: gentle parallax: layers drift at different speeds on scroll */
 (function () {
   const layers = document.querySelectorAll("[data-parallax]");
   if (!layers.length) return;
