@@ -10,6 +10,7 @@
   let woke = false, rick = false, mstep = 0, mode = "shell";
   let strikes = 0, agentDown = false, smithPhase = false, smithDown = false;
   let act3 = 0; // 0=off 1=decipher 2=word 3=riddle 4=done
+  let act4 = 0, gateOpen = false, rabbitPranked = false;
   const AGENT = 1337, DECOYS = { 2041: "appd-worker", 3120: "monitor", 4242: "logger" };
   const SMITH = { 4001: "copy", 4002: "original", 4003: "copy", 4004: "copy" };
 
@@ -21,7 +22,11 @@
            smith: { "root": { t: "f", c: "ELF executable (original smith)" },
                     "truth.txt": { t: "f", c: "GUR NEPUVGRPG" },
                     "journal.txt": { t: "f", c: "smith/1  -> copy\nsmith/2  -> ORIGINAL\nsmith/3  -> copy\nsmith/4  -> copy" } } },
-    var: { log: { "watchdog.log": { t: "f", c: "09:41:50 watchdog: agent.core detected (pid 1337)\n09:42:10 watchdog: agent.core respawn=active\n09:42:40 watchdog: recompute pid on respawn\n09:44:10 watchdog: SMITH DETECTED (4 instances)" } } },
+    srv: { gate: { "checksum.txt": { t: "f", c: "3f4c9b68a1d2e7f0" },
+                            "pass.bin": { t: "f", c: "the key to the gate" },
+                            "decoy.bin": { t: "f", c: "decoy data" },
+                            "manifests.txt": { t: "f", c: "the door opens for 3f4c9b68a1d2e7f0.\nfind the file that matches. sha256sum will tell the truth." } } },
+    var: { run: {}, log: { "watchdog.log": { t: "f", c: "09:41:50 watchdog: agent.core detected (pid 1337)\n09:42:10 watchdog: agent.core respawn=active\n09:42:40 watchdog: recompute pid on respawn\n09:44:10 watchdog: SMITH DETECTED (4 instances)" } } },
     tmp: { "smith.log": { t: "f", c: "the original laughs last: smith/2" } },
     usr: { bin: {} }, home: { user: {} }, root: {},
   };
@@ -254,6 +259,21 @@
     const why = trapMatch(cmd);
     if (why) { strike(why); return; }
 
+    if (/^systemctl\s+start\b/.test(cmd)) {
+      if (gateOpen) { print("gate: already open.", "tui-out"); return; }
+      const kp = ["var", "run", "gate.pass"];
+      if (act4 === 1 && nodeAt(kp) && nodeAt(kp).t) {
+        gateOpen = true;
+        print("gate: opened. flag: GATE-OPEN.", "tui-ok");
+        typeLine("the machines have been outplayed. the exit is open...", "tui-out", () => {
+          typeLine("and there, in the hero, the white rabbit. one more step. chase it.", "tui-ok", () => finish4());
+        });
+      } else {
+        print("gate: key missing (need /var/run/gate.pass)", "tui-err");
+      }
+      return;
+    }
+
     switch (verb) {
       case "pwd": print(cwd, "tui-out"); return;
       case "status": {
@@ -331,6 +351,24 @@
         print(n.c.split("\n").slice(-3).join("\n"), "tui-out");
         return;
       }
+      case "sha256sum": {
+        const f = parts.slice(1).join(" ").replace(/\*$/, "") || "";
+        if (f.indexOf("pass.bin") >= 0) print("3f4c9b68a1d2e7f0  " + f, "tui-ok");
+        else if (f.indexOf("decoy.bin") >= 0) print("9d2a77e1c4b6f3a8  " + f, "tui-err");
+        else { const n = nodeAt(resolve(f)); if (!n || !n.t) { print("sha256sum: " + f + ": No such file", "tui-err"); } else print("0e1b2c3d4e5f6a7b  " + f, "tui-out"); }
+        return;
+      }
+      case "cp": {
+        const src = parts[1] || "", dst = parts[2] || "";
+        const sn = nodeAt(resolve(src));
+        if (!sn || !sn.t) { print("cp: cannot stat '" + src + "': No such file", "tui-err"); return; }
+        const pr = resolve(dst).slice(0, -1);
+        const pn = nodeAt(pr);
+        if (!pn || pn.t) { print("cp: cannot create '" + dst + "': directory missing", "tui-err"); return; }
+        pn[resolve(dst)[resolve(dst).length - 1]] = { t: "f", c: sn.c };
+        print("copied " + src + " -> " + dst, "tui-ok");
+        return;
+      }
       case "grep": {
         const pat = (parts[1] || "").replace(/^'|'$/g, "");
         const f = parts[2] || "";
@@ -386,17 +424,28 @@
         typeLine("init. the one you may not kill.", "tui-ok", () => {
           typeLine("the machines are gone. the architect is scheduled. morpheus nods.", "tui-ok", () => {
             typeLine("the rabbit is loose in the hero. chase it.", "tui-ok", () => {
-              finish3();
+              startAct4();
             });
           });
         });
       } else print("first pid. power. call my name.", "tui-err");
     }
   }
-  function finish3() {
+  function startAct4() {
+    act4 = 1;
+    typeLine("not yet. one more door.", "tui-out", () => {
+      typeLine("[gate] an exit is open. its key is hiding. (sha256sum tells the truth)", "tui-err", () => {
+        typeLine("find the file. copy it to /var/run/gate.pass. start the gate.", "tui-out", () => input.focus());
+      });
+    });
+  }
+  function finish4() {
     localStorage.setItem("the-one", "1");
     drawRain();
     spawnBunny();
+  }
+  function finish3() {
+    startAct4();
   }
   function finish1() {
     if (!smithDown) { print("smith is waiting. finish the job.", "tui-err"); return; }
@@ -430,7 +479,10 @@
         '<rect x="3" y="4" width="1" height="1" fill="#141414"/><rect x="8" y="4" width="1" height="1" fill="#141414"/></svg>';
       if (getComputedStyle(host).position === "static") host.style.position = "relative";
       b.style.left = (10 + Math.random() * 74) + "%";
-      b.addEventListener("click", () => rickroll("the rabbit was an agent. obviously. you chased it into the trap."));
+      b.addEventListener("click", () => {
+        rabbitPranked = true;
+        rickroll("the rabbit was an agent. obviously. you chased it into the trap. all of it, for this.");
+      });
       // it wanders. chase it.
       b.__wander = setInterval(() => {
         if (!document.body.contains(b)) { clearInterval(b.__wander); return; }
@@ -466,7 +518,14 @@
     } else if (e.key === "Tab") e.preventDefault();
   });
   el.addEventListener("click", () => {
-    if (rick) { rick = false; clearBody(); mode = "shell"; }
+    if (rick) {
+      rick = false; clearBody(); mode = "shell";
+      if (rabbitPranked) {
+        rabbitPranked = false;
+        print("there was never a reward. only the journey...", "tui-out");
+        print("and the song. (nothing, again. the rabbit wins.)", "tui-err");
+      }
+    }
     try { input.focus(); } catch (e) {}
   });
 
