@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>"Naruto: the parser for rules that sound like English" - Mohammad Firas Sada</title>
+  <meta name="description" content=""Naruto: the parser for rules that sound like English"">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <h1 class="site-title">
+      <a href="/">groundsada</a>
+    </h1>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="https://github.com/groundsada" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="main-content">
+  <article class="entry">
+    <p><a href="/blog">← Back to Blog</a></p>
+    <h1 class="entry__title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">"Naruto: the parser for rules that sound like English"</h1>
+    <div class="entry__meta" style="margin-bottom: 2rem;">2026-09-22</div>
+    <div class="entry__content" style="max-width: 48rem;">
+      
+<p>
+NaRuTo stands for Natural Rule Tool. It is an enhanced fork of the Natural Rule Language parser, and yes, the name is a pun on both NRL and the show. It is not about ninja. It is about parsing sentences that describe constraints on a system and turning them into something a program can check.
+
+<p>
+The original NRL parser took rules like "if a packet is TCP, the source must be this address" and turned them into structured constraints. NaRuTo keeps that idea and widens it in three ways.
+
+<p>
+First, the grammar grew. More expression forms, more constructs, so rules can capture relationships that the original could not express without contortions.
+
+<p>
+Second, the mapping engines grew. NRL originally ran its mappings through Java programs. NaRuTo lets you write the mapping in the language you already have: Python, JavaScript, anything that can execute against your data structures. That was the change that made the tool usable outside the Java world.
+
+<p>
+Third, it talks to CLiX and XML directly. Rules can read and transform XML documents, which is useful when the thing you are describing is a config tree or a database dump rather than a packet.
+
+<p>
+It is a Maven project, the README still assumes Eclipse, and there is a joke in the repo name that I stand behind. It also happens to be the parser under the good half of the pipe in other projects of mine that turn plain language into network filter rules. Zero stars, no complaints. The grammar is what matters, and it is a lot of grammar.
+
+<p>
+It exists, it parses, and the tests pass. That is the honest summary of another really fun project.
+    </div>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>&copy; 2026 Mohammad Firas Sada &middot; <a href="/about">about</a> &middot; <a href="/blog">blog</a> &middot; <a href="https://github.com/groundsada">github</a></p>
+    <p class="site-footer__fun">Powered by a web framework written in Bash.</p>
+  </div>
+</footer>
+</body>
+</html>
