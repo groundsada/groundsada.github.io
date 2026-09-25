@@ -308,6 +308,19 @@ p { margin: 0 0 1em; }
 @keyframes blink { 50% { opacity: 0; } }
 
 /* ---------- TUI: challenge extras ---------- */
+.the-one-badge {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: #4ade80;
+  border: 1px solid #4ade80;
+  border-radius: 999px;
+  padding: 4px 14px;
+  text-shadow: 0 0 12px rgba(74, 222, 128, 0.7);
+  box-shadow: 0 0 18px rgba(74, 222, 128, 0.25);
+}
 .tui-strike { color: #ff5f6d; font-weight: 700; text-shadow: 0 0 10px rgba(255,95,109,.5); }
 .tui--shake { animation: tui-shake 0.4s ease; }
 @keyframes tui-shake {
