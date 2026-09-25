@@ -308,6 +308,15 @@ p { margin: 0 0 1em; }
 @keyframes blink { 50% { opacity: 0; } }
 
 /* ---------- TUI: challenge extras ---------- */
+.tui-strike { color: #ff5f6d; font-weight: 700; text-shadow: 0 0 10px rgba(255,95,109,.5); }
+.tui--shake { animation: tui-shake 0.4s ease; }
+@keyframes tui-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
 .tui--party {
   animation: tui-party 0.35s linear infinite;
 }
