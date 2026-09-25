@@ -377,6 +377,14 @@
         n.c.split("\n").forEach((l) => { if (l.toLowerCase().includes(pat.toLowerCase())) print(l, "tui-out"); });
         return;
       }
+      case "reset": {
+        localStorage.removeItem("the-one");
+        const r = document.querySelector(".matrix-rabbit");
+        if (r) r.remove();
+        print("the machines forget you. the rabbit goes back into the future.", "tui-ok");
+        print("solve it again. chase it again. nothing again.", "tui-out");
+        return;
+      }
       case "whoami": print(eternal() ? "firas (the rabbit says hi)" : "firas", "tui-ok"); return;
       case "uname": print("Linux groundsada 6.6.0-matrix", "tui-out"); return;
       default: print("command not found: " + verb, "tui-err");
