@@ -160,7 +160,11 @@
             });
           });
         });
-      } else rickroll("decrypted wrong. the machines found you.");
+      } else {
+        typeLine("not quite. the transmission is still waiting.", "tui-err", () => {
+          typeLine("WKH PDWULA", "tui-ok", () => input.focus());
+        });
+      }
     }
   }
 
