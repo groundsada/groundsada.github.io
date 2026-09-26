@@ -3,8 +3,32 @@ title: "LLMs or Naive Bayes? Old Gems or New Ways"
 date: 2026-07-31
 excerpt: Our PEARC '26 short paper benchmarks Complement Naive Bayes against zero-/few-shot LLMs across four model families and a 37x range in scale, with a surprising verdict for resource-constrained practitioners.
 ---
-# LLMs or Naive Bayes? Old Gems or New Ways *With Dmitry Mishin, John Graham, Seungmin Kim, Mahidhar Tatineni, and Frank Würthwein. Published as a short paper at PEARC '26; the preprint is on [arXiv:2609.13185](https://arxiv.org/abs/2609.13185).* There's a recurring question in research computing: with LLMs this good, should we retire classical methods like Naive Bayes? Our PEARC '26 paper answers it with measurements, not vibes, and the answer isn't what the hype suggests. ## What we did We benchmarked **Complement Naive Bayes (CNB) with TF-IDF bigrams** against **zero-shot and few-shot LLMs** spanning four model families and a 37× range in scale (27B up to a 1T-parameter mixture-of-experts), across three text-classification tasks, plus a low-contamination control to keep the numbers honest. ## The headline results - **Zero-data regimes favor LLMs, but not by much, and not robustly.** On Amazon Polarity sentiment, a zero-shot LLM hits 98.0% vs 88.2% for CNB. Yet that win is contamination-prone: on a low-contamination sentiment task, NB beats the zero-shot LLM, **81.7% vs 73.0%**.
+# LLMs or Naive Bayes? Old Gems or New Ways
+
+*With Dmitry Mishin, John Graham, Seungmin Kim, Mahidhar Tatineni, and Frank Würthwein. Published as a short paper at PEARC '26; the preprint is on [arXiv:2609.13185](https://arxiv.org/abs/2609.13185).*
+
+There's a recurring question in research computing: with LLMs this good, should we retire classical methods like Naive Bayes? Our PEARC '26 paper answers it with measurements, not vibes, and the answer isn't what the hype suggests.
+
+## What we did
+
+We benchmarked **Complement Naive Bayes (CNB) with TF-IDF bigrams** against **zero-shot and few-shot LLMs** spanning four model families and a 37× range in scale (27B up to a 1T-parameter mixture-of-experts), across three text-classification tasks, plus a low-contamination control to keep the numbers honest.
+
+## The headline results
+
+- **Zero-data regimes favor LLMs, but not by much, and not robustly.** On Amazon Polarity sentiment, a zero-shot LLM hits 98.0% vs 88.2% for CNB. Yet that win is contamination-prone: on a low-contamination sentiment task, NB beats the zero-shot LLM, **81.7% vs 73.0%**.
 - **Once labels exist, CNB matches or beats every LLM we tested.** On AG News, NB reaches **89.1%**, statistically indistinguishable from the zero-shot 27B model (89.0%) and *better* than a 397B frontier MoE (84.8%), at thousands of samples per second on a commodity CPU.
 - **Fine-tuned DistilBERT edges accuracy (90.6%)** but at far lower throughput than NB.
-- **The cost gap is structural.** Small-LLM batched inference was **40-486× slower than NB CPU inference** (multiplier depends strongly on host CPU), with roughly two orders of magnitude higher energy per sample. ## The decision line The takeaway isn't "classical always wins", it's that the right choice is **task- and data-dependent**: - NB reaches LLM parity around **N ≈ 10⁴ labels** for topic classification.
-- Zero-data sentiment continues to favor the LLM at every N we tested. To make that call automatic instead of tribal, the paper includes a **Kubernetes Helm operator** that automates model selection using configurable thresholds and verifiable Prometheus metrics, pick the policy, the operator routes the work. ## Why this matters in HPC For resource-constrained HPC practitioners doing text classification with labeled data, **NB remains the optimal choice**, thousands of samples/sec on one CPU, no GPU cluster, no energy bill, and full reproducibility. Every number in the paper traces to a committed JSON in the [reproduction repository](https://github.com/groundsada/llms-or-naive-bayes), so anyone can regenerate the results. Follow-up work is ongoing, the full benchmark and model-selection tooling now live in the decision-model benchmark suite.
+- **The cost gap is structural.** Small-LLM batched inference was **40-486× slower than NB CPU inference** (multiplier depends strongly on host CPU), with roughly two orders of magnitude higher energy per sample.
+
+## The decision line
+
+The takeaway isn't "classical always wins", it's that the right choice is **task- and data-dependent**:
+
+- NB reaches LLM parity around **N ≈ 10⁴ labels** for topic classification.
+- Zero-data sentiment continues to favor the LLM at every N we tested.
+
+To make that call automatic instead of tribal, the paper includes a **Kubernetes Helm operator** that automates model selection using configurable thresholds and verifiable Prometheus metrics. Pick the policy, the operator routes the work.
+
+## Why this matters in HPC
+
+For resource-constrained HPC practitioners doing text classification with labeled data, **NB remains the efficient default**, and the article arms you with the exact numbers for when it isn't. The full story, including the operator, is in the paper: [arXiv:2609.13185](https://arxiv.org/abs/2609.13185).
